@@ -69,16 +69,10 @@ if(is_array($evtOut)) {
 		$('#Button12').click(function(e) {
 			e.preventDefault();
 			var randomNum = 'gener1',
-				url = 'index.php?a=76',
-				w = screen.width * 0.9,
-				h = screen.height * 0.8,
-				l = (screen.width - w) / 2,
-				t = (screen.height - h) / 2;
-			if(e.shiftKey) {
+				url = 'index.php?a=76';
+			if(e.shiftKey)
 				randomNum = Math.floor((Math.random() * 999999) + 1);
-			}
-
-			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
+			modx.openWindow(url, randomNum)
 		});
 	</script>
 <?php } ?>
@@ -88,15 +82,11 @@ if(is_array($evtOut)) {
 		$('#Button13').click(function(e) {
 			e.preventDefault();
 			var randomNum = 'gener2',
-				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
-				w = screen.width * 0.9,
-				h = screen.height * 0.8,
-				l = (screen.width - w) / 2,
-				t = (screen.height - h) / 2;
-			if(e.shiftKey) {
+				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images';
+			if(e.shiftKey)
 				randomNum = Math.floor((Math.random() * 999999) + 1);
-			}
-			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
+			modx.openWindow(url, randomNum)
+		});
 	</script>
 <?php } ?>
 
@@ -105,15 +95,10 @@ if(is_array($evtOut)) {
 		$('#Button14').click(function(e) {
 			e.preventDefault();
 			var randomNum = 'gener3',
-				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
-				w = screen.width * 0.9,
-				h = screen.height * 0.8,
-				l = (screen.width - w) / 2,
-				t = (screen.height - h) / 2;
-			if(e.shiftKey) {
+				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files';
+			if(e.shiftKey)
 				randomNum = Math.floor((Math.random() * 999999) + 1);
-			}
-			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
+			modx.openWindow(url, randomNum)
 		});
 	</script>
 <?php } ?>
