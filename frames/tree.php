@@ -8,6 +8,7 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 		// jQuery.noConflict();
 
 		// preload images
+		/*
 		var i = new Image(18, 18);
 		i.src = "<?php echo $_style["tree_page"]?>";
 		i = new Image(18, 18);
@@ -20,7 +21,7 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 		i.src = "<?php echo isset($_style["tree_folderopen"]) ? $_style["tree_folderopen"] : $_style["tree_page"]; ?>";
 		i = new Image(18, 18);
 		i.src = "<?php echo isset($_style["tree_folder"]) ? $_style["tree_folder"] : $_style["tree_page"]; ?>";
-
+		*/
 
 		var rpcNode = null;
 		var ca = "open";
@@ -173,7 +174,7 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 				// expand
 				if(signImg && signImg.src.indexOf('<?php echo $_style['tree_plusnode']?>') > -1) {
 					signImg.src = '<?php echo $_style["tree_minusnode"]; ?>';
-					folderImg.src = (privatenode == '0') ? '<?php echo $_style["tree_folderopen"]; ?>' : '<?php echo $_style["tree_folderopen_secure"]; ?>';
+					folderImg.src = (privatenode == '0') ? "<?php echo $_style['tree_folderopen']; ?>" : "<?php echo $_style['tree_folderopen_secure']; ?>";
 				}
 
 				rpcNodeText = rpcNode.innerHTML;
@@ -200,7 +201,7 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 				// collapse
 				if(signImg && signImg.src.indexOf('<?php echo $_style["tree_minusnode"]; ?>') > -1) {
 					signImg.src = '<?php echo $_style["tree_plusnode"]; ?>';
-					folderImg.src = (privatenode == '0') ? '<?php echo $_style["tree_folder"]; ?>' : '<?php echo $_style["tree_folder_secure"]; ?>';
+					folderImg.src = (privatenode == '0') ? "<?php echo $_style['tree_folder']; ?>" : "<?php echo $_style['tree_folder_secure']; ?>";
 				}
 				//rpcNode.innerHTML = '';
 				rpcNode.style.display = 'none';

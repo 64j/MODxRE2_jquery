@@ -79,7 +79,7 @@ function makeHTML($indent,$parent,$expandAll,$theme) {
         elseif($hidemenu==1)  $nodetitleDisplay = sprintf('<span class="notInMenuNode%s">%s</span>',$protectedClass,$nodetitle);
         else                  $nodetitleDisplay = sprintf('<span class="publishedNode%s">%s</span>',$protectedClass,$nodetitle);
         
-        $weblinkDisplay = $type=='reference' ? sprintf('&nbsp;<img src="%s">',$_style['tree_linkgo']) : '' ;
+        $weblinkDisplay = $type=='reference' ? sprintf('&nbsp;%s',$_style['tree_linkgo']) : '' ;
         $pageIdDisplay = '<small>('.($modx_textdir ? '&rlm;':'').$id.')</small>';
         
         // Prepare displaying user-locks
@@ -311,17 +311,16 @@ function getTplSingleNode() {
     return '<div
     id="node[+id+]"
     p="[+parent+]"
-    >[+spacer+][+pad+]<img
+    >[+spacer+][+pad+]<span
         id="p[+id+]"
         align="absmiddle"
         title="[%click_to_context%]"
-        src="[+icon+]"
         onclick="showPopup([+id+],\'[+nodetitle_esc+]\',[+published+],[+deleted+],[+isfolder+],event);return false;"
         oncontextmenu="this.onclick(event);return false;"
         onmouseover="setCNS(this, 1)"
         onmouseout="setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\'"
-    />&nbsp;[+lockedByUser+]<span
+    />[+icon+]</span>&nbsp;[+lockedByUser+]<span
         p="[+parent+]"
         onclick="treeAction(event,[+id+],\'[+nodetitle_esc+]\'); setSelected(this);"
         onmouseover="setHoverClass(this,1);"
@@ -343,18 +342,17 @@ function getTplOpenFolderNode() {
         src="[&tree_minusnode&]"
         onclick="toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;"
         oncontextmenu="this.onclick(event); return false;"
-        /><img
+        /><span
         id="f[+id+]"
         align="absmiddle"
         title="[%click_to_context%]"
         style="margin-top:-2px;"
-        src="[+src+]"
         onclick="showPopup([+id+],\'[+nodetitle_esc+]\',[+published+],[+deleted+],[+isfolder+],event);return false;"
         oncontextmenu="this.onclick(event);return false;"
         onmouseover="setCNS(this, 1)"
         onmouseout="setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
-        />&nbsp;[+lockedByUser+]<span
+        >[+src+]</span>&nbsp;[+lockedByUser+]<span
         onclick="treeAction(event,[+id+],\'[+nodetitle_esc+]\'); setSelected(this);"
         onmouseover="setHoverClass(this, 1);"
         onmouseout="setHoverClass(this, 0);"
@@ -375,18 +373,17 @@ function getTplClosedFolderNode() {
         src="[&tree_plusnode&]"
         onclick="toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;"
         oncontextmenu="this.onclick(event); return false;"
-        /><img
+        /><span
         id="f[+id+]"
         title="[%click_to_context%]"
         align="absmiddle"
         style="margin-top:-2px;"
-        src="[+src+]"
         onclick="showPopup([+id+],\'[+nodetitle_esc+]\',[+published+],[+deleted+],[+isfolder+],event);return false;"
         oncontextmenu="this.onclick(event);return false;"
         onmouseover="setCNS(this, 1)"
         onmouseout="setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
-        />&nbsp;[+lockedByUser+]<span
+        >[+src+]</span>&nbsp;[+lockedByUser+]<span
         onclick="treeAction(event,[+id+],\'[+nodetitle_esc+]\'); setSelected(this);"
         onmouseover="setHoverClass(this, 1);"
         onmouseout="setHoverClass(this, 0);"
