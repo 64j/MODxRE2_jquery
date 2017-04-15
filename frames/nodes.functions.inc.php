@@ -165,7 +165,7 @@ function makeHTML($indent,$parent,$expandAll,$theme) {
             {
                 if ($expandAll == 1) $opened2[] = $id;
                 $tpl = getTplOpenFolderNode();
-                $ph['src'] = $isPrivate ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen'];
+                $ph['src'] = $isPrivate ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
                 $node = $modx->parseText($tpl,$ph);
                 $node = $modx->parseText($node,$_lang, '[%','%]');
                 $node = $modx->parseText($node,$_style,'[&','&]');
@@ -176,7 +176,7 @@ function makeHTML($indent,$parent,$expandAll,$theme) {
             else
             {
                 $tpl = getTplClosedFolderNode();
-                $ph['src'] = $isPrivate ? $_style['tree_folder_secure'] : $_style['tree_folder'];
+                $ph['src'] = $isPrivate ? $_style['tree_folder_secure'] : $_style['tree_folder_new'];
                 $node = $modx->parseText($tpl,$ph);
                 $node = $modx->parseText($node,$_lang, '[%','%]');
                 $node = $modx->parseText($node,$_style,'[&','&]');

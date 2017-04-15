@@ -49,12 +49,12 @@ $_style['ctx_preview_resource']     = 'fa fa-eye fa-fw fa-lg';
 
 // Tree Icons
 $_style['tree_deletedpage']         = $style_path.'tree/file-alt-deleted.png';
-//$_style['tree_folder']              = $style_path.'tree/folder-close-alt.png'; /* folder.png */
-//$_style['tree_folderopen']          = $style_path.'tree/folder-open-alt.png'; /* folder-open.png */
-$_style['tree_folder']              = "<i class='fa fa-folder-o'></i>"; /* folder.png */
-$_style['tree_folderopen']          = "<i class='fa fa-folder-open-o'></i>"; /* folder-open.png */
-$_style['tree_folder_secure']       = $style_path.'tree/folder-close-alt-secure.png';
-$_style['tree_folderopen_secure']   = $style_path.'tree/folder-open-alt-secure.png';
+$_style['tree_folder']              = $style_path.'tree/folder-close-alt.png'; /* folder.png */
+$_style['tree_folderopen']          = $style_path.'tree/folder-open-alt.png'; /* folder-open.png */
+$_style['tree_folder_new']              = "<i class='fa fa-folder-o'></i>"; /* folder.png */
+$_style['tree_folderopen_new']          = "<i class='fa fa-folder-open-o'></i>"; /* folder-open.png */
+$_style['tree_folder_secure']       = "<i class='fa fa-folder-o'><i class='fa fa-lock'></i></i>";
+$_style['tree_folderopen_secure']   = "<i class='fa fa-folder-open-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_globe']               = $style_path.'tree/globe.png';
 $_style['tree_linkgo']              = "<i class='fa fa-link'></i>";
 $_style['tree_page']                = "<i class='fa fa-file-o'></i>";
@@ -79,10 +79,10 @@ $_style['tree_showtree']            = '<i class="fa fa-sitemap"></i>';
 
 $_style['tree_weblink']             = $style_path.'tree/link.png';
 
-$_style['tree_page_secure']         = $style_path.'tree/file-alt-secure.png';
-$_style['tree_page_blank_secure']   = $style_path.'tree/file-alt-secure.png';
+$_style['tree_page_secure']         = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_page_blank_secure']   = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_css_secure']     = $style_path.'tree/file-code-secure.png';
-$_style['tree_page_html_secure']    = $style_path.'tree/file-alt-secure.png';
+$_style['tree_page_html_secure']    = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_xml_secure']     = $style_path.'tree/file-code-secure.png';
 $_style['tree_page_js_secure']      = $style_path.'tree/file-code-secure.png';
 $_style['tree_page_rss_secure']     = $style_path.'tree/file-rss-secure.png';

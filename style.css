@@ -190,8 +190,9 @@ div.treeframebody {  }
 #treeMenu * { vertical-align: middle; }
 #treeHolder { cursor: default; height: 100%; padding: 6px 8px 0; line-height: 1.5em; }
 #treeHolder { margin-top: 0; padding-left: 8px; }
-#treeHolder .fa {color: #89979d; width: 16px;
-text-align: center}
+#treeHolder .fa {color: #89979d; width: 16px;text-align: center}
+#treeHolder .fa > .fa {font-size: 10px;position: absolute;width: 8px;color: #686868;margin-left: -16px;margin-top: 4px;}
+
 #treeRoot { margin-top: 2px; margin-left: -20px; cursor: pointer; }
 #treeRoot div { white-space: nowrap; }
 #treeRoot div img { margin: 0; vertical-align: middle; }
@@ -270,7 +271,9 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 #nav li.active a, #nav li.active a.hover, #supplementalNav li.active a, #supplementalNav li.active a.hover { background: rgba(0, 0, 0, 0.15); }
 #nav li.active a { color: #FFF; position: relative; z-index: 999999; }*/
 /* -------------------------[ Contextual Menu used in the Tree Menu ]--- */
-#mx_contextmenu { position: fixed; height: auto; visibility: hidden; z-index: 10001; width: 190px; background: #fff; margin: 0; padding: 4px; border: 1px solid #C9C9C9; overflow: hidden; line-height: 11px; font-size: 12px; /* font-size: 11px; */ -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
+
+#mx_contextmenu { position: fixed; height: auto; visibility: hidden; z-index: 10000; width: 190px; background: #fff; margin: 0; padding: 4px; border: 1px solid #C9C9C9; overflow: hidden; line-height: 11px; font-size: 12px; /* font-size: 11px; */ -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
+
 #mx_contextmenu .menuLink { cursor: pointer; color: #222; padding: 4px 2px 4px 4px; line-height: 16px; border: 1px solid #fff; }
 #mx_contextmenu .menuLink:hover { background: #E5F0D6; border-color: #98BF6C; color: #333; }
 #mx_contextmenu .menuLink:hover, #mx_contextmenu .menuLinkDisabled { cursor: pointer; }
