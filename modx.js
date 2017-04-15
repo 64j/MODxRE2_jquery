@@ -195,6 +195,15 @@ var mainMenu = {
 	}
 };
 
+var tree = {
+	restoreTree: function() {
+		restoreTree()
+	},
+	saveFolderState: function() {
+		saveFolderState()
+	}
+};
+
 var reloadtree = function() {
 	modx.reloadtree()
 };
