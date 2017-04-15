@@ -68,11 +68,17 @@ if(is_array($evtOut)) {
 	<script>
 		$('#Button12').click(function(e) {
 			e.preventDefault();
-			var randomNum = 'gener1';
+			var randomNum = 'gener1',
+				url = 'index.php?a=76',
+				w = screen.width * 0.9,
+				h = screen.height * 0.8,
+				l = (screen.width - w) / 2,
+				t = (screen.height - h) / 2;
 			if(e.shiftKey) {
 				randomNum = Math.floor((Math.random() * 999999) + 1);
 			}
-			window.open('index.php?a=76', randomNum, 'width=960,height=720,top=' + ((screen.height - 720) / 2) + ',left=' + ((screen.width - 960) / 2) + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
+
+			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
 		});
 	</script>
 <?php } ?>
@@ -81,12 +87,16 @@ if(is_array($evtOut)) {
 	<script>
 		$('#Button13').click(function(e) {
 			e.preventDefault();
-			var randomNum = 'gener2';
+			var randomNum = 'gener2',
+				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
+				w = screen.width * 0.9,
+				h = screen.height * 0.8,
+				l = (screen.width - w) / 2,
+				t = (screen.height - h) / 2;
 			if(e.shiftKey) {
 				randomNum = Math.floor((Math.random() * 999999) + 1);
 			}
-			window.open('media/browser/<?php echo $which_browser; ?>/browse.php?&type=images', randomNum, 'width=960,height=720,top=' + ((screen.height - 720) / 2) + ',left=' + ((screen.width - 960) / 2) + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
-		});
+			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
 	</script>
 <?php } ?>
 
@@ -94,11 +104,16 @@ if(is_array($evtOut)) {
 	<script>
 		$('#Button14').click(function(e) {
 			e.preventDefault();
-			var randomNum = 'gener3';
+			var randomNum = 'gener3',
+				url = 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
+				w = screen.width * 0.9,
+				h = screen.height * 0.8,
+				l = (screen.width - w) / 2,
+				t = (screen.height - h) / 2;
 			if(e.shiftKey) {
 				randomNum = Math.floor((Math.random() * 999999) + 1);
 			}
-			window.open('media/browser/<?php echo $which_browser; ?>/browse.php?&type=files', randomNum, 'width=960,height=720,top=' + ((screen.height - 720) / 2) + ',left=' + ((screen.width - 960) / 2) + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
+			window.open(url, randomNum, 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no')
 		});
 	</script>
 <?php } ?>
@@ -227,10 +242,8 @@ if(is_array($evtOut)) {
 function constructLink($action, $img, $text, $allowed) {
 	if($allowed == 1) {
 		echo sprintf('<div class="menuLink" id="item%s" onclick="modx.tree.menuHandler(%s); modx.tree.hideMenu();">', $action, $action);
-	} else {
-		echo '<div class="menuLinkDisabled">';
+		echo sprintf('<i class="%s"></i> %s</div>', $img, $text);
 	}
-	echo sprintf('<i class="%s"></i> %s</div>', $img, $text);
 }
 
 ?>
