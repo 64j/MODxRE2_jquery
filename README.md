@@ -1,3 +1,5 @@
-# MODxRE2_ver_2
+# MODxRE2_jquery
 
-Кастомизация шаблона MODxRE2 для версий MODX выше 1.1.1
+Кастомизация шаблона MODxRE2_jquery для версий MODX выше 1.1.1
+
+Перевод на jQuery
