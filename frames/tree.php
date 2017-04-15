@@ -1,18 +1,8 @@
 <?php
-if(IN_MANAGER_MODE != "true") {
-	die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please use the MODX Content Manager instead of accessing this file directly.");
-}
-$modx->config['mgr_jquery_path'] = 'media/script/jquery/jquery.min.js';
+
 $modx_textdir = isset($modx_textdir) ? $modx_textdir : null;
 $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html <?php echo ($modx_textdir ? 'dir="rtl" lang="' : 'lang="') . $mxla . '" xml:lang="' . $mxla . '"'; ?>>
-<head>
-	<title>Document Tree</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $modx_manager_charset; ?>" />
-	<link rel="stylesheet" type="text/css" href="media/style/<?php echo $modx->config['manager_theme']; ?>/style.css" />
-	<link rel="stylesheet" href="media/style/common/font-awesome/css/font-awesome.min.css" />
-	<?php echo sprintf('<script src="%s" type="text/javascript"></script>' . "\n", $modx->config['mgr_jquery_path']); ?>
+?>
 	<script type="text/javascript">
 
 		// jQuery.noConflict();
@@ -434,9 +424,6 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 		}
 	</script>
 
-</head>
-<body onClick="hideMenu(1);" class="<?php echo $modx_textdir ? ' rtl' : '' ?>">
-
 <?php
 // invoke OnTreePrerender event
 $evtOut = $modx->invokeEvent('OnManagerTreeInit', $_REQUEST);
@@ -445,7 +432,7 @@ if(is_array($evtOut)) {
 }
 ?>
 
-<div class="treeframebody">
+<div class="treeframebody" onClick="hideMenu(1);" class="<?php echo $modx_textdir ? ' rtl' : '' ?>">
 	<div id="treeSplitter"></div>
 
 	<table id="treeMenu" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -748,8 +735,6 @@ if(is_array($evtOut)) {
 		?>
 	</div>
 </div>
-</body>
-</html>
 <?php
 function constructLink($action, $img, $text, $allowed) {
 	if($allowed == 1) {

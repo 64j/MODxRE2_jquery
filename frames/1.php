@@ -141,7 +141,8 @@ if(isset($_SESSION['onLoginForwardToAction']) && is_int($_SESSION['onLoginForwar
 	</div>
 </div>
 <div id="tree">
-	<iframe name="tree" src="index.php?a=1&amp;f=tree" scrolling="no" frameborder="0"></iframe>
+	<!-- <iframe name="tree" src="index.php?a=1&amp;f=tree" scrolling="no" frameborder="0"></iframe> -->
+	<?php include('tree.php'); ?>
 </div>
 <div id="main">
 	<iframe name="main" id="mainframe" src="index.php?a=<?php echo $initMainframeAction; ?>" scrolling="auto" frameborder="0" onload="modx.stopWork();modx.scrollWork();"></iframe>
