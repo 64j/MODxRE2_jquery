@@ -69,7 +69,7 @@ $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
 
 			// set tree height
 			jQuery('#treeHolder').css({
-				width: (win['width'] - 20) + 'px',
+				// width: (win['width'] - 20) + 'px',
 				height: (win['height'] - jQuery('#treeHolder').offset().top - 6) + 'px',
 				overflow: 'auto'
 			})
@@ -432,7 +432,7 @@ if(is_array($evtOut)) {
 }
 ?>
 
-<div class="treeframebody" onClick="hideMenu(1);" class="<?php echo $modx_textdir ? ' rtl' : '' ?>">
+<div class="treeframebody" class="<?php echo $modx_textdir ? ' rtl' : '' ?>">
 	<div id="treeSplitter"></div>
 
 	<table id="treeMenu" width="100%" border="0" cellpadding="0" cellspacing="0">
