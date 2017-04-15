@@ -60,17 +60,17 @@ $_style['tree_linkgo']              = "<i class='fa fa-link'></i>";
 $_style['tree_page']                = "<i class='fa fa-file-o'></i>";
 $_style['tree_page_home']           = "<i class='fa fa-home'></i>";
 $_style['tree_page_404']            = "<i class='fa fa-exclamation-triangle'></i>";
-$_style['tree_page_hourglass']      = $style_path.'tree/time.png';
-$_style['tree_page_info']           = $style_path.'tree/info.png';
+$_style['tree_page_hourglass']      = "<i class='fa fa-clock-o'></i>";
+$_style['tree_page_info']           = "<i class='fa fa-info'></i>";
 $_style['tree_page_blank']          = "<i class='fa fa-file-o'></i>";
-$_style['tree_page_css']            = $style_path.'tree/file-text.png';
+$_style['tree_page_css']            = "<i class='fa fa-file-code-o'></i>";
 $_style['tree_page_html']           = "<i class='fa fa-file-o'></i>";
 $_style['tree_page_xml']            = "<i class='fa fa-file-code-o'></i>";
 $_style['tree_page_js']             = "<i class='fa fa-file-code-o'></i>";
-$_style['tree_page_rss']            = $style_path.'tree/file-rss.png';
-$_style['tree_page_pdf']            = $style_path.'tree/file-pdf.png';
-$_style['tree_page_word']           = $style_path.'tree/file-word.png';
-$_style['tree_page_excel']          = $style_path.'tree/file-excel.png';
+$_style['tree_page_rss']            = "<i class='fa fa-file-code-o'></i>";
+$_style['tree_page_pdf']            = "<i class='fa fa-file-fdf-o'></i>"; 
+$_style['tree_page_word']           = "<i class='fa fa-file-word-o'></i>"; 
+$_style['tree_page_excel']          = "<i class='fa fa-file-excel-o'></i>";
 
 $_style['tree_minusnode']           = $style_path.'tree/angle-down.png';
 $_style['tree_plusnode']            = $style_path.'tree/angle-right.png';
@@ -81,14 +81,14 @@ $_style['tree_weblink']             = $style_path.'tree/link.png';
 
 $_style['tree_page_secure']         = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_blank_secure']   = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
-$_style['tree_page_css_secure']     = $style_path.'tree/file-code-secure.png';
+$_style['tree_page_css_secure']     = "<i class='fa fa-file-code-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_html_secure']    = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
-$_style['tree_page_xml_secure']     = $style_path.'tree/file-code-secure.png';
-$_style['tree_page_js_secure']      = $style_path.'tree/file-code-secure.png';
-$_style['tree_page_rss_secure']     = $style_path.'tree/file-rss-secure.png';
-$_style['tree_page_pdf_secure']     = $style_path.'tree/file-pdf-secure.png';
-$_style['tree_page_word_secure']    = $style_path.'tree/file-word-secure.png';
-$_style['tree_page_excel_secure']   = $style_path.'tree/file-excel-secure.png';
+$_style['tree_page_xml_secure']     = "<i class='fa fa-file-code-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_page_js_secure']      = "<i class='fa fa-file-code-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_page_rss_secure']     = "<i class='fa fa-file-code-o'></i>";
+$_style['tree_page_pdf_secure']     = "<i class='fa fa-file-pdf-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_page_word_secure']    = "<i class='fa fa-file-word-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_page_excel_secure']   = "<i class='fa fa-file-excel-o'><i class='fa fa-lock'></i></i>";
 
 //View Resource data 
 $_style['icons_new_document']       = 'fa fa-file-o fa-lg';
