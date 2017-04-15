@@ -581,7 +581,7 @@
 			},
 			showBinEmpty: function() {
 				if($('#Button10').length) {
-					$('#Button10').attr('title', modx.lang.empty_recycle_bin_empty).removeAttr('onclick').addClass('treeButton treeButtonDisabled').html(modx.style.empty_recycle_bin_empty)
+					$('#Button10').attr('title', modx.lang.empty_recycle_bin_empty).addClass('treeButton treeButtonDisabled').html(modx.style.empty_recycle_bin_empty).off('click')
 				}
 			},
 			emptyTrash: function() {
@@ -604,7 +604,6 @@
 	$(document).ready(function() {
 		modx.stopWork();
 		modx.scrollWork();
-		modx.init_mainMenu();
 		modx.init_sideBar();
 		modx.mainmenu.init();
 		modx.tree.init();
