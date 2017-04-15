@@ -70,7 +70,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 .resizer-move::before { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 900; background-color: transparent; content: "" }
 #tree, #main { position: absolute; }
 #tree iframe, #main iframe, #mask_resizer { position: absolute; width: 100%; height: 100%; }
-#tree { width: 320px; top: 48px; left: 0; bottom: 0;  background: #f5f5f5 url(images/subnav.jpg) !important; -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
+#tree { width: 320px; top: 48px; left: 0; bottom: 0;  background: #e7e7e7 url(images/subnav.jpg) !important; -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
 #main { top: 48px; left: 320px; right: 0; bottom: 0; }
 #resizer { position: absolute; top: 48px; bottom: 0; left: 320px; width: 12px; cursor: col-resize; z-index: 999 }
 .resizer-move #resizer::before, .tree-hide #resizer::before { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; content: ""; background-color: #444 }
