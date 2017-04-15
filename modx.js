@@ -597,7 +597,21 @@
 					modx.tree.currSorterState = "none";
 					document.getElementById('floater').style.display = modx.tree.currSorterState;
 				}
-			},
+			}
+		},
+		openWindow: function(url, title, options) {
+			if(options == undefined) {
+				var w = screen.width * 0.9,
+					h = screen.height * 0.8,
+					l = (screen.width - w) / 2,
+					t = (screen.height - h) / 2;
+				options = 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l;
+			}
+			options += ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no';
+			if(url !== undefined)
+				window.open(url, title, options);
+			
+			return false;
 		}
 	});
 
