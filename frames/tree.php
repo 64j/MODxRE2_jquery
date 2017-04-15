@@ -1,8 +1,3 @@
-<?php
-
-$modx_textdir = isset($modx_textdir) ? $modx_textdir : null;
-$mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
-?>
 	<script type="text/javascript">
 
 		// jQuery.noConflict();
@@ -433,7 +428,6 @@ if(is_array($evtOut)) {
 }
 ?>
 
-<div class="treeframebody" class="<?php echo $modx_textdir ? ' rtl' : '' ?>">
 	<div id="treeSplitter"></div>
 
 	<table id="treeMenu" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -735,7 +729,7 @@ if(is_array($evtOut)) {
 		constructLink(12, $_style["ctx_preview_resource"], $_lang["preview_resource"], 1); // preview
 		?>
 	</div>
-</div>
+
 <?php
 function constructLink($action, $img, $text, $allowed) {
 	if($allowed == 1) {
