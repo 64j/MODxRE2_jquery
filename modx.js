@@ -408,7 +408,7 @@ var setLastClickedElement = function(type, id) {
 			treeAction: function(e, id, name, treedisp_children) {
 				if(tree.ca == "move") {
 					try {
-						main.setMoveValue(id, name);
+						top.main.setMoveValue(id, name);
 					} catch(oException) {
 						alert(modx.lang.unable_set_parent);
 					}
