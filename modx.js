@@ -205,7 +205,7 @@ var setLastClickedElement = function(type, id) {
 
 				$(w).resize(function() {
 					modx.tree.resizeTree()
-				});
+				})
 			},
 			getWindowDimension: function() {
 				var width = 0;
@@ -329,8 +329,7 @@ var setLastClickedElement = function(type, id) {
 
 				if(modx.tree.rpcNode.style.display != 'block') {
 					// expand
-					if(signImg && signImg.src.indexOf(modx.style.tree_plusnode) > -1
-					) {
+					if(signImg && signImg.src.indexOf(modx.style.tree_plusnode) > -1) {
 						signImg.src = modx.style.tree_minusnode;
 						folderImg.src = (privatenode == '0') ? modx.style.tree_folderopen_new : modx.style.tree_folderopen_secure;
 					}
@@ -345,7 +344,7 @@ var setLastClickedElement = function(type, id) {
 						modx.openedArray[parent] = 1;
 						//Raymond:added getFolderState()
 						var folderState = modx.tree.getFolderState();
-						modx.tree.rpcNode.innerHTML = "<span class='emptyNode' style='white-space:nowrap;'>" + spacer + "&nbsp;&nbsp;&nbsp;" + loadText + "...<\/span>";
+						modx.tree.rpcNode.innerHTML = '<span class="emptyNode" style="white-space:nowrap;">' + spacer + '&nbsp;&nbsp;&nbsp;' + loadText + '...<\/span>';
 						$.get('index.php?a=1&f=nodes&indent=' + indent + '&parent=' + parent + '&expandAll=' + expandAll + folderState, function(data) {
 							modx.tree.rpcLoadData(data)
 						})
@@ -430,7 +429,7 @@ var setLastClickedElement = function(type, id) {
 						if(e.shiftKey) {
 							window.getSelection().removeAllRanges(); // Remove unnessecary text-selection
 							randomNum = Math.floor((Math.random() * 999999) + 1);
-							window.open(href, 'res' + randomNum, 'width=960,height=720,top=' + ((screen.height - 720) / 2) + ',left=' + ((screen.width - 960) / 2) + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no');
+							modx.openWindow(href, 'res' + randomNum);
 							modx.tree.reloadtree(); // Show updated locks as &r=1 will not work in popup
 						} else {
 							parent.main.location.href = href;
@@ -452,10 +451,6 @@ var setLastClickedElement = function(type, id) {
 					}
 				}
 			},
-			hideMenu: function() {
-				if(modx.tree._rc) return false;
-				$('#mx_contextmenu').css('visibility', 'hidden');
-			},
 			setActiveFromContextMenu: function(doc_id) {
 				$('.treeNodeSelected').removeClass('treeNodeSelected');
 				$('#node' + doc_id + '>span').addClass('treeNodeSelected');
@@ -475,43 +470,43 @@ var setLastClickedElement = function(type, id) {
 						top.main.document.location.href = "index.php?a=4&pid=" + itemToChange;
 						break;
 					case 4 : // delete
-						if(modx.tree.selectedObjectDeleted == 0) {
-							if(confirm("'" + modx.tree.selectedObjectName + "' \n\n" + modx.lang.confirm_delete_resource + "\n") == true) {
-								main.document.location.href = "index.php?a=6&id=" + itemToChange;
-							}
+						if(modx.tree.selectedObjectDeleted) {
+							alert("'" + modx.tree.selectedObjectName + "'" + modx.lang.already_deleted)
 						} else {
-							alert("'" + modx.tree.selectedObjectName + "'" + modx.lang.already_deleted);
+							if(confirm("'" + modx.tree.selectedObjectName + "' \n\n" + modx.lang.confirm_delete_resource + "\n") === true) {
+								main.document.location.href = "index.php?a=6&id=" + itemToChange
+							}
 						}
 						break;
 					case 5 : // move
-						main.document.location.href = "index.php?a=51&id=" + itemToChange;
+						main.document.location.href = "index.php?a=51&id=" + itemToChange
 						break;
 					case 6 : // new Weblink
-						main.document.location.href = "index.php?a=72&pid=" + itemToChange;
+						main.document.location.href = "index.php?a=72&pid=" + itemToChange
 						break;
 					case 7 : // duplicate
-						if(confirm(modx.lang.confirm_resource_duplicate) == true) {
-							main.document.location.href = "index.php?a=94&id=" + itemToChange;
+						if(confirm(modx.lang.confirm_resource_duplicate) === true) {
+							main.document.location.href = "index.php?a=94&id=" + itemToChange
 						}
 						break;
 					case 8 : // undelete
-						if(modx.tree.selectedObjectDeleted == 0) {
-							alert("'" + modx.tree.selectedObjectName + "' " + modx.lang.not_deleted);
-						} else {
-							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_undelete) == true) {
-								main.document.location.href = "index.php?a=63&id=" + itemToChange;
+						if(modx.tree.selectedObjectDeleted) {
+							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_undelete) === true) {
+								main.document.location.href = "index.php?a=63&id=" + itemToChange
 							}
+						} else {
+							alert("'" + modx.tree.selectedObjectName + "' " + modx.lang.not_deleted)
 						}
 						break;
 					case 9 : // publish
-						if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_publish) == true) {
-							main.document.location.href = "index.php?a=61&id=" + itemToChange;
+						if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_publish) === true) {
+							main.document.location.href = "index.php?a=61&id=" + itemToChange
 						}
 						break;
 					case 10 : // unpublish
 						if(itemToChange != modx.site_start) {
-							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_unpublish) == true) {
-								main.document.location.href = "index.php?a=62&id=" + itemToChange;
+							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_unpublish) === true) {
+								main.document.location.href = "index.php?a=62&id=" + itemToChange
 							}
 						}
 						else {
@@ -519,7 +514,7 @@ var setLastClickedElement = function(type, id) {
 						}
 						break;
 					case 11 : // sort menu index
-						main.document.location.href = "index.php?a=56&id=" + itemToChange;
+						main.document.location.href = "index.php?a=56&id=" + itemToChange
 						break;
 					case 12 : // preview
 						window.open(selectedObjectUrl, 'previeWin'); //re-use 'new' window
@@ -531,7 +526,7 @@ var setLastClickedElement = function(type, id) {
 			},
 			getScrollY: function() {
 				var scrOfY = 0;
-				if(typeof( window.pageYOffset ) == 'number') {
+				if(typeof(window.pageYOffset) == 'number') {
 					//Netscape compliant
 					scrOfY = window.pageYOffset;
 				} else if(document.body && ( document.body.scrollLeft || document.body.scrollTop )) {
@@ -563,7 +558,7 @@ var setLastClickedElement = function(type, id) {
 						$('#item4').hide();
 						$('#item9').hide();
 						$('#item10').hide();
-					} else  {
+					} else {
 						$('#item8').hide()
 					}
 				}
@@ -597,11 +592,20 @@ var setLastClickedElement = function(type, id) {
 					left: x + (modx.textdir ? ' - 190' : '') + "px",
 					top: y + "px",
 					visibility: 'visible'
-				})
-				;
+				});
 				$("#nameHolder").html(modx.tree.selectedObjectName);
-				_rc = 1;
-				setTimeout("_rc = 0;", 100);
+				modx.tree._rc = 1;
+				setTimeout("modx.tree._rc = 0;", 100);
+				main.onclick = function() {
+					modx.tree.hideMenu(1)
+				};
+				d.onclick = function() {
+					modx.tree.hideMenu(1)
+				}
+			},
+			hideMenu: function() {
+				if(modx.tree._rc) return false;
+				$('#mx_contextmenu').css('visibility', 'hidden');
 			},
 			showBinFull: function() {
 				if($('#Button10').length) {
@@ -616,7 +620,10 @@ var setLastClickedElement = function(type, id) {
 			},
 			showBinEmpty: function() {
 				if($('#Button10').length) {
-					$('#Button10').attr('title', modx.lang.empty_recycle_bin_empty).addClass('treeButton').html(modx.style.empty_recycle_bin_empty).off('click')
+					$('#Button10').attr('title', modx.lang.empty_recycle_bin_empty)
+						.addClass('treeButton')
+						.html(modx.style.empty_recycle_bin_empty)
+						.off('click')
 				}
 			},
 			emptyTrash: function() {
@@ -627,10 +634,10 @@ var setLastClickedElement = function(type, id) {
 			showSorter: function() {
 				if(modx.tree.currSorterState == "none") {
 					modx.tree.currSorterState = "block";
-					document.getElementById('floater').style.display = modx.tree.currSorterState;
+					jQuery('#floater').show()
 				} else {
 					modx.tree.currSorterState = "none";
-					document.getElementById('floater').style.display = modx.tree.currSorterState;
+					jQuery('#floater').hide()
 				}
 			}
 		},

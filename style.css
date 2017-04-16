@@ -5,7 +5,7 @@ html, body, form, fieldset, img { margin: 0; padding: 0; }
 img { border: none; }
 html { font-size: 100.01%; line-height: 1.5; color: #333; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; height: 100%; color: #333; background: #eeeeee; }
-body { font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif }
+body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif }
 /* For Arabic Font */
 html[lang="ar"] body, html[lang="ary"] body, html[lang="azb"] body, html[lang="fa-IR"] body, html[lang="haz"] body, html[lang="ps"] body, html[lang="ur"] body { font-family: Tahoma, Arial, sans-serif; }
 /* For Chinese Font */
@@ -83,20 +83,20 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .nav { margin: 0; padding: 0 }
 #mainMenu .float-left .dropdown-menu { left: 0 }
 #mainMenu .float-right .dropdown-menu { right: 0 }
-#mainMenu .nav>li { position: relative; float: left; list-style: none }
-#mainMenu .nav>li>a>.fa { margin-right: 10px; vertical-align: top; line-height: inherit }
-#mainMenu .float-right .nav>li>a>.fa { margin: 0 }
-#mainMenu .nav>li>a { color: #e0e0e0; height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; line-height: 48px; overflow: hidden; padding: 0 18px; float: none !important; float: left; display: block; }
-#mainMenu .nav>li:hover>a { color: #fff; background-color: rgba(255, 255, 255, 0.05) }
-#mainMenu .nav>li.active>a, #mainMenu .nav>li.active>a:hover { background: rgba(0, 0, 0, 0.15) }
-#mainMenu .nav>li li a { white-space: nowrap; color: #39545e }
-#mainMenu .nav>li li a:hover { color: #fff }
+#mainMenu .nav > li { position: relative; float: left; list-style: none }
+#mainMenu .nav > li > a > .fa { margin-right: 10px; vertical-align: top; line-height: inherit }
+#mainMenu .float-right .nav > li > a > .fa { margin: 0 }
+#mainMenu .nav > li > a { color: #e0e0e0; height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; line-height: 48px; overflow: hidden; padding: 0 18px; float: none !important; float: left; display: block; }
+#mainMenu .nav > li:hover > a { color: #fff; background-color: rgba(255, 255, 255, 0.05) }
+#mainMenu .nav > li.active > a, #mainMenu .nav > li.active > a:hover { background: rgba(0, 0, 0, 0.15) }
+#mainMenu .nav > li li a { white-space: nowrap; color: #39545e }
+#mainMenu .nav > li li a:hover { color: #fff }
 #mainMenu .account .username { display: inline-block; margin-right: 10px }
 #mainMenu .account .icon { display: inline-block; border-radius: 50%; overflow: hidden; width: 28px; height: 28px; line-height: 0; text-align: center; vertical-align: middle; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat }
 .dropdown { position: relative }
 .dropdown-menu { display: block; position: absolute; z-index: 1001; left: auto; top: 100%; right: auto; min-width: 200px; max-height: 400px; max-height: calc(100vh - 48px); margin: 0; padding: 0; opacity: 0; visibility: hidden; overflow: auto; background-color: #fff; border-radius: 0; box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2); transition: opacity 0.3s, visibility 0.1s; transform: translateZ(0) }
 .show.dropdown .dropdown-menu, .dropdown-toggle:hover + .dropdown-menu, .dropdown-toggle + .dropdown-menu:hover { opacity: 1; visibility: visible; transition-delay: 200ms }
-.close.dropdown .dropdown-menu { opacity: 0; visibility: hidden; transition-delay: 0 }
+.close.dropdown .dropdown-menu { opacity: 0; visibility: hidden; transition-delay: 0s }
 .dropdown-menu li { list-style: none; }
 .dropdown-menu a, .dropdown-menu span { display: block; position: relative; padding: 10px 15px; text-decoration: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); color: #39545e }
 .dropdown-menu li:last-child a, .dropdown-menu li:last-child span { border: none }
@@ -184,16 +184,19 @@ a img { border: 0; }
 .row1, .row2, .row3 { background-color: #fff; color: #333; }
 .row2 { background-color: #fff; }
 .row3 { background-color: #f5f5f5; }
-div.treeframebody {  }
-#treeMenu { margin-left: 2px; background-color: rgba(0, 0, 0, 0.1); border-bottom: 1px solid #fff; }
-#treeMenu table td { padding: 3px 0px; }
-#treeMenu * { vertical-align: middle; }
+div.treeframebody { }
+#treeMenu { margin-left: 2px; background-color: rgba(0, 0, 0, 0.05); border-bottom: 1px solid #dbdbdb; height: 31px; overflow: hidden; }
+#treeMenu a { float: left; color: #3d5764; min-width: 15px; text-align: center; cursor: pointer; padding: 0 5px; margin: 3px 0; border: 1px solid rgba(0, 0, 0, 0); border-radius: 2px; }
+#treeMenu a:hover { background-color: rgba(255, 255, 255, .5); border-color: #6e7a86; }
+#treeMenu a:active { background-color: #fff; }
+.treeButton .fa, .treeButton .fa-lg { font-size: 14px; line-height: 22px; vertical-align: middle }
+.treeButtonDisabled { cursor: default; color: #777; opacity: .5; filter: alpha(opacity=50); }
+/**/
 #treeHolder { cursor: default; height: 100%; padding: 6px 8px 0; line-height: 1.5em; }
 #treeHolder { margin-top: 0; padding-left: 8px; }
-#treeHolder .fa {color: #89979d; width: 16px;text-align: center}
-#treeHolder .fa > .fa {font-size: 10px;position: absolute;width: 8px;color: #686868;margin-left: -16px;margin-top: 4px;}
-
-#treeRoot { margin-top: 2px; margin-left: -20px; cursor: pointer; }
+#treeHolder .fa { color: #89979d; width: 16px; text-align: center }
+#treeHolder .fa > .fa { font-size: 10px; position: absolute; width: 8px; color: #686868; margin-left: -16px; margin-top: 4px; }
+#treeRoot { margin-top: 2px; margin-left: -20px }
 #treeRoot div { white-space: nowrap; }
 #treeRoot div img { margin: 0; vertical-align: middle; }
 .rtl #treeRoot div img { margin: 0; }
@@ -255,25 +258,9 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .cntxMnuItem img, .cntxMnuItemDisabled img { }
 .cntxMnuSeparator { font-size: 0; height: 1px; background-color: #D8D8D8; overflow: hidden; margin: 3px 0; }
 .rtl .cntxMnuSeparator { margin: 3px 28px 3px 1px; }
-/* -------------------------[ Top Navbar of snap in top menu bar layout ]--- */
-/*#topMenu { min-width: 450px; background: url("images/misc/headers.jpg") repeat scroll 0 0 #23393C; }
-#Navcontainer { color: #fff; }
-#nav { margin: 0; padding: 0; float: left }
-.rtl #nav { right: 10px; }
-#nav li { list-style: none; float: left; width: auto; margin: 0; padding: 0; }
-.rtl #nav li { float: right; margin: 0 0 0 3px; }
-#nav li a { color: #e0e0e0; height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; line-height: 48px; overflow: hidden; padding: 0 18px; float: none !important; float: left; display: block; }
-#nav > li > a > .fa { margin-right: 10px }
-#nav li li { float: none }
-#nav li li a { color: #39545e }
-#nav a:hover, #nav a.hover { color: #fff; background-color: rgba(255, 255, 255, 0.05); }
-#nav a:active { color: #fff; background-color: rgba(255, 255, 255, 0.02); }
-#nav li.active a, #nav li.active a.hover, #supplementalNav li.active a, #supplementalNav li.active a.hover { background: rgba(0, 0, 0, 0.15); }
-#nav li.active a { color: #FFF; position: relative; z-index: 999999; }*/
 /* -------------------------[ Contextual Menu used in the Tree Menu ]--- */
 
 #mx_contextmenu { position: fixed; height: auto; visibility: hidden; z-index: 10000; width: 190px; background: #fff; margin: 0; padding: 4px; border: 1px solid #C9C9C9; overflow: hidden; line-height: 11px; font-size: 12px; /* font-size: 11px; */ -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
-
 #mx_contextmenu .menuLink { cursor: pointer; color: #222; padding: 4px 2px 4px 4px; line-height: 16px; border: 1px solid #fff; }
 #mx_contextmenu .menuLink:hover { background: #E5F0D6; border-color: #98BF6C; color: #333; }
 #mx_contextmenu .menuLink:hover, #mx_contextmenu .menuLinkDisabled { cursor: pointer; }
@@ -315,12 +302,6 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .dynamic-tab-pane-control .tab-row .fa { margin-right: 3px; font-size: 14px; }
 .dynamic-tab-pane-control ul { padding-left: 5px; padding-right: 10px; padding-bottom: 10px; }
 .dynamic-tab-pane-control li { padding-left: 2px; padding-right: 5px; }
-/* -------------------------[ Tree buttons ]--- */
-.treeButton, .treeButtonDisabled { display: block; cursor: pointer; cursor: hand; color: #333; border: 1px solid transparent; border-radius: 3px; padding: 3px 5px; white-space: nowrap; vertical-align: middle; }
-.treeButton:hover { border-color: #6e7a86; background-color: #fff; background-color: rgba(255, 255, 255, .5); }
-.treeButton:active { background-color: #fff; }
-.treeButton .fa, .treeButton .fa-lg { font-size: 14px; }
-.treeButtonDisabled { cursor: default; color: #777; opacity: .5; filter: alpha(opacity=50); }
 /* -------------------------[ Welcome Page ]--- */
 a.hometblink, a.hometblink img { border: 0 !important; text-decoration: none !important; }
 .wm_header { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dotted #bbb; }
@@ -538,8 +519,6 @@ body { background-color: #F2F2F2 !important; background-image: none !important; 
 div.treeframebody { background-color: #ebebeb !important; background-image: none !important; }
 /* nav */
 .alert-warning { color: #3697cd; }
-/* tree */
-#treeMenu { background-color: rgba(0, 0, 0, 0.05); border-bottom: 1px solid #dbdbdb; }
 /* tab panes */
 .dynamic-tab-pane-control.tab-pane { margin-top: 10px; }
 .sectionBody > .dynamic-tab-pane-control.tab-pane, #treePane.dynamic-tab-pane-control.tab-pane { margin-top: 0; }
@@ -667,8 +646,6 @@ ul.elements_buttonbar .fa { font-size: 13px !important; padding: 1px 1px 0; }
 .sectionBody .actionButtons { padding-top: 0; min-height: 48px; }
 .sectionBody .actionButtons li { margin-right: 10px; }
 .sectionBody .actionButtons a { display: inline-block; padding: 9px 10px; line-height: 1; }
-.treeButton, .treeButtonDisabled { color: #3d5764 !important; border-radius: 2px !important; min-width: 15px; text-align: center; }
-.treeButton:active { background-color: #d5d5d5; }
 input[type="button"], input[type="submit"] { background: #ededed; border: 1px solid #ededed; border-radius: 3px !important; }
 input[type="button"]:hover, input[type="submit"]:hover { background: #3697CD; border: 1px solid #3697CD; color: #fff; }
 input[type="button"]:active, input[type="submit"]:active { background: #3189ba; border: 1px solid #3189ba; }
@@ -681,7 +658,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="search"]:fo
 #mx_contextmenu #nameHolder { color: #3697CD; font-size: 13px; padding: 9px 6px 7px 7px; line-height: 1.2; }
 #mx_contextmenu .menuLink { color: #333; padding: 4px 2px 4px 6px; line-height: 1.3; border: 1px solid #fff; }
 #mx_contextmenu .menuLink:hover { background: #E6F2FF; border-color: #BACCDB; color: #333; }
-.treeButton .fa, .treeButton .fa-lg, #mx_contextmenu .menuLink .fa, #mx_contextmenu .menuLink .fa-lg { font-size: 14px; }
+#mx_contextmenu .menuLink .fa, #mx_contextmenu .menuLink .fa-lg { font-size: 14px; }
 #mx_contextmenu img { display: none; }
 /* tree */
 .treeNodeSelected, .treeNodeHover { background-color: rgba(54, 151, 205, 0.2); border: 1px solid #3697CD; color: #3697CD; padding: 1px 1px; margin-left: -2px; }
