@@ -103,8 +103,8 @@ var setLastClickedElement = function(type, id) {
 			localStorage.setItem('MODX_lastClickedElement', '[' + type + ',' + id + ']');
 		},
 		removeLocks: function() {
-			if(confirm(modx.lang.confirm_remove_locks) == true) {
-				main.document.location.href = "index.php?a=67";
+			if(confirm(modx.lang.confirm_remove_locks) === true) {
+				top.main.location.href = "index.php?a=67";
 			}
 		},
 		ExtractNumber: function(value) {
@@ -416,7 +416,7 @@ var setLastClickedElement = function(type, id) {
 				if(tree.ca == "open" || tree.ca == "") {
 					if(id == 0) {
 						// do nothing?
-						main.location.href = "index.php?a=2";
+						top.main.location.href = "index.php?a=2";
 					} else {
 						// parent.main.location.href="index.php?a=3&id=" + id + getFolderState(); //just added the getvar &opened=
 						var href = '';
@@ -432,20 +432,20 @@ var setLastClickedElement = function(type, id) {
 							modx.openWindow(href, 'res' + randomNum);
 							modx.tree.reloadtree(); // Show updated locks as &r=1 will not work in popup
 						} else {
-							parent.main.location.href = href;
+							top.main.location.href = href;
 						}
 					}
 				}
 				if(tree.ca == "parent") {
 					try {
-						main.setParent(id, name);
+						top.main.setParent(id, name);
 					} catch(oException) {
 						alert(modx.lang.unable_set_parent);
 					}
 				}
 				if(tree.ca == "link") {
 					try {
-						main.setLink(id);
+						top.main.setLink(id);
 					} catch(oException) {
 						alert(modx.lang.unable_set_link);
 					}
@@ -459,40 +459,40 @@ var setLastClickedElement = function(type, id) {
 				switch(action) {
 					case 1 : // view
 						modx.tree.setActiveFromContextMenu(itemToChange);
-						main.document.location.href = "index.php?a=3&id=" + itemToChange;
+						top.main.location.href = "index.php?a=3&id=" + itemToChange;
 						break;
 					case 2 : // edit
 						modx.setLastClickedElement(7, itemToChange);
 						modx.tree.setActiveFromContextMenu(itemToChange);
-						main.document.location.href = "index.php?a=27&id=" + itemToChange;
+						top.main.location.href = "index.php?a=27&id=" + itemToChange;
 						break;
 					case 3 : // new Resource
-						top.main.document.location.href = "index.php?a=4&pid=" + itemToChange;
+						top.main.location.href = "index.php?a=4&pid=" + itemToChange;
 						break;
 					case 4 : // delete
 						if(modx.tree.selectedObjectDeleted) {
 							alert("'" + modx.tree.selectedObjectName + "'" + modx.lang.already_deleted)
 						} else {
 							if(confirm("'" + modx.tree.selectedObjectName + "' \n\n" + modx.lang.confirm_delete_resource + "\n") === true) {
-								main.document.location.href = "index.php?a=6&id=" + itemToChange
+								top.main.location.href = "index.php?a=6&id=" + itemToChange
 							}
 						}
 						break;
 					case 5 : // move
-						main.document.location.href = "index.php?a=51&id=" + itemToChange
+						top.main.location.href = "index.php?a=51&id=" + itemToChange
 						break;
 					case 6 : // new Weblink
-						main.document.location.href = "index.php?a=72&pid=" + itemToChange
+						top.main.location.href = "index.php?a=72&pid=" + itemToChange
 						break;
 					case 7 : // duplicate
 						if(confirm(modx.lang.confirm_resource_duplicate) === true) {
-							main.document.location.href = "index.php?a=94&id=" + itemToChange
+							top.main.location.href = "index.php?a=94&id=" + itemToChange
 						}
 						break;
 					case 8 : // undelete
 						if(modx.tree.selectedObjectDeleted) {
 							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_undelete) === true) {
-								main.document.location.href = "index.php?a=63&id=" + itemToChange
+								top.main.location.href = "index.php?a=63&id=" + itemToChange
 							}
 						} else {
 							alert("'" + modx.tree.selectedObjectName + "' " + modx.lang.not_deleted)
@@ -500,13 +500,13 @@ var setLastClickedElement = function(type, id) {
 						break;
 					case 9 : // publish
 						if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_publish) === true) {
-							main.document.location.href = "index.php?a=61&id=" + itemToChange
+							top.main.location.href = "index.php?a=61&id=" + itemToChange
 						}
 						break;
 					case 10 : // unpublish
 						if(itemToChange != modx.site_start) {
 							if(confirm("'" + modx.tree.selectedObjectName + "' " + modx.lang.confirm_unpublish) === true) {
-								main.document.location.href = "index.php?a=62&id=" + itemToChange
+								top.main.location.href = "index.php?a=62&id=" + itemToChange
 							}
 						}
 						else {
@@ -514,7 +514,7 @@ var setLastClickedElement = function(type, id) {
 						}
 						break;
 					case 11 : // sort menu index
-						main.document.location.href = "index.php?a=56&id=" + itemToChange
+						top.main.location.href = "index.php?a=56&id=" + itemToChange
 						break;
 					case 12 : // preview
 						window.open(selectedObjectUrl, 'previeWin'); //re-use 'new' window
@@ -596,7 +596,7 @@ var setLastClickedElement = function(type, id) {
 				$("#nameHolder").html(modx.tree.selectedObjectName);
 				modx.tree._rc = 1;
 				setTimeout("modx.tree._rc = 0;", 100);
-				main.onclick = function() {
+				top.main.onclick = function() {
 					modx.tree.hideMenu(1)
 				};
 				d.onclick = function() {
@@ -628,7 +628,7 @@ var setLastClickedElement = function(type, id) {
 			},
 			emptyTrash: function() {
 				if(confirm(modx.lang.confirm_empty_trash) == true) {
-					main.document.location.href = "index.php?a=64";
+					top.main.location.href = "index.php?a=64";
 				}
 			},
 			showSorter: function() {
