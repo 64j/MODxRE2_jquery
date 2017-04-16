@@ -62,7 +62,7 @@ var setLastClickedElement = function(type, id) {
 			}
 		},
 		scrollWork: function() {
-			var frm = document.getElementById("mainframe").contentWindow;
+			var frm = d.getElementById("mainframe").contentWindow;
 			currentPageY = localStorage.getItem('page_y');
 			pageUrl = localStorage.getItem('page_url');
 			if(currentPageY === undefined) {
@@ -171,7 +171,7 @@ var setLastClickedElement = function(type, id) {
 					});
 				});
 
-				$(parent.document).one('mouseup touchend', function(e) {
+				$(d).one('mouseup touchend', function(e) {
 					if(typeof e.originalEvent.touches != 'undefined' && e.originalEvent.touches.length) {
 						pos.x = e.originalEvent.touches[0].clientX
 					} else if(typeof e.originalEvent.changedTouches != 'undefined' && e.originalEvent.changedTouches.length) {
@@ -180,11 +180,11 @@ var setLastClickedElement = function(type, id) {
 						pos.x = e.clientX
 					}
 
-					$(parent.document).off('mousemove touchmove');
+					$(d).off('mousemove touchmove');
 					if(parseInt(pos.x) > 0) {
-						$(parent.document.body).removeClass('resizer-move').addClass('tree-show').removeClass('tree-hide')
+						$(d.body).removeClass('resizer-move').addClass('tree-show').removeClass('tree-hide')
 					} else {
-						$(parent.document.body).removeClass('resizer-move').removeClass('tree-show').addClass('tree-hide')
+						$(d.body).removeClass('resizer-move').removeClass('tree-show').addClass('tree-hide')
 					}
 				});
 
@@ -214,16 +214,16 @@ var setLastClickedElement = function(type, id) {
 				if(typeof( window.innerWidth ) == 'number') {
 					width = window.innerWidth;
 					height = window.innerHeight;
-				} else if(document.documentElement &&
-					( document.documentElement.clientWidth ||
-					document.documentElement.clientHeight )) {
-					width = document.documentElement.clientWidth;
-					height = document.documentElement.clientHeight;
+				} else if(d.documentElement &&
+					( d.documentElement.clientWidth ||
+					d.documentElement.clientHeight )) {
+					width = d.documentElement.clientWidth;
+					height = d.documentElement.clientHeight;
 				}
-				else if(document.body &&
-					( document.body.clientWidth || document.body.clientHeight )) {
-					width = document.body.clientWidth;
-					height = document.body.clientHeight;
+				else if(d.body &&
+					( d.body.clientWidth || d.body.clientHeight )) {
+					width = d.body.clientWidth;
+					height = d.body.clientHeight;
 				}
 
 				return {'width': width, 'height': height};
@@ -256,7 +256,7 @@ var setLastClickedElement = function(type, id) {
 			},
 			updateTree: function() {
 				modx.tree.rpcNode = $('#treeRoot').get(0);
-				treeParams = 'a=1&f=nodes&indent=1&parent=0&expandAll=2&dt=' + document.sortFrm.dt.value + '&tree_sortby=' + document.sortFrm.sortby.value + '&tree_sortdir=' + document.sortFrm.sortdir.value + '&tree_nodename=' + document.sortFrm.nodename.value;
+				treeParams = 'a=1&f=nodes&indent=1&parent=0&expandAll=2&dt=' + d.sortFrm.dt.value + '&tree_sortby=' + d.sortFrm.sortby.value + '&tree_sortdir=' + d.sortFrm.sortdir.value + '&tree_nodename=' + d.sortFrm.nodename.value;
 				$.get('index.php?' + treeParams, function(data) {
 					modx.tree.rpcLoadData(data)
 				})
@@ -286,7 +286,7 @@ var setLastClickedElement = function(type, id) {
 					modx.tree.rpcNode.innerHTML = typeof response == 'object' ? response.responseText : response;
 					modx.tree.rpcNode.style.display = 'block';
 					modx.tree.rpcNode.loaded = true;
-					$(parent.document).find("#buildText").html('').hide();
+					$(d).find("#buildText").html('').hide();
 					// check if bin is full
 					if(modx.tree.rpcNode.id == 'treeRoot') {
 						if($('#binFull').length) modx.tree.showBinFull();
@@ -324,8 +324,8 @@ var setLastClickedElement = function(type, id) {
 				var rpcNodeText;
 				var loadText = modx.lang.loading_doc_tree;
 
-				var signImg = document.getElementById("s" + parent);
-				var folderImg = document.getElementById("f" + parent);
+				var signImg = $('#s' + parent).get(0);
+				var folderImg = $('f' + parent);
 
 				if(modx.tree.rpcNode.style.display != 'block') {
 					// expand
@@ -366,7 +366,7 @@ var setLastClickedElement = function(type, id) {
 				}
 			},
 			setSelected: function(elSel) {
-				var all = document.getElementsByTagName("SPAN");
+				var all = $('span', $('#tree'));
 				var l = all.length;
 
 				for(var i = 0; i < l; i++) {
@@ -529,13 +529,13 @@ var setLastClickedElement = function(type, id) {
 				if(typeof(window.pageYOffset) == 'number') {
 					//Netscape compliant
 					scrOfY = window.pageYOffset;
-				} else if(document.body && ( document.body.scrollLeft || document.body.scrollTop )) {
+				} else if(d.body && ( d.body.scrollLeft || d.body.scrollTop )) {
 					//DOM compliant
-					scrOfY = document.body.scrollTop;
-				} else if(document.documentElement &&
-					(document.documentElement.scrollTop )) {
+					scrOfY = d.body.scrollTop;
+				} else if(d.documentElement &&
+					(d.documentElement.scrollTop )) {
 					//IE6 standards compliant mode
-					scrOfY = document.documentElement.scrollTop;
+					scrOfY = d.documentElement.scrollTop;
 				}
 				return scrOfY;
 			},
@@ -565,8 +565,8 @@ var setLastClickedElement = function(type, id) {
 				if(folder == 1) $('#item11').show();
 				else $('#item11').hide();
 
-				var bodyHeight = parseInt(document.body.offsetHeight);
-				var bodyWidth = parseInt(document.body.offsetWidth);
+				var bodyHeight = parseInt(d.body.offsetHeight);
+				var bodyWidth = parseInt(d.body.offsetWidth);
 				x = e.clientX > 0 ? e.clientX : e.pageX;
 				if(x + mnu.offsetWidth > bodyWidth) {
 					// make sure context menu is within frame
@@ -657,7 +657,7 @@ var setLastClickedElement = function(type, id) {
 		}
 	});
 
-	$(document).ready(function() {
+	$(d).ready(function() {
 		modx.stopWork();
 		modx.scrollWork();
 		modx.init_sideBar();
