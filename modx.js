@@ -325,7 +325,7 @@ var setLastClickedElement = function(type, id) {
 				var loadText = modx.lang.loading_doc_tree;
 
 				var signImg = $('#s' + parent).get(0);
-				var folderImg = $('f' + parent);
+				var folderImg = $('f' + parent).get(0);
 
 				if(modx.tree.rpcNode.style.display != 'block') {
 					// expand
