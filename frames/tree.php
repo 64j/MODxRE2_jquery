@@ -8,61 +8,31 @@ if(is_array($evtOut)) {
 
 <div id="treeSplitter"></div>
 
-<table id="treeMenu" width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>
-			<table cellpadding="0" cellspacing="0" border="0">
-				<tr>
-					<td>
-						<a class="treeButton" id="Button1" onClick="expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
-					</td>
-					<td>
-						<a class="treeButton" id="Button2" onClick="collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
-					</td>
-					<?php if($modx->hasPermission('new_document')) { ?>
-						<td>
-							<a class="treeButton" id="Button3a" onClick="top.main.document.location.href='index.php?a=4';" title="<?php echo $_lang['add_resource']; ?>"><?php echo $_style['add_doc_tree']; ?></a>
-						</td>
-						<td>
-							<a class="treeButton" id="Button3c" onClick="top.main.document.location.href='index.php?a=72';" title="<?php echo $_lang['add_weblink']; ?>"><?php echo $_style['add_weblink_tree']; ?></a>
-						</td>
-					<?php } ?>
-					<td>
-						<a class="treeButton" id="Button4" onClick="modx.tree.reloadtree();" title="<?php echo $_lang['refresh_tree']; ?>"><?php echo $_style['refresh_tree']; ?></a>
-					</td>
-					<td>
-						<a class="treeButton" id="Button5" onClick="modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_style['sort_tree']; ?></a>
-					</td>
-					<?php if($modx->hasPermission('edit_document')) { ?>
-						<td>
-							<a id="Button11" class="treeButton" onClick="top.main.document.location.href='index.php?a=56&id=0';" title="<?php echo $_lang['sort_menuindex']; ?>"><?php echo $_style['sort_menuindex']; ?></a>
-						</td>
-					<?php } ?>
-					<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
-						<td>
-							<a id="Button13" class="treeButton" title="<?php echo $_lang["images_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['images_management']; ?></a>
-						</td>
-					<?php } ?>
-					<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
-						<td>
-							<a id="Button14" class="treeButton" title="<?php echo $_lang["files_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['files_management']; ?></a>
-						</td>
-					<?php } ?>
-					<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
-						<td>
-							<a id="Button12" class="treeButton" title="<?php echo $_lang["element_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['element_management']; ?></a>
-						</td>
-					<?php } ?>
-					<?php if($modx->hasPermission('empty_trash')) { ?>
-						<td>
-							<a id="Button10" class="treeButtonDisabled" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
-						</td>
-					<?php } ?>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+<div id="treeMenu">
+	<a class="treeButton" id="Button1" onClick="expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
+	<a class="treeButton" id="Button2" onClick="collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
+	<?php if($modx->hasPermission('new_document')) { ?>
+		<a class="treeButton" id="Button3a" onClick="main.document.location.href='index.php?a=4';" title="<?php echo $_lang['add_resource']; ?>"><?php echo $_style['add_doc_tree']; ?></a>
+		<a class="treeButton" id="Button3c" onClick="main.document.location.href='index.php?a=72';" title="<?php echo $_lang['add_weblink']; ?>"><?php echo $_style['add_weblink_tree']; ?></a>
+	<?php } ?>
+	<a class="treeButton" id="Button4" onClick="modx.tree.reloadtree();" title="<?php echo $_lang['refresh_tree']; ?>"><?php echo $_style['refresh_tree']; ?></a>
+	<a class="treeButton" id="Button5" onClick="modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_style['sort_tree']; ?></a>
+	<?php if($modx->hasPermission('edit_document')) { ?>
+		<a id="Button11" class="treeButton" onClick="main.document.location.href='index.php?a=56&id=0';" title="<?php echo $_lang['sort_menuindex']; ?>"><?php echo $_style['sort_menuindex']; ?></a>
+	<?php } ?>
+	<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
+		<a id="Button13" class="treeButton" title="<?php echo $_lang["images_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['images_management']; ?></a>
+	<?php } ?>
+	<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
+		<a id="Button14" class="treeButton" title="<?php echo $_lang["files_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['files_management']; ?></a>
+	<?php } ?>
+	<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
+		<a id="Button12" class="treeButton" title="<?php echo $_lang["element_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['element_management']; ?></a>
+	<?php } ?>
+	<?php if($modx->hasPermission('empty_trash')) { ?>
+		<a id="Button10" class="treeButtonDisabled" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
+	<?php } ?>
+</div>
 
 <?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
 	<script>
@@ -123,9 +93,9 @@ if(is_array($evtOut)) {
 		<input type="hidden" name="dt" value="<?php echo htmlspecialchars($_REQUEST['dt']); ?>" />
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td style="padding-left: 10px;padding-top: 1px;">
+				<td>
 					<?php echo $_lang["sort_tree"] ?>
-					<select name="sortby" style="margin-top:5px; width: 100%;">
+					<select name="sortby">
 						<option value="isfolder" <?php echo $_SESSION['tree_sortby'] == 'isfolder' ? "selected='selected'" : "" ?>><?php echo $_lang['folder']; ?></option>
 						<option value="pagetitle" <?php echo $_SESSION['tree_sortby'] == 'pagetitle' ? "selected='selected'" : "" ?>><?php echo $_lang['pagetitle']; ?></option>
 						<option value="longtitle" <?php echo $_SESSION['tree_sortby'] == 'longtitle' ? "selected='selected'" : "" ?>><?php echo $_lang['long_title']; ?></option>
@@ -138,17 +108,17 @@ if(is_array($evtOut)) {
 				</td>
 			</tr>
 			<tr>
-				<td style="padding-left: 10px;padding-top: 1px;">
-					<select name="sortdir" style="width: 100%;">
+				<td>
+					<select name="sortdir">
 						<option value="DESC" <?php echo $_SESSION['tree_sortdir'] == 'DESC' ? "selected='selected'" : "" ?>><?php echo $_lang['sort_desc']; ?></option>
 						<option value="ASC" <?php echo $_SESSION['tree_sortdir'] == 'ASC' ? "selected='selected'" : "" ?>><?php echo $_lang['sort_asc']; ?></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td width="99%" style="padding-left: 10px;padding-top: 1px;" colspan="2">
-					<p style="margin-top:10px;"><?php echo $_lang["setting_resource_tree_node_name"] ?></p>
-					<select name="nodename" style="width: 100%;">
+				<td colspan="2">
+					<p><?php echo $_lang["setting_resource_tree_node_name"] ?></p>
+					<select name="nodename">
 						<option value="default" <?php echo $_SESSION['tree_nodename'] == 'default' ? "selected='selected'" : "" ?>><?php echo trim($_lang['default'], ':'); ?></option>
 						<option value="pagetitle" <?php echo $_SESSION['tree_nodename'] == 'pagetitle' ? "selected='selected'" : "" ?>><?php echo $_lang['pagetitle']; ?></option>
 						<option value="longtitle" <?php echo $_SESSION['tree_nodename'] == 'longtitle' ? "selected='selected'" : "" ?>><?php echo $_lang['long_title']; ?></option>
@@ -161,10 +131,10 @@ if(is_array($evtOut)) {
 				</td>
 			</tr>
 			<tr>
-				<td style="padding-left: 10px;padding-top: 1px;">
-					<ul class="actionButtons" style="margin:10px 0;">
+				<td>
+					<ul class="actionButtons">
 						<li>
-							<a class="treeButton" id="button7" style="text-align:right" onClick="modx.tree.updateTree();modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_lang['sort_tree']; ?></a>
+							<a class="treeButton" id="button7" onClick="modx.tree.updateTree();modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_lang['sort_tree']; ?></a>
 						</li>
 					</ul>
 				</td>

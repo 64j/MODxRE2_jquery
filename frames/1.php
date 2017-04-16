@@ -116,7 +116,7 @@ foreach($unlockTranslations as $key => $value) $unlockTranslations[$key] = iconv
 	</script>
 	<script src="media/style/<?php echo $modx->config['manager_theme']; ?>/modx.js"></script>
 </head>
-<body id="frameset" class="tree-show" onClick="modx.tree.hideMenu(1);">
+<body id="frameset" class="tree-show">
 <div id="mainMenu">
 	<div class="col float-left">
 		<!--		<form name="menuForm" action="l4mnu.php">
