@@ -513,7 +513,7 @@ div.username { display: none !important; }
  * css above is original MODxRE
  * css below is basicaly MODxRE overrides to get MODxRE2 look
  */
-* { border-radius: 0; -moz-osx-font-smoothing: grayscale; }
+* { moz-osx-font-smoothing: grayscale; }
 body { background-color: #F2F2F2 !important; background-image: none !important; }
 div.treeframebody { background-color: #ebebeb !important; background-image: none !important; }
 /* nav */
