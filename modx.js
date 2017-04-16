@@ -86,17 +86,17 @@ var setLastClickedElement = function(type, id) {
 		},
 		startrefresh: function(rFrame) {
 			if(rFrame == 1) {
-				x = window.setTimeout('reloadtree()', 500);
+				x = w.setTimeout('reloadtree()', 500);
 			}
 			if(rFrame == 2) {
-				x = window.setTimeout('reloadmenu()', 500);
+				x = w.setTimeout('reloadmenu()', 500);
 			}
 			if(rFrame == 9) {
-				x = window.setTimeout('reloadmenu()', 500);
-				y = window.setTimeout('reloadtree()', 500);
+				x = w.setTimeout('reloadmenu()', 500);
+				y = w.setTimeout('reloadtree()', 500);
 			}
 			if(rFrame == 10) {
-				window.top.location.href = "../" + modx.MGR_DIR;
+				w.location.href = "../" + modx.MGR_DIR;
 			}
 		},
 		setLastClickedElement: function(type, id) {
@@ -211,9 +211,9 @@ var setLastClickedElement = function(type, id) {
 				var width = 0;
 				var height = 0;
 
-				if(typeof( window.innerWidth ) == 'number') {
-					width = window.innerWidth;
-					height = window.innerHeight;
+				if(typeof(w.innerWidth) == 'number') {
+					width = w.innerWidth;
+					height = w.innerHeight;
 				} else if(d.documentElement &&
 					( d.documentElement.clientWidth ||
 					d.documentElement.clientHeight )) {
@@ -427,7 +427,7 @@ var setLastClickedElement = function(type, id) {
 							href = "index.php?a=" + (modx.tree_page_click ? modx.tree_page_click : 27) + "&r=1&id=" + id; // edit as default action
 						}
 						if(e.shiftKey) {
-							window.getSelection().removeAllRanges(); // Remove unnessecary text-selection
+							w.getSelection().removeAllRanges(); // Remove unnessecary text-selection
 							randomNum = Math.floor((Math.random() * 999999) + 1);
 							modx.openWindow(href, 'res' + randomNum);
 							modx.tree.reloadtree(); // Show updated locks as &r=1 will not work in popup
@@ -517,7 +517,7 @@ var setLastClickedElement = function(type, id) {
 						top.main.location.href = "index.php?a=56&id=" + itemToChange
 						break;
 					case 12 : // preview
-						window.open(selectedObjectUrl, 'previeWin'); //re-use 'new' window
+						w.open(selectedObjectUrl, 'previeWin'); //re-use 'new' window
 						break;
 
 					default :
@@ -526,9 +526,9 @@ var setLastClickedElement = function(type, id) {
 			},
 			getScrollY: function() {
 				var scrOfY = 0;
-				if(typeof(window.pageYOffset) == 'number') {
+				if(typeof(w.pageYOffset) == 'number') {
 					//Netscape compliant
-					scrOfY = window.pageYOffset;
+					scrOfY = w.pageYOffset;
 				} else if(d.body && ( d.body.scrollLeft || d.body.scrollTop )) {
 					//DOM compliant
 					scrOfY = d.body.scrollTop;
@@ -651,7 +651,7 @@ var setLastClickedElement = function(type, id) {
 			}
 			options += ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no';
 			if(url !== undefined)
-				window.open(url, title, options);
+				w.open(url, title, options);
 
 			return false;
 		}
