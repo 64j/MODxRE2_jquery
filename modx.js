@@ -86,14 +86,14 @@ var setLastClickedElement = function(type, id) {
 		},
 		startrefresh: function(rFrame) {
 			if(rFrame == 1) {
-				x = w.setTimeout('reloadtree()', 500);
+				x = w.setTimeout('modx.tree.reloadtree()', 500);
 			}
 			if(rFrame == 2) {
-				x = w.setTimeout('reloadmenu()', 500);
+				x = w.setTimeout('modx.tree.reloadmenu()', 500);
 			}
 			if(rFrame == 9) {
-				x = w.setTimeout('reloadmenu()', 500);
-				y = w.setTimeout('reloadtree()', 500);
+				x = w.setTimeout('modx.tree.reloadmenu()', 500);
+				y = w.setTimeout('modx.tree.reloadtree()', 500);
 			}
 			if(rFrame == 10) {
 				w.location.href = "../" + modx.MGR_DIR;
