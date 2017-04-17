@@ -373,12 +373,10 @@ var setLastClickedElement = function(type, id) {
 				$(elSel).addClass('treeNodeSelected');
 			},
 			setHoverClass: function(el, dir) {
-				if(!$(el).hasClass("treeNodeSelected")) {
-					if(dir == 1) {
-						$(el).addClass('treeNodeHover')
-					} else {
-						$(el).removeClass('treeNodeHover')
-					}
+				if(dir == 1) {
+					$(el).addClass('treeNodeHover')
+				} else {
+					$(el).removeClass('treeNodeHover')
 				}
 			},
 			setCNS: function(n, b) {
