@@ -199,7 +199,7 @@ div.treeframebody { }
 #treeHolder .fa.fa-folder-o, #treeHolder .fa.fa-folder-open-o { text-align: left }
 #treeRoot { margin-top: 2px; margin-left: -20px }
 #treeRoot div { white-space: nowrap; }
-#treeRoot div img { margin: 0; vertical-align: middle; }
+#treeRoot div img { margin: 0; vertical-align: text-bottom; }
 .rtl #treeRoot div img { margin: 0; }
 #floater { display: none; position: absolute; width: 100%; padding: 15px; padding-bottom: 10px; top: 31px; left: 0px; background: #fff; border: 1px solid #b0b0b0; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1); box-sizing: border-box; z-index: 500; }
 #floater td { padding: 0 !important; }
