@@ -51,8 +51,8 @@ $_style['ctx_preview_resource']     = 'fa fa-eye fa-fw fa-lg';
 $_style['tree_deletedpage']         = $style_path.'tree/file-alt-deleted.png';
 $_style['tree_folder']              = $style_path.'tree/folder-close-alt.png'; /* folder.png */
 $_style['tree_folderopen']          = $style_path.'tree/folder-open-alt.png'; /* folder-open.png */
-$_style['tree_folder_new']              = "<i class='fa fa-folder-o'></i>"; /* folder.png */
-$_style['tree_folderopen_new']          = "<i class='fa fa-folder-open-o'></i>"; /* folder-open.png */
+$_style['tree_folder_new']          = "<i class='fa fa-folder-o'></i>"; /* folder.png */
+$_style['tree_folderopen_new']      = "<i class='fa fa-folder-open-o'></i>"; /* folder-open.png */
 $_style['tree_folder_secure']       = "<i class='fa fa-folder-o'><i class='fa fa-lock'></i></i>";
 $_style['tree_folderopen_secure']   = "<i class='fa fa-folder-open-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_globe']               = $style_path.'tree/globe.png';

@@ -391,7 +391,7 @@ function getTplSingleNode() {
         onmouseover="modx.tree.setCNS(this, 1)"
         onmouseout="modx.tree.setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\'"
-    />[+icon+]</span>&nbsp;[+lockedByUser+]<span
+    />[+icon+]</span><span
         p="[+parent+]"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmouseover="modx.tree.setHoverClass(this,1);"
@@ -399,7 +399,7 @@ function getTplSingleNode() {
         class="treeNode"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'p[+id+]\').onclick(event);return false;"
-        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]</div>';
+        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+] [+lockedByUser+]</div>';
 }
 
 function getTplOpenFolderNode() {
@@ -423,14 +423,14 @@ function getTplOpenFolderNode() {
         onmouseover="modx.tree.setCNS(this, 1)"
         onmouseout="modx.tree.setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
-        >[+src+]</span>&nbsp;[+lockedByUser+]<span
+        >[+src+]</span><span
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmouseover="modx.tree.setHoverClass(this, 1);"
         onmouseout="modx.tree.setHoverClass(this, 0);"
         class="treeNode"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
-        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]<div style="display:block">';
+        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+] [+lockedByUser+]<div style="display:block">';
 }
 
 function getTplClosedFolderNode() {
@@ -454,12 +454,12 @@ function getTplClosedFolderNode() {
         onmouseover="modx.tree.setCNS(this, 1)"
         onmouseout="modx.tree.setCNS(this, 0)"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
-        >[+src+]</span>&nbsp;[+lockedByUser+]<span
+        >[+src+]</span><span
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmouseover="modx.tree.setHoverClass(this, 1);"
         onmouseout="modx.tree.setHoverClass(this, 0);"
         class="treeNode"
         onmousedown="itemToChange=[+id+]; selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
-        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span> [+pageIdDisplay+]<div style="display:none"></div></div>';
+        title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span> [+pageIdDisplay+] [+lockedByUser+]<div style="display:none"></div></div>';
 }

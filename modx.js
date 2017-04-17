@@ -334,7 +334,7 @@ var setLastClickedElement = function(type, id) {
 					// expand
 					if(signImg && signImg.src.indexOf(modx.style.tree_plusnode) > -1) {
 						signImg.src = modx.style.tree_minusnode;
-						folderImg.src = (privatenode == '0') ? modx.style.tree_folderopen_new : modx.style.tree_folderopen_secure;
+						folderImg.innerHTML = (privatenode == '0') ? modx.style.tree_folderopen_new : modx.style.tree_folderopen_secure;
 					}
 
 					rpcNodeText = modx.tree.rpcNode.innerHTML;
@@ -361,7 +361,7 @@ var setLastClickedElement = function(type, id) {
 					// collapse
 					if(signImg && signImg.src.indexOf(modx.style.tree_minusnode) > -1) {
 						signImg.src = modx.style.tree_plusnode;
-						folderImg.src = (privatenode === '0') ? modx.style.tree_folder_new : modx.style.tree_folder_secure;
+						folderImg.innerHTML = (privatenode === '0') ? modx.style.tree_folder_new : modx.style.tree_folder_secure;
 					}
 					//rpcNode.innerHTML = '';
 					modx.tree.rpcNode.style.display = 'none';
