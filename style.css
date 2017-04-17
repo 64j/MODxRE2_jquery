@@ -43,7 +43,7 @@ td { vertical-align: top; }
 .hide, .skip, .printonly { display: none; }
 .inline { display: inline; }
 /* -------------------------[ Headers and Paragraphs ]--- */
-h1, h2, h3, h4, h5, h6, .subTitle { font-weight: 500; }
+h1, h2, h3, h4, h5, h6, .subTitle { font-weight: 700; }
 h1 { font-size: 1.8em; line-height: 35px; margin: 15px 15px 10px 15px; }
 .rtl h1 { margin-right: 10px; }
 h2 { font-size: 164%; }
@@ -86,7 +86,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .nav > li { position: relative; float: left; list-style: none }
 #mainMenu .nav > li > a > .fa { margin-right: 10px; vertical-align: top; line-height: inherit }
 #mainMenu .float-right .nav > li > a > .fa { margin: 0 }
-#mainMenu .nav > li > a { color: #e0e0e0; height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; line-height: 48px; overflow: hidden; padding: 0 18px; float: none !important; float: left; display: block; }
+#mainMenu .nav > li > a { color: #e0e0e0; height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; line-height: 48px; font-weight: 700; overflow: hidden; padding: 0 18px; float: none !important; float: left; display: block; }
 #mainMenu .nav > li:hover > a { color: #fff; background-color: rgba(255, 255, 255, 0.05) }
 #mainMenu .nav > li.active > a, #mainMenu .nav > li.active > a:hover { background: rgba(0, 0, 0, 0.15) }
 #mainMenu .nav > li li a { white-space: nowrap; color: #39545e }
