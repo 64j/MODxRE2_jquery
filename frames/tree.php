@@ -9,8 +9,8 @@ if(is_array($evtOut)) {
 <div id="treeSplitter"></div>
 
 <div id="treeMenu">
-	<a class="treeButton" id="Button1" onClick="expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
-	<a class="treeButton" id="Button2" onClick="collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
+	<a class="treeButton" id="Button1" onClick="modx.tree.expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
+	<a class="treeButton" id="Button2" onClick="modx.tree.collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
 	<?php if($modx->hasPermission('new_document')) { ?>
 		<a class="treeButton" id="Button3a" onClick="main.document.location.href='index.php?a=4';" title="<?php echo $_lang['add_resource']; ?>"><?php echo $_style['add_doc_tree']; ?></a>
 		<a class="treeButton" id="Button3c" onClick="main.document.location.href='index.php?a=72';" title="<?php echo $_lang['add_weblink']; ?>"><?php echo $_style['add_weblink_tree']; ?></a>
@@ -151,7 +151,7 @@ if(is_array($evtOut)) {
 		echo implode("\n", $evtOut);
 	}
 	?>
-	<div><?php echo $_style['tree_showtree']; ?>&nbsp;<span class="rootNode" onClick="treeAction(event, 0, '<?php $site_name = htmlspecialchars($site_name, ENT_QUOTES, $modx->config['modx_charset']);
+	<div><?php echo $_style['tree_showtree']; ?>&nbsp;<span class="rootNode" onClick="modx.tree.treeAction(event, 0, '<?php $site_name = htmlspecialchars($site_name, ENT_QUOTES, $modx->config['modx_charset']);
 		echo $site_name; ?>');"><b><?php echo $site_name; ?></b></span>
 		<div id="treeRoot"></div>
 	</div>

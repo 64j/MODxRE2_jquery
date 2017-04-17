@@ -239,7 +239,7 @@ var setLastClickedElement = function(type, id) {
 			restoreTree: function() {
 				modx.tree.rpcNode = $('#treeRoot').get(0);
 				$.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=2', function(data) {
-					modx.tree.rpcLoadData(data)
+					modx.tree.rpcLoadData(data);
 				})
 			},
 			expandTree: function() {
@@ -286,6 +286,8 @@ var setLastClickedElement = function(type, id) {
 					modx.tree.rpcNode.innerHTML = typeof response == 'object' ? response.responseText : response;
 					modx.tree.rpcNode.style.display = 'block';
 					modx.tree.rpcNode.loaded = true;
+					var MODX_lastClickedElement = JSON.parse(localStorage.getItem('MODX_lastClickedElement'));
+					$('#node' + MODX_lastClickedElement[1] + ' > .treeNode').addClass('treeNodeSelected');
 					$(d).find("#buildText").html('').hide();
 					// check if bin is full
 					if(modx.tree.rpcNode.id == 'treeRoot') {
@@ -366,24 +368,15 @@ var setLastClickedElement = function(type, id) {
 				}
 			},
 			setSelected: function(elSel) {
-				var all = $('span', $('#tree'));
-				var l = all.length;
-
-				for(var i = 0; i < l; i++) {
-					el = all[i];
-					cn = el.className;
-					if(cn == "treeNodeSelected") {
-						el.className = "treeNode";
-					}
-				}
-				elSel.className = "treeNodeSelected";
+				$('.treeNodeSelected', $('#tree')).removeClass('treeNodeSelected')
+				$(elSel).addClass('treeNodeSelected');
 			},
 			setHoverClass: function(el, dir) {
-				if(el.className != "treeNodeSelected") {
+				if(!$(el).hasClass("treeNodeSelected")) {
 					if(dir == 1) {
-						el.className = "treeNodeHover";
+						$(el).addClass('treeNodeHover')
 					} else {
-						el.className = "treeNode";
+						$(el).removeClass('treeNodeHover')
 					}
 				}
 			},
@@ -643,11 +636,11 @@ var setLastClickedElement = function(type, id) {
 		},
 		openWindow: function(url, title, options) {
 			if(options == undefined) {
-				var w = screen.width * 0.9,
-					h = screen.height * 0.8,
-					l = (screen.width - w) / 2,
-					t = (screen.height - h) / 2;
-				options = 'width=' + w + ',height=' + h + ',top=' + t + ',left=' + l;
+				var ww = screen.width * 0.9,
+					wh = screen.height * 0.8,
+					wl = (screen.width - ww) / 2,
+					wt = (screen.height - wh) / 2;
+				options = 'width=' + ww + ',height=' + wh + ',top=' + wt + ',left=' + wl;
 			}
 			options += ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no';
 			if(url !== undefined)

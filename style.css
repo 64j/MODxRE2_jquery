@@ -67,7 +67,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 .float-right { float: right !important }
 /* frameSet*/
 #frameset { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
-.resizer-move::before { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 900; background-color: transparent; content: "" }
+.resizer-move::before { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999999; background-color: transparent; content: "" }
 #tree, #main { position: absolute; }
 #tree iframe, #main iframe, #mask_resizer { position: absolute; width: 100%; height: 100%; }
 #tree { width: 320px; top: 48px; left: 0; bottom: 0; background-color: #ebebeb; -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
@@ -194,7 +194,7 @@ div.treeframebody { }
 /**/
 #treeHolder { cursor: default; height: 100%; padding: 6px 8px 0; line-height: 1.5em; }
 #treeHolder { margin-top: 0; padding-left: 8px; }
-#treeHolder .fa { color: #89979d; width: 16px; text-align: center }
+#treeHolder .fa { position: relative; color: #89979d; width: 16px; text-align: center }
 #treeHolder .fa > .fa { font-size: 10px; position: absolute; width: 8px; color: #686868; margin-left: -16px; margin-top: 4px; }
 #treeRoot { margin-top: 2px; margin-left: -20px }
 #treeRoot div { white-space: nowrap; }
