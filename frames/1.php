@@ -40,6 +40,7 @@ foreach($unlockTranslations as $key => $value) $unlockTranslations[$key] = iconv
 	<title><?php echo $site_name ?>- (MODX CMS Manager)</title>
 	<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=0.8">
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $modx_manager_charset ?>" />
+	<meta http-equiv="Cache-control" content="no-cache">
 	<link rel="stylesheet" type="text/css" href="media/style/common/font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="media/style/<?php echo $modx->config['manager_theme']; ?>/style.css" />
 	<script src="media/script/jquery/jquery.min.js"></script>

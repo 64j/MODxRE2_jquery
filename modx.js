@@ -7,6 +7,9 @@ var mainMenu = {
 	},
 	reloadtree: function() {
 		modx.tree.reloadtree()
+	},
+	stopWork: function() {
+		modx.stopWork()
 	}
 };
 
@@ -32,24 +35,24 @@ var setLastClickedElement = function(type, id) {
 	modx.setLastClickedElement(type, id)
 };
 
+var scrollWork = function() {
+	modx.scrollWork()
+};
+
 (function($, w, d, undefined) {
 	$.extend(modx, {
 		work: function() {
 			if($('#workText').length) {
 				$('#workText').html('<i class="fa fa-warning"></i>&nbsp;' + modx.lang.working);
 			} else {
-				setTimeout(function() {
-					modx.work()
-				}, 50);
+				setTimeout('modx.work()', 50);
 			}
 		},
 		stopWork: function() {
 			if($('#workText').length) {
 				$('#workText').html('');
 			} else {
-				setTimeout(function() {
-					modx.stopWork()
-				}, 50);
+				setTimeout('modx.stopWork()', 50);
 			}
 		},
 		getQueryVariable: function(variable, query) {
@@ -86,17 +89,18 @@ var setLastClickedElement = function(type, id) {
 		},
 		startrefresh: function(rFrame) {
 			if(rFrame == 1) {
-				x = w.setTimeout('modx.tree.reloadtree()', 500);
+//				x = w.setTimeout('modx.tree.reloadtree()', 500);
 			}
 			if(rFrame == 2) {
-				x = w.setTimeout('modx.tree.reloadmenu()', 500);
+				//x = w.setTimeout('modx.tree.reloadmenu()', 500);
 			}
 			if(rFrame == 9) {
-				x = w.setTimeout('modx.tree.reloadmenu()', 500);
-				y = w.setTimeout('modx.tree.reloadtree()', 500);
+//				x = w.setTimeout('modx.tree.reloadmenu()', 500);
+//				y = w.setTimeout('modx.tree.reloadtree()', 500);
 			}
 			if(rFrame == 10) {
 				w.location.href = "../" + modx.MGR_DIR;
+//				w.location.reload(true);
 			}
 		},
 		setLastClickedElement: function(type, id) {
