@@ -286,8 +286,9 @@ var setLastClickedElement = function(type, id) {
 					modx.tree.rpcNode.innerHTML = typeof response == 'object' ? response.responseText : response;
 					modx.tree.rpcNode.style.display = 'block';
 					modx.tree.rpcNode.loaded = true;
-					var MODX_lastClickedElement = JSON.parse(localStorage.getItem('MODX_lastClickedElement'));
-					$('#node' + MODX_lastClickedElement[1] + ' > .treeNode').addClass('treeNodeSelected');
+					if(localStorage.getItem('MODX_lastClickedElement') != undefined) {
+						$('#node' + JSON.parse(localStorage.getItem('MODX_lastClickedElement'))[1] + ' > .treeNode').addClass('treeNodeSelected');
+					}
 					$(d).find("#buildText").html('').hide();
 					// check if bin is full
 					if(modx.tree.rpcNode.id == 'treeRoot') {
