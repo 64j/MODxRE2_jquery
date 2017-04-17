@@ -287,7 +287,7 @@ var setLastClickedElement = function(type, id) {
 					modx.tree.rpcNode.style.display = 'block';
 					modx.tree.rpcNode.loaded = true;
 					if(localStorage.getItem('MODX_lastClickedElement') != undefined) {
-						$('#node' + JSON.parse(localStorage.getItem('MODX_lastClickedElement'))[1] + ' > .treeNode').addClass('treeNodeSelected');
+						$('#node' + JSON.parse(localStorage.getItem('MODX_lastClickedElement'))[1] + '>.treeNode').addClass('treeNodeSelected');
 					}
 					$(d).find("#buildText").html('').hide();
 					// check if bin is full
@@ -445,7 +445,7 @@ var setLastClickedElement = function(type, id) {
 			},
 			setActiveFromContextMenu: function(doc_id) {
 				$('.treeNodeSelected').removeClass('treeNodeSelected');
-				$('#node' + doc_id + '>span').addClass('treeNodeSelected');
+				$('#node' + doc_id + '>.treeNode').addClass('treeNodeSelected');
 			},
 			menuHandler: function(action) {
 				switch(action) {
