@@ -106,7 +106,7 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 					'lasthit_df' => $rowLock['lasthit_df']
 				));
 				if($modx->hasPermission('remove_locks')) {
-					$lockedByUser = '<a href="#" onclick="unlockElement(7, ' . $id . ', this);return false;" title="' . $title . '" class="lockedResource"><img src="' . $_style['icons_secured'] . '" /></a>';
+					$lockedByUser = '<a href="#" onclick="modx.tree.unlockElement(7, ' . $id . ', this);return false;" title="' . $title . '" class="lockedResource"><img src="' . $_style['icons_secured'] . '" /></a>';
 				} else {
 					$lockedByUser = '<span title="' . $title . '" class="lockedResource" style="cursor:context-menu;"><img src="' . $_style['icons_secured'] . '" /></span>';
 				}
