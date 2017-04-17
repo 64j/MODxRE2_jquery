@@ -194,7 +194,7 @@ div.treeframebody { }
 /**/
 #treeHolder { cursor: default; height: 100%; padding: 6px 8px 0; line-height: 1.5em; }
 #treeHolder { margin-top: 0; padding-left: 8px; }
-#treeHolder .fa { position: relative; color: #89979d; width: 16px; text-align: center }
+#treeHolder .fa { position: relative; color: #89979d; width: 16px; font-size: 14px; text-align: center }
 #treeHolder .fa > .fa { font-size: 10px; position: absolute; width: 8px; color: #686868; left: 0; margin-top: 4px; }
 #treeHolder .fa.fa-folder-o, #treeHolder .fa.fa-folder-open-o { text-align: left }
 #treeRoot { margin-top: 2px; margin-left: -20px }
