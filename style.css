@@ -85,7 +85,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .nav { margin: 0; padding: 0; list-style: none }
 #mainMenu .nav > li { position: relative; float: left; list-style: none }
 #mainMenu .nav > li > a .fa { margin-right: 0.85rem; vertical-align: top; line-height: inherit; font-size: 17px; width: 15px }
-#mainMenu .float-right .nav > li > a .fa { margin: 0; font-size: 28px; }
+#mainMenu .float-right .nav > li > a .fa { margin: 0; font-size: 28px; width: 28px }
 #mainMenu .nav > li > a, #searchform .fa-search { color: #e0e0e0; height: 48px; line-height: 48px; text-decoration: none; white-space: nowrap; cursor: pointer; overflow: hidden; padding: 0 18px; float: left; display: block; }
 #mainMenu .nav > li:hover > a, #searchform .fa-search:hover { color: #fff; background-color: rgba(255, 255, 255, 0.05) }
 #mainMenu .nav > li.active > a, #mainMenu .nav > li.active > a:hover { background: rgba(0, 0, 0, 0.15) }
@@ -94,6 +94,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .account .username { display: inline-block; margin-right: 0.833rem }
 #mainMenu .account .icon { display: inline-block; border-radius: 50%; overflow: hidden; width: 30px; height: 30px; line-height: 30px; text-align: center; vertical-align: middle; background: no-repeat 50% 50%; background-size: cover; }
 #mainMenu .account .icon.photo { width: 36px; height: 36px }
+#mainMenu .account .icon .fa { width: 30px; height: 30px; }
 #mainMenu .account #msgCounter { display: none; position: absolute; z-index: 1; right: 14px; top: 3px; background-color: rgba(0, 0, 0, 0.5); line-height: 13px; font-size: 10px; padding: 2px 5px; border-radius: 7px; }
 #mainMenu .account #msgCounter::before { position: absolute; z-index: -1; left: 2px; top: 2px; right: 2px; bottom: 2px; background-color: #e91e4f; border-radius: 6px; content: "" }
 #mainMenu .account #newMail { display: none }
