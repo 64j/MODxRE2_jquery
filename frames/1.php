@@ -138,6 +138,10 @@ if($user['which_browser'] == 'default') {
 				new_document: "<?php echo $modx->hasPermission('new_document') ? 1 : 0; ?>",
 				publish_document: "<?php echo $modx->hasPermission('publish_document') ? 1 : 0; ?>"
 			},
+			plugins: {
+				ElementsInTree: "<?php echo isset($modx->pluginCache['ElementsInTree']) ? 1 : 0 ?>",
+				EVOmodal: "<?php echo isset($modx->pluginCache['EVO.modal']) ? 1 : 0 ?>"
+			},
 			openedArray: [],
 			lockedElementsTranslation: <?php echo json_encode($unlockTranslations) . "\n" ?>
 		};
@@ -273,6 +277,42 @@ if($user['which_browser'] == 'default') {
 		</a>
 	</div>
 	<div id="searchresult"></div>
+
+	<!-- Contextual Menu Popup Code -->
+	<div id="mx_contextmenu" onselectstart="return false;">
+		<div id="nameHolder">&nbsp;</div>
+		<?php
+		constructLink(3, $_style["ctx_new_document"], $_lang["create_resource_here"], $modx->hasPermission('new_document')); // new Resource
+		constructLink(2, $_style["ctx_edit_document"], $_lang["edit_resource"], $modx->hasPermission('edit_document')); // edit
+		constructLink(5, $_style["ctx_move_document"], $_lang["move_resource"], $modx->hasPermission('save_document')); // move
+		constructLink(7, $_style["ctx_resource_duplicate"], $_lang["resource_duplicate"], $modx->hasPermission('new_document')); // duplicate
+		constructLink(11, $_style["ctx_sort_menuindex"], $_lang["sort_menuindex"], $modx->hasPermission('edit_document')); // sort menu index
+		?>
+		<div class="seperator"></div>
+		<?php
+		constructLink(9, $_style["ctx_publish_document"], $_lang["publish_resource"], $modx->hasPermission('publish_document')); // publish
+		constructLink(10, $_style["ctx_unpublish_resource"], $_lang["unpublish_resource"], $modx->hasPermission('publish_document')); // unpublish
+		constructLink(4, $_style["ctx_delete"], $_lang["delete_resource"], $modx->hasPermission('delete_document')); // delete
+		constructLink(8, $_style["ctx_undelete_resource"], $_lang["undelete_resource"], $modx->hasPermission('delete_document')); // undelete
+		?>
+		<div class="seperator"></div>
+		<?php
+		constructLink(6, $_style["ctx_weblink"], $_lang["create_weblink_here"], $modx->hasPermission('new_document')); // new Weblink
+		?>
+		<div class="seperator"></div>
+		<?php
+		constructLink(1, $_style["ctx_resource_overview"], $_lang["resource_overview"], $modx->hasPermission('view_document')); // view
+		constructLink(12, $_style["ctx_preview_resource"], $_lang["preview_resource"], 1); // preview
+		?>
+	</div>
+
+	<?php
+	function constructLink($action, $img, $text, $allowed) {
+		if($allowed == 1) {
+			echo sprintf('<div class="menuLink" id="item%s" onclick="modx.tree.menuHandler(%s); modx.tree.hideMenu();">', $action, $action);
+			echo sprintf('<i class="%s"></i> %s</div>', $img, $text);
+		}
+	} ?>
 	<?php
 	$modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 	?>

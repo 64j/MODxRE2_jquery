@@ -6,7 +6,7 @@
 html, body, form, fieldset, img { margin: 0; padding: 0; }
 img { border: none; }
 html { font-size: 100.01%; line-height: 1.5; color: #333; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #333; background: #eeeeee; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #333; background: #F2F2F2 !important; }
 /* For Arabic Font */
 html[lang="ar"] body, html[lang="ary"] body, html[lang="azb"] body, html[lang="fa-IR"] body, html[lang="haz"] body, html[lang="ps"] body, html[lang="ur"] body { font-family: Tahoma, Arial, sans-serif; }
 /* For Chinese Font */
@@ -70,12 +70,13 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 .rtl .right { float: right; }
 .gridster > * { -webkit-transition: height .4s, width .4s !important; -moz-transition: height .4s !important; -o-transition: height .4s !important; -ms-transition: height .4s !important; transition: height .4s !important; }
 /* frameSet*/
-#mainMenu, #tree, #main { position: absolute; }
+#mainMenu, #tree, #main { position: absolute; background-color: #F2F2F2 }
 #mainMenu iframe, #tree iframe, #main iframe, #mask_resizer { position: absolute; width: 100%; height: 100%; }
 #mainMenu { position: relative; height: 48px; width: 100%; box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); z-index: 100; }
 #mainMenu iframe { height: 48px }
-#tree { z-index: 1; width: 320px; top: 48px; left: 0; bottom: 0; }
+#tree { z-index: 1; width: 320px; top: 48px; left: 0; bottom: 0; overflow: hidden; }
 #main { z-index: 2; top: 48px; left: 320px; right: 0; bottom: 0; }
+.sidebar-closed #tree { overflow: hidden; }
 /* mainMenu */
 #mainMenu { background: none; background-color: #39515D !important; background-image: -webkit-linear-gradient(left, #3f4850 0%, #365462 46%, #3e5554 60%, #42554d 68%, #573d4e 100%) !important; background-image: -o-linear-gradient(left, #3f4850 0%, #365462 46%, #3e5554 60%, #42554d 68%, #573d4e 100%) !important; background-image: linear-gradient(to right, #3f4850 0%, #365462 46%, #3e5554 60%, #42554d 68%, #573d4e 100%) !important; }
 #mainMenu .float-left .dropdown-menu { left: 0 }
@@ -534,8 +535,7 @@ form input[type="text"], form input[type="password"], form input[type="number"],
  * css above is original MODxRE
  * css below is basicaly MODxRE overrides to get MODxRE2 look
  */
-body { background-color: #F2F2F2 !important; background-image: none !important; }
-div.treeframebody { background-color: #ebebeb !important; background-image: none !important; }
+div.treeframebody { min-width: 300px; background-color: #ebebeb !important; background-image: none !important; }
 /* nav */
 .alert-warning { color: #3697cd; }
 /* tree */
@@ -774,7 +774,7 @@ a.btn.disabled, fieldset[disabled] a.btn { pointer-events: none; }
 .border-bottom { border-bottom: 2px solid #3697CD !important; }
 /*responsive buttons*/
 .actionButtons .fa { display: none; }
-.searchbar .actionButtons .fa { display: inline-block; }
+.searchbar .actionButtons .fa, .actionButtons--eit .fa { display: inline-block; }
 .optionsTitle .fa { display: inline-block; }
 @media (max-width: 900px) {
 .actionButtons a { display: inline-block; padding: 6px 10px; margin-top: -7px }

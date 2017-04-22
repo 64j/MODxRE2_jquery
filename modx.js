@@ -33,6 +33,9 @@ var tree = {
 	},
 	reloadElementsInTree: function() {
 		console.log('tree.reloadElementsInTree()');
+	},
+	resizeTree: function() {
+		//modx.resizeTree()
 	}
 };
 
@@ -735,13 +738,44 @@ var setLastClickedElement = function(type, id) {
 			if(data.title == undefined)
 				data.title = Math.floor((Math.random() * 999999) + 1);
 			if(data.url !== undefined) {
-				if(modx.config.modal == 'EVOModal') { // used EVO.modal
+				if(modx.plugins.EVOmodal) { // used EVO.modal
 					top.EVO.modal.show(data)
 				} else {
 					w.open(data.url, data.title, 'width=' + data.width + ',height=' + data.height + ',top=' + data.top + ',left=' + data.left + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no');
 				}
 			}
 			return false;
+		},
+		resizeTree: function() {
+			// get window width/height
+			var win = modx.getWindowDimension();
+			// set tree height
+			var tree = $('#treeHolder');
+			var tmnu = $('#treeMenu');
+			tree.style.width = (win['width']-20)+'px';
+			tree.style.height = (win['height']-tree.offsetTop-6)+'px';
+			tree.style.overflow = 'auto';
+		},
+		getWindowDimension: function() {
+			var width  = 0;
+			var height = 0;
+
+			if ( typeof( window.innerWidth ) == 'number' ){
+				width  = window.innerWidth;
+				height = window.innerHeight;
+			}else if ( document.documentElement &&
+				( document.documentElement.clientWidth ||
+				document.documentElement.clientHeight ) ){
+				width  = document.documentElement.clientWidth;
+				height = document.documentElement.clientHeight;
+			}
+			else if ( document.body &&
+				( document.body.clientWidth || document.body.clientHeight ) ){
+				width  = document.body.clientWidth;
+				height = document.body.clientHeight;
+			}
+
+			return {'width':width,'height':height};
 		}
 	});
 
