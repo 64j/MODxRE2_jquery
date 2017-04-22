@@ -35,9 +35,10 @@ var tree = {
 		modx.tree.restoreTree()
 	},
 	reloadElementsInTree: function() {
-		console.log('tree.reloadElementsInTree()');
+		console.log('tree.reloadElementsInTree() off');
 	},
 	resizeTree: function() {
+		console.log('tree.resizeTree() off');
 		//modx.resizeTree()
 	}
 };

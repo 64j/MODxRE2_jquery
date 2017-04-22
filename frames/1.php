@@ -63,8 +63,8 @@ if($user['which_browser'] == 'default') {
 }
 ?>
 <!DOCTYPE html>
-<html <?php echo (isset($modx_textdir) && $modx_textdir ? 'dir="rtl" lang="' : 'lang="') . $mxla . '" xml:lang="' . $mxla . '"'; ?> style="height:100%">
-<head style="height:100%">
+<html <?php echo (isset($modx_textdir) && $modx_textdir ? 'dir="rtl" lang="' : 'lang="') . $mxla . '" xml:lang="' . $mxla . '"'; ?>>
+<head>
 	<title><?php echo $site_name ?>- (MODX CMS Manager)</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $modx_manager_charset ?>" />
 	<link rel="stylesheet" type="text/css" href="media/style/common/font-awesome/css/font-awesome.min.css" />
@@ -172,51 +172,53 @@ if($user['which_browser'] == 'default') {
 						<i class="fa fa-desktop"></i>
 					</a>
 				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;"><i class="fa fa-sliders fa-2x"></i></a>
-					<ul class="dropdown-menu">
-						<?php if($modx->hasPermission('settings')) { ?>
-							<li>
-								<a href="index.php?a=17" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-cog fw"></i><?php echo $_lang['edit_settings'] ?>
-								</a>
-							</li>
-						<?php } ?>
-						<?php if($modx->hasPermission('view_eventlog')) { ?>
-							<li>
-								<a href="index.php?a=70" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-calendar"></i><?php echo $_lang['site_schedule'] ?>
-								</a>
-							</li>
-						<?php } ?>
-						<?php if($modx->hasPermission('view_eventlog')) { ?>
-							<li>
-								<a href="index.php?a=114" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-exclamation-triangle"></i><?php echo $_lang['eventlog_viewer'] ?>
-								</a>
-							</li>
-						<?php } ?>
-						<?php if($modx->hasPermission('logs')) { ?>
-							<li>
-								<a href="index.php?a=13" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-user-secret"></i><?php echo $_lang['view_logging'] ?>
-								</a>
-							</li>
-							<li>
-								<a href="index.php?a=53" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-info-circle"></i><?php echo $_lang['view_sysinfo'] ?>
-								</a>
-							</li>
-						<?php } ?>
-						<?php if($modx->hasPermission('help')) { ?>
-							<li>
-								<a href="index.php?a=9#version_notices" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-question-circle"></i><?php echo $_lang['help'] ?>
-								</a>
-							</li>
-						<?php } ?>
-					</ul>
-				</li>
+				<?php if($modx->hasPermission('settings') || $modx->hasPermission('view_eventlog') || $modx->hasPermission('logs') || $modx->hasPermission('help')) { ?>
+					<li class="dropdown">
+						<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;"><i class="fa fa-sliders fa-2x"></i></a>
+						<ul class="dropdown-menu">
+							<?php if($modx->hasPermission('settings')) { ?>
+								<li>
+									<a href="index.php?a=17" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-cog fw"></i><?php echo $_lang['edit_settings'] ?>
+									</a>
+								</li>
+							<?php } ?>
+							<?php if($modx->hasPermission('view_eventlog')) { ?>
+								<li>
+									<a href="index.php?a=70" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-calendar"></i><?php echo $_lang['site_schedule'] ?>
+									</a>
+								</li>
+							<?php } ?>
+							<?php if($modx->hasPermission('view_eventlog')) { ?>
+								<li>
+									<a href="index.php?a=114" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-exclamation-triangle"></i><?php echo $_lang['eventlog_viewer'] ?>
+									</a>
+								</li>
+							<?php } ?>
+							<?php if($modx->hasPermission('logs')) { ?>
+								<li>
+									<a href="index.php?a=13" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-user-secret"></i><?php echo $_lang['view_logging'] ?>
+									</a>
+								</li>
+								<li>
+									<a href="index.php?a=53" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-info-circle"></i><?php echo $_lang['view_sysinfo'] ?>
+									</a>
+								</li>
+							<?php } ?>
+							<?php if($modx->hasPermission('help')) { ?>
+								<li>
+									<a href="index.php?a=9#version_notices" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+										<i class="fa fa-question-circle"></i><?php echo $_lang['help'] ?>
+									</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</li>
+				<?php } ?>
 				<li class="dropdown account">
 					<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;">
 						<div class="username"><?php echo $user['username'] ?></div>
@@ -312,8 +314,8 @@ if($user['which_browser'] == 'default') {
 			echo sprintf('<div class="menuLink" id="item%s" onclick="modx.tree.menuHandler(%s); modx.tree.hideMenu();">', $action, $action);
 			echo sprintf('<i class="%s"></i> %s</div>', $img, $text);
 		}
-	} ?>
-	<?php
+	}
+
 	$modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 	?>
 </div>

@@ -6,7 +6,7 @@
 html, body, form, fieldset, img { margin: 0; padding: 0; }
 img { border: none; }
 html { font-size: 100.01%; line-height: 1.5; color: #333; }
-body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; font-size: 13px; color: #333; background: #F2F2F2 !important; }
+body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; font-size: 13px; color: #333; background: #F2F2F2 !important; -webkit-font-smoothing: subpixel-antialiased !important; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; }
 /* For Arabic Font */
 html[lang="ar"] body, html[lang="ary"] body, html[lang="azb"] body, html[lang="fa-IR"] body, html[lang="haz"] body, html[lang="ps"] body, html[lang="ur"] body { font-family: Tahoma, Arial, sans-serif; }
 /* For Chinese Font */
@@ -97,7 +97,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .account #msgCounter { display: none; position: absolute; z-index: 1; right: 14px; top: 3px; background-color: rgba(0, 0, 0, 0.5); line-height: 13px; font-size: 10px; padding: 2px 5px; border-radius: 7px; }
 #mainMenu .account #msgCounter::before { position: absolute; z-index: -1; left: 2px; top: 2px; right: 2px; bottom: 2px; background-color: #e91e4f; border-radius: 6px; content: "" }
 #mainMenu .account #newMail { display: none }
-#mainMenu .nav > li > ul { display: block; position: absolute; z-index: 1001; left: auto; top: 100%; right: auto; min-width: 15rem; max-height: 400px;  max-height: -webkit-calc(100vh - 48px); max-height: calc(100vh - 48px); margin: 0; padding: 0; opacity: 0; visibility: hidden; overflow: auto; background-color: #fff; border-radius: 0; box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2); -webkit-transition: opacity 0.3s, visibility 0.3s; transition: opacity 0.3s, visibility 0.3s; transform: translateZ(0) }
+#mainMenu .nav > li > ul { display: block; position: absolute; z-index: 1001; left: auto; top: 100%; right: auto; min-width: 15rem; max-height: 400px; max-height: -webkit-calc(100vh - 48px); max-height: calc(100vh - 48px); margin: 0; padding: 0; opacity: 0; visibility: hidden; overflow: auto; background-color: #fff; border-radius: 0; box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2); -webkit-transition: opacity 0.3s, visibility 0.3s; transition: opacity 0.3s, visibility 0.3s; transform: translateZ(0) }
 #mainMenu .nav > li:hover > ul { opacity: 1; visibility: visible; -webkit-transition-delay: 0.1s; transition-delay: 0.1s }
 #mainMenu .nav > li.close > ul { opacity: 0 !important; visibility: hidden !important; -webkit-transition-delay: 0s !important; transition-delay: 0s !important }
 #mainMenu .nav > li > ul a, #mainMenu .nav > li > ul span { display: block; position: relative; padding: 10px; margin-top: -1px; text-decoration: none; border-top: 1px solid rgba(0, 0, 0, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.05); color: #39545e }
@@ -223,10 +223,11 @@ div.treeframebody { -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1
 #treeRoot div div { margin-left: 10px }
 #treeRoot div div small { margin-right: 10px }
 #treeRoot div img { margin: 0; vertical-align: middle; }
+#treeRoot span { display: inline-block }
 .rtl #treeRoot div img { margin: 0; }
 #treeRoot .fa { position: relative; margin-right: 5px; width: 14px; font-size: 14px; text-align: center; color: #80969c; }
 #treeRoot .fa > .fa-lock { position: absolute; left: 0; bottom: 0; text-align: left; color: rgba(0, 0, 0, 0.65); font-size: 0.7em; }
-#treeRoot .fa.fa-angle-down, #treeRoot .fa.fa-angle-right { position: absolute; left: -20px; top: 0; margin: 0; font-size: 1rem; text-align: center; cursor: pointer }
+#treeRoot .fa.fa-angle-down, #treeRoot .fa.fa-angle-right { position: absolute; left: -20px; top: 0; margin: 0; line-height: 1.2rem; font-size: 1rem; text-align: center; cursor: pointer }
 #treeRoot .fa-file, #treeRoot .fa-file-o, #treeRoot .fa-file-code, #treeRoot .fa-file-code-o { }
 #treeRoot .fa-folder, #treeRoot .fa-folder-open, #treeRoot .fa-folder-o, #treeRoot .fa-folder-open-o, #treeRoot .fa-exclamation-triangle { text-align: left }
 #treeRoot .lockedResource { cursor: pointer; }
@@ -234,7 +235,7 @@ div.treeframebody { -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1
 #floater td { padding: 0 !important; }
 #floater input, #floater select { box-sizing: border-box; width: 150px; margin-bottom: 5px; }
 .rtl #floater { right: 4px }
-.rootNode, .treeNode, .treeNodeHover, .treeNodeSelected, .emptyNode { color: #000; cursor: pointer; width: auto; border: 1px solid transparent; padding: 1px 2px; margin-right: 2px; }
+.rootNode, .treeNode, .treeNodeHover, .treeNodeSelected, .emptyNode { border: 1px solid transparent; padding: 0 2px; margin-right: 2px; line-height: 16px; color: #000; cursor: pointer; }
 div.treeNode { white-space: nowrap; }
 .treeNodeSelected, .treeNodeHover { background-color: #FFFFFF; border: 1px solid #CCC; color: #000; }
 .treeNodeSelected { font-weight: 700; }
