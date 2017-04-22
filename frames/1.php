@@ -167,6 +167,7 @@ if($user['which_browser'] == 'default') {
 						<i class="fa fa-desktop"></i>
 					</a>
 				</li>
+				<?php if($modx->hasPermission('settings') || $modx->hasPermission('view_eventlog') || $modx->hasPermission('logs') || $modx->hasPermission('help') ) { ?>
 				<li class="dropdown">
 					<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;"><i class="fa fa-sliders fa-2x"></i></a>
 					<ul class="dropdown-menu">
@@ -212,6 +213,7 @@ if($user['which_browser'] == 'default') {
 						<?php } ?>
 					</ul>
 				</li>
+				<?php } ?>
 				<li class="dropdown account">
 					<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;">
 						<div class="username"><?php echo $user['username'] ?></div>
