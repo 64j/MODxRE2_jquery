@@ -336,8 +336,8 @@ var scrollWork = function() {
 
 				if(modx.tree.rpcNode.style.display != 'block') {
 					// expand
-					if(signImg && signImg.src.indexOf(modx.style.tree_plusnode) > -1) {
-						signImg.src = modx.style.tree_minusnode;
+					if(signImg && signImg.getAttribute('class') == 'plus') {
+						signImg.innerHTML = modx.style.tree_minusnode;
 						folderImg.innerHTML = (privatenode == '0') ? modx.style.tree_folderopen_new : modx.style.tree_folderopen_secure;
 					}
 
@@ -363,8 +363,8 @@ var scrollWork = function() {
 				}
 				else {
 					// collapse
-					if(signImg && signImg.src.indexOf(modx.style.tree_minusnode) > -1) {
-						signImg.src = modx.style.tree_plusnode;
+					if(signImg && signImg.getAttribute('class') == 'minus') {
+						signImg.innerHTML = modx.style.tree_plusnode;
 						folderImg.innerHTML = (privatenode === '0') ? modx.style.tree_folder_new : modx.style.tree_folder_secure;
 					}
 					//rpcNode.innerHTML = '';
