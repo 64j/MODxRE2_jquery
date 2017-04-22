@@ -784,3 +784,8 @@ a.btn.disabled, fieldset[disabled] a.btn { pointer-events: none; }
 .actionButtons a span { display: none; }
 .actionButtons a .fa { display: inline-block; }
 }
+/* ElementsInTree */
+.ElementsInTree #treeHolder { height: 100%; overflow: hidden; }
+.ElementsInTree #treeHolder #tabDoc::before { display: none }
+.ElementsInTree #treeHolder #treePane .tab-page .panel-group, .ElementsInTree #treeHolder #treePane #tabDoc.tab-page > div { max-height: calc(100vh - 180px); overflow: auto; }
+.ElementsInTree #treeHolder #treePane .tab-page .panel-group > div { overflow: visible !important; max-height: none !important; box-sizing: border-box !important }

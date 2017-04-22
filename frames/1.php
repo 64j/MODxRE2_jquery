@@ -41,6 +41,10 @@ if(!$MODX_positionSideBar) {
 	$body_class .= 'sidebar-closed';
 }
 
+if(isset($modx->pluginCache['ElementsInTree'])) {
+	$body_class .= ' ElementsInTree';
+}
+
 $unlockTranslations = array(
 	'msg' => $_lang["unlock_element_id_warning"],
 	'type1' => $_lang["lock_element_type_1"],
@@ -318,6 +322,11 @@ if($user['which_browser'] == 'default') {
 
 	$modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 	?>
+	<script>
+		reloadElementsInTree = function() {
+
+		};
+	</script>
 </div>
 </body>
 </html>

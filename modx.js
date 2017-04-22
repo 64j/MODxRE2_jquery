@@ -286,10 +286,10 @@ var setLastClickedElement = function(type, id) {
 			onMouseUp: function(e) {
 				if(modx.resizer.dragElement != null && e.button == 0 && modx.resizer.dragElement.id == modx.resizer.id) {
 					if(e.clientX > 0) {
-						d.getElementById('frameset').className = 'sidebar-opened';
+						$('#frameset').removeClass('sidebar-closed').addClass('sidebar-opened');
 						modx.resizer.left = e.clientX;
 					} else {
-						d.getElementById('frameset').className = 'sidebar-closed';
+						$('#frameset').removeClass('sidebar-opened').addClass('sidebar-closed');
 						modx.resizer.left = 0;
 					}
 					d.cookie = 'MODX_positionSideBar=' + modx.resizer.left;
@@ -308,10 +308,10 @@ var setLastClickedElement = function(type, id) {
 			},
 			setWidth: function(pos) {
 				if(pos > 0) {
-					d.getElementById('frameset').className = 'sidebar-opened';
+					$('#frameset').removeClass('sidebar-closed').addClass('sidebar-opened');
 					localStorage.setItem('MODX_lastPositionSideBar', 0);
 				} else {
-					d.getElementById('frameset').className = 'sidebar-closed';
+					$('#frameset').removeClass('sidebar-opened').addClass('sidebar-closed');
 					localStorage.setItem('MODX_lastPositionSideBar', parseInt(d.getElementById('tree').offsetWidth));
 				}
 				d.cookie = 'MODX_positionSideBar=' + pos;
