@@ -134,8 +134,9 @@ foreach($unlockTranslations as $key => $value) $unlockTranslations[$key] = iconv
 	<div class="col float-right">
 		<ul class="nav">
 			<li>
-				<a href="../" target="_blank" title="<?php echo $_lang['preview'] ?>" onclick="setLastClickedElement(0,0);this.blur();"><i class="fa fa-home fa-2x"></i></a>
+				<a href="../" target="_blank" title="<?php echo $_lang['preview'] ?>" onclick="setLastClickedElement(0,0);this.blur();"><i class="fa fa-desktop fa-2x"></i></a>
 			</li>
+			<?php if($modx->hasPermission('settings') || $modx->hasPermission('view_eventlog') || $modx->hasPermission('logs') || $modx->hasPermission('help') ) { ?>
 			<li class="dropdown"><a class="dropdown-toggle"> <i class="fa fa-sliders fa-2x" aria-hidden="true"></i> </a>
 				<ul class="dropdown-menu">
 					<?php if($modx->hasPermission('settings')) { ?>
@@ -168,6 +169,7 @@ foreach($unlockTranslations as $key => $value) $unlockTranslations[$key] = iconv
 					<?php } ?>
 				</ul>
 			</li>
+			<?php } ?>
 			<li class="dropdown account"><a class="dropdown-toggle">
 					<?php
 					$user = $modx->getUserInfo($modx->getLoginUserID());
