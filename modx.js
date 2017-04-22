@@ -4,12 +4,12 @@ var mainMenu = {
 	},
 	reloadtree: function() {
 		console.log('mainMenu.reloadtree()');
-		modx.tree.restoreTree()
+		setTimeout('modx.tree.restoreTree()', 50)
 	},
 	startrefresh: function(rFrame) {
 		console.log('mainMenu.startrefresh(' + rFrame + ')');
 		if(rFrame == 1) {
-			modx.tree.restoreTree();
+			setTimeout('modx.tree.restoreTree()', 50)
 		}
 		if(rFrame == 2 || rFrame == 9 || rFrame == 10) {
 			top.location.href = "../" + modx.MGR_DIR;

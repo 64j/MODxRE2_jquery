@@ -229,6 +229,7 @@ div.treeframebody { background: #f5f5f5 url(images/subnav.jpg) !important; -webk
 #treeRoot .fa.fa-angle-down, #treeRoot .fa.fa-angle-right { position: absolute; left: -20px; top: 0; margin: 0; font-size: 1rem; text-align: center; cursor: pointer }
 #treeRoot .fa-file, #treeRoot .fa-file-o, #treeRoot .fa-file-code, #treeRoot .fa-file-code-o {}
 #treeRoot .fa-folder, #treeRoot .fa-folder-open, #treeRoot .fa-folder-o, #treeRoot .fa-folder-open-o, #treeRoot .fa-exclamation-triangle { text-align: left }
+#treeRoot .lockedResource { cursor: pointer; }
 #floater { display: none; position: absolute; width: 100%; padding: 15px; padding-bottom: 10px; top: 31px; left: 0px; background: #fff; border: 1px solid #b0b0b0; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1); box-sizing: border-box; z-index: 500; }
 #floater td { padding: 0 !important; }
 #floater input, #floater select { box-sizing: border-box; width: 150px; margin-bottom: 5px; }
