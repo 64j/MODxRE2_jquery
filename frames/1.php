@@ -120,11 +120,9 @@ if($user['which_browser'] == 'default') {
 				expand_tree: "<?php echo addslashes($_style['expand_tree']) ?>",
 				icons_external_link: "<?php echo addslashes($_style['icons_external_link']) ?>",
 				icons_working: "<?php echo addslashes($_style['icons_working']) ?>",
-				tree_folder: "<?php echo addslashes($_style["tree_folder"]) ?>",
-				tree_folder_new: "<?php echo addslashes($_style['tree_folder_new']) ?>",
+				tree_folder: "<?php echo addslashes($_style['tree_folder_new']) ?>",
 				tree_folder_secure: "<?php echo addslashes($_style['tree_folder_secure']) ?>",
-				tree_folderopen: "<?php echo addslashes($_style['tree_folderopen']) ?>",
-				tree_folderopen_new: "<?php echo addslashes($_style['tree_folderopen_new']) ?>",
+				tree_folderopen: "<?php echo addslashes($_style['tree_folderopen_new']) ?>",
 				tree_folderopen_secure: "<?php echo addslashes($_style['tree_folderopen_secure']) ?>",
 				tree_minusnode: "<?php echo addslashes($_style["tree_minusnode"]) ?>",
 				tree_plusnode: "<?php echo addslashes($_style['tree_plusnode']) ?>"
@@ -139,14 +137,13 @@ if($user['which_browser'] == 'default') {
 				new_document: "<?php echo $modx->hasPermission('new_document') ? 1 : 0; ?>",
 				publish_document: "<?php echo $modx->hasPermission('publish_document') ? 1 : 0; ?>"
 			},
-			openedArray: [{
-				<?php
-				$opened = array_filter(array_map('intval', explode('|', $_SESSION['openedArray'])));
-				echo (empty($opened) ? '' : '"' . implode('":"1","', $opened) . '":"1"') . "\n";
-				?>
-			}],
-			lockedElementsTranslation: <?php echo json_encode($unlockTranslations); ?>
+			openedArray: [],
+			lockedElementsTranslation: <?php echo json_encode($unlockTranslations) . "\n" ?>
 		};
+		<?php
+		$opened = array_filter(array_map('intval', explode('|', $_SESSION['openedArray'])));
+		echo (empty($opened) ? '' : 'modx.openedArray[' . implode("] = 1;\n		modx.openedArray[", $opened) . '] = 1;') . "\n";
+		?>
 	</script>
 	<script src="media/style/<?php echo $modx->config['manager_theme']; ?>/modx.js"></script>
 </head>
@@ -176,46 +173,40 @@ if($user['which_browser'] == 'default') {
 						<?php if($modx->hasPermission('settings')) { ?>
 							<li>
 								<a href="index.php?a=17" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-cog fw"></i>
-									<?php echo $_lang['edit_settings'] ?>
+									<i class="fa fa-cog fw"></i><?php echo $_lang['edit_settings'] ?>
 								</a>
 							</li>
 						<?php } ?>
 						<?php if($modx->hasPermission('view_eventlog')) { ?>
 							<li>
 								<a href="index.php?a=70" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-calendar"></i>
-									<?php echo $_lang['site_schedule'] ?>
+									<i class="fa fa-calendar"></i><?php echo $_lang['site_schedule'] ?>
 								</a>
 							</li>
 						<?php } ?>
 						<?php if($modx->hasPermission('view_eventlog')) { ?>
 							<li>
 								<a href="index.php?a=114" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-exclamation-triangle"></i>
-									<?php echo $_lang['eventlog_viewer'] ?>
+									<i class="fa fa-exclamation-triangle"></i><?php echo $_lang['eventlog_viewer'] ?>
 								</a>
 							</li>
 						<?php } ?>
 						<?php if($modx->hasPermission('logs')) { ?>
 							<li>
 								<a href="index.php?a=13" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-user-secret"></i>
-									<?php echo $_lang['view_logging'] ?>
+									<i class="fa fa-user-secret"></i><?php echo $_lang['view_logging'] ?>
 								</a>
 							</li>
 							<li>
 								<a href="index.php?a=53" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-info-circle"></i>
-									<?php echo $_lang['view_sysinfo'] ?>
+									<i class="fa fa-info-circle"></i><?php echo $_lang['view_sysinfo'] ?>
 								</a>
 							</li>
 						<?php } ?>
 						<?php if($modx->hasPermission('help')) { ?>
 							<li>
 								<a href="index.php?a=9#version_notices" target="main" onclick="setLastClickedElement(0,0);this.blur();">
-									<i class="fa fa-question-circle"></i>
-									<?php echo $_lang['help'] ?>
+									<i class="fa fa-question-circle"></i><?php echo $_lang['help'] ?>
 								</a>
 							</li>
 						<?php } ?>
@@ -236,15 +227,13 @@ if($user['which_browser'] == 'default') {
 						<?php if($modx->hasPermission('change_password')) { ?>
 							<li>
 								<a onclick="this.blur();" href="index.php?a=28" target="main">
-									<i class="fa fa-lock"></i>
-									<?php echo $_lang['change_password'] ?>
+									<i class="fa fa-lock"></i><?php echo $_lang['change_password'] ?>
 								</a>
 							</li>
 						<?php } ?>
 						<li>
 							<a href="index.php?a=8">
-								<i class="fa fa-sign-out"></i>
-								<?php echo $_lang['logout'] ?>
+								<i class="fa fa-sign-out"></i><?php echo $_lang['logout'] ?>
 							</a>
 						</li>
 						<?php
