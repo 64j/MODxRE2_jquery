@@ -495,7 +495,7 @@ var setLastClickedElement = function(type, id) {
 					d.onclick = function() {
 						modx.tree.hideMenu(1)
 					}
-				}, 100);
+				}, 200);
 			},
 			getScrollY: function() {
 				var scrOfY = 0;
@@ -673,17 +673,17 @@ var setLastClickedElement = function(type, id) {
 						.html(modx.style.empty_recycle_bin_empty)
 						.off('click')
 				}
-			}
-		},
-		unlockElement: function(type, id, domEl) {
-			var msg = modx.lockedElementsTranslation.msg.replace('[+id+]', id).replace('[+element_type+]', modx.lockedElementsTranslation['type' + type]);
-			if(confirm(msg) == true) {
-				$.get('index.php?a=67&type=' + type + '&id=' + id, function(data) {
-					if(data == 1) {
-						$(domEl).fadeOut();
-					}
-					else alert(data);
-				});
+			},
+			unlockElement: function(type, id, domEl) {
+				var msg = modx.lockedElementsTranslation.msg.replace('[+id+]', id).replace('[+element_type+]', modx.lockedElementsTranslation['type' + type]);
+				if(confirm(msg) == true) {
+					$.get('index.php?a=67&type=' + type + '&id=' + id, function(data) {
+						if(data == 1) {
+							$(domEl).fadeOut();
+						}
+						else alert(data);
+					});
+				}
 			}
 		},
 		setLastClickedElement: function(type, id) {
@@ -759,30 +759,30 @@ var setLastClickedElement = function(type, id) {
 			// set tree height
 			var tree = $('#treeHolder');
 			var tmnu = $('#treeMenu');
-			tree.style.width = (win['width']-20)+'px';
-			tree.style.height = (win['height']-tree.offsetTop-6)+'px';
+			tree.style.width = (win['width'] - 20) + 'px';
+			tree.style.height = (win['height'] - tree.offsetTop - 6) + 'px';
 			tree.style.overflow = 'auto';
 		},
 		getWindowDimension: function() {
-			var width  = 0;
+			var width = 0;
 			var height = 0;
 
-			if ( typeof( window.innerWidth ) == 'number' ){
-				width  = window.innerWidth;
+			if(typeof( window.innerWidth ) == 'number') {
+				width = window.innerWidth;
 				height = window.innerHeight;
-			}else if ( document.documentElement &&
+			} else if(document.documentElement &&
 				( document.documentElement.clientWidth ||
-				document.documentElement.clientHeight ) ){
-				width  = document.documentElement.clientWidth;
+				document.documentElement.clientHeight )) {
+				width = document.documentElement.clientWidth;
 				height = document.documentElement.clientHeight;
 			}
-			else if ( document.body &&
-				( document.body.clientWidth || document.body.clientHeight ) ){
-				width  = document.body.clientWidth;
+			else if(document.body &&
+				( document.body.clientWidth || document.body.clientHeight )) {
+				width = document.body.clientWidth;
 				height = document.body.clientHeight;
 			}
 
-			return {'width':width,'height':height};
+			return {'width': width, 'height': height};
 		}
 	});
 
