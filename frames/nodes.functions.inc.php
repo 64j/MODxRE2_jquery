@@ -98,7 +98,7 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 					'element_type' => $_lang["lock_element_type_7"],
 					'lasthit_df' => $rowLock['lasthit_df']
 				));
-				$lockedByUser = '<span title="' . $title . '" class="editResource">' . $_style['icons_preview_resource'] . '</span>';
+				$lockedByUser = '<span title="' . $title . '" class="editResource">' . $_style['tree_preview_resource'] . '</span>';
 			} else {
 				$title = $modx->parseText($_lang["lock_element_locked_by"], array(
 					'element_type' => $_lang["lock_element_type_7"],

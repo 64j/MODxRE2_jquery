@@ -75,6 +75,7 @@ $_style['tree_page_excel']          = "<i class='fa fa-file-excel-o'></i>";
 $_style['tree_minusnode']           = "<i class='fa fa-angle-down'></i>";//$style_path.'tree/angle-down.png';
 $_style['tree_plusnode']            = "<i class='fa fa-angle-right'></i>";//$style_path.'tree/angle-right.png';
 $_style['tree_weblink']             = $style_path.'tree/link.png';
+$_style['tree_preview_resource']    = "<i class='fa fa-eye'></i>";//$style_path.'icons/eye.png';
 
 $_style['tree_showtree']            = '<i class="fa fa-sitemap"></i>';
 
@@ -88,6 +89,9 @@ $_style['tree_page_rss_secure']     = "<i class='fa fa-file-code-o'></i>";
 $_style['tree_page_pdf_secure']     = "<i class='fa fa-file-pdf-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_word_secure']    = "<i class='fa fa-file-word-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_excel_secure']   = "<i class='fa fa-file-excel-o'><i class='fa fa-lock'></i></i>";
+
+//search
+$_style['icons_external_link']      = '<i class="fa fa-external-link"></i>';
 
 //View Resource data 
 $_style['icons_new_document']       = 'fa fa-file-o fa-lg';
@@ -104,7 +108,7 @@ $_style['icons_resource_duplicate'] = $style_path.'icons/clone.png';
 $_style['icons_edit_document']      = $style_path.'icons/save.png';
 $_style['icons_delete_document']    = $style_path.'icons/trash.png';
 //locks
-$_style['icons_preview_resource']   = "<i class='fa fa-eye'></i>";//$style_path.'icons/eye.png';
+$_style['icons_preview_resource']   = $style_path.'icons/eye.png';//$style_path.'icons/eye.png';
 $_style['icons_secured']            = "<i class='fa fa-lock'></i>";//$style_path.'icons/lock.png';
 
 //file manager icons
