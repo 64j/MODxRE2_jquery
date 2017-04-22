@@ -7,8 +7,6 @@ header("X-XSS-Protection: 0");
 
 $_SESSION['browser'] = (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 1') !== false) ? 'legacy_IE' : 'modern';
 
-$mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
-
 $modx->invokeEvent('OnManagerPreFrameLoader', array('action' => $action));
 
 if(isset($_SESSION['onLoginForwardToAction']) && is_int($_SESSION['onLoginForwardToAction'])) {
@@ -18,6 +16,23 @@ if(isset($_SESSION['onLoginForwardToAction']) && is_int($_SESSION['onLoginForwar
 	$initMainframeAction = 2; // welcome.static
 }
 
+$modx_textdir = isset($modx_textdir) ? $modx_textdir : null;
+$mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
+
+$unlockTranslations = array(
+	'msg' => $_lang["unlock_element_id_warning"],
+	'type1' => $_lang["lock_element_type_1"],
+	'type2' => $_lang["lock_element_type_2"],
+	'type3' => $_lang["lock_element_type_3"],
+	'type4' => $_lang["lock_element_type_4"],
+	'type5' => $_lang["lock_element_type_5"],
+	'type6' => $_lang["lock_element_type_6"],
+	'type7' => $_lang["lock_element_type_7"],
+	'type8' => $_lang["lock_element_type_8"]
+);
+
+foreach($unlockTranslations as $key => $value) $unlockTranslations[$key] = iconv($modx->config["modx_charset"], "utf-8", $value);
+
 ?>
 <!DOCTYPE html>
 <html <?php echo (isset($modx_textdir) && $modx_textdir ? 'dir="rtl" lang="' : 'lang="') . $mxla . '" xml:lang="' . $mxla . '"'; ?>>
@@ -25,31 +40,85 @@ if(isset($_SESSION['onLoginForwardToAction']) && is_int($_SESSION['onLoginForwar
 	<title><?php echo $site_name ?>- (MODX CMS Manager)</title>
 	<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=0.8">
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $modx_manager_charset ?>" />
+	<meta http-equiv="Cache-control" content="no-cache">
 	<link rel="stylesheet" type="text/css" href="media/style/common/font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="media/style/<?php echo $modx->config['manager_theme']; ?>/style.css" />
-	<style>
-		#tree { width: 320px }
-		#main, #resizer { left: 320px }
-	</style>
 	<script src="media/script/jquery/jquery.min.js"></script>
 	<script type="text/javascript">
+
+		// GLOBAL variable modx
 		var modx = {
+			site_start: "<?php echo $modx->config['site_start']?>",
 			MGR_DIR: "<?php echo MGR_DIR ?>",
-			manager_theme: "<?php echo $modx->config['manager_theme'] ?>",
-			manager_layout: "<?php echo $manager_layout ?>",
+			openedArray: [{
+				<?php
+				$opened = array_filter(array_map('intval', explode('|', $_SESSION['openedArray'])));
+				foreach($opened as $key => $item) {
+					printf('"%d": "1"', $item);
+					if(count($opened) - 1 > $key) {
+						print(',');
+					}
+				}
+				?>
+
+			}],
+			manager: {
+				layout: "<?php echo $manager_layout ?>",
+				textdir: "<?php echo $modx_textdir ?>",
+				theme: "<?php echo $modx->config['manager_theme'] ?>",
+				which_browser: "<?php echo $which_browser; ?>"
+			},
 			lang: {
+				already_deleted: "<?php echo $_lang['already_deleted']; ?>",
+				collapse_tree: "<?php echo $_lang['collapse_tree']; ?>",
+				confirm_delete_resource: "<?php echo $_lang['confirm_delete_resource']; ?>",
+				confirm_empty_trash: "<?php echo $_lang['confirm_empty_trash']; ?>",
+				confirm_publish: "<?php echo $_lang['confirm_publish']; ?>",
 				confirm_remove_locks: "<?php echo $_lang['confirm_remove_locks'] ?>",
-				working: "<?php echo $_lang['working'] ?>",
+				confirm_resource_duplicate: "<?php echo $_lang['confirm_resource_duplicate'] ?>",
+				confirm_undelete: "<?php echo $_lang['confirm_undelete']; ?>",
+				confirm_unpublish: "<?php echo $_lang['confirm_unpublish']; ?>",
+				empty_recycle_bin: "<?php echo $_lang['empty_recycle_bin']; ?>",
+				empty_recycle_bin_empty: "<?php echo addslashes($_lang['empty_recycle_bin_empty']); ?>",
+				expand_tree: "<?php echo $_lang['expand_tree']; ?>",
 				loading_doc_tree: "<?php echo $_lang['loading_doc_tree'] ?>",
-				loading_menu: "<?php echo $_lang['loading_menu'] ?>"
-			}
+				loading_menu: "<?php echo $_lang['loading_menu'] ?>",
+				not_deleted: "<?php echo $_lang['not_deleted']; ?>",
+				unable_set_link: "<?php echo $_lang['unable_set_link']; ?>",
+				unable_set_parent: "<?php echo $_lang['unable_set_parent']; ?>",
+				working: "<?php echo $_lang['working'] ?>"
+			},
+			style: {
+				collapse_tree: "<?php echo addslashes($_style['collapse_tree']) ?>",
+				empty_recycle_bin: "<?php echo addslashes($_style['empty_recycle_bin']) ?>",
+				empty_recycle_bin_empty: "<?php echo addslashes($_style['empty_recycle_bin_empty']) ?>",
+				expand_tree: "<?php echo addslashes($_style['expand_tree']) ?>",
+				tree_folder_new: "<?php echo addslashes($_style['tree_folder_new']) ?>",
+				tree_folder_secure: "<?php echo addslashes($_style['tree_folder_secure']) ?>",
+				tree_folderopen: "<?php echo addslashes($_style['tree_folderopen']) ?>",
+				tree_folderopen_new: "<?php echo addslashes($_style['tree_folderopen_new']) ?>",
+				tree_folderopen_secure: "<?php echo addslashes($_style['tree_folderopen_secure']) ?>",
+				tree_minusnode: "<?php echo addslashes($_style["tree_minusnode"]) ?>",
+				tree_plusnode: "<?php echo addslashes($_style['tree_plusnode']) ?>"
+			},
+			permission: {
+				assets_images: "<?php echo $modx->hasPermission('assets_images') ? 1 : 0; ?>",
+				delete_document: "<?php echo $modx->hasPermission('delete_document') ? 1 : 0; ?>",
+				edit_chunk: "<?php echo $modx->hasPermission('edit_chunk') ? 1 : 0; ?>",
+				edit_plugin: "<?php echo $modx->hasPermission('edit_plugin') ? 1 : 0; ?>",
+				edit_snippet: "<?php echo $modx->hasPermission('edit_snippet') ? 1 : 0; ?>",
+				edit_template: "<?php echo $modx->hasPermission('edit_template') ? 1 : 0; ?>",
+				new_document: "<?php echo $modx->hasPermission('new_document') ? 1 : 0; ?>",
+				publish_document: "<?php echo $modx->hasPermission('publish_document') ? 1 : 0; ?>"
+			},
+			tree_page_click: "<?php echo(!empty($modx->config['tree_page_click']) ? $modx->config['tree_page_click'] : '27'); ?>",
+			lockedElementsTranslation: <?php echo json_encode($unlockTranslations); ?>
 		};
 	</script>
 	<script src="media/style/<?php echo $modx->config['manager_theme']; ?>/modx.js"></script>
 </head>
 <body id="frameset" class="tree-show">
-<div id="resizer"><a id="hideMenu"> <i class="fa fa-chevron-right"></i> </a></div>
-<div id="mainMenu" name="mainMenu">
+<div id="mainMenu">
 	<div class="col float-left">
 		<!--		<form name="menuForm" action="l4mnu.php">
 			<input type="hidden" name="sessToken" id="sessTokenInput" value="<?php echo md5(session_id()); ?>" />-->
@@ -147,6 +216,7 @@ if(isset($_SESSION['onLoginForwardToAction']) && is_int($_SESSION['onLoginForwar
 <div id="main">
 	<iframe name="main" id="mainframe" src="index.php?a=<?php echo $initMainframeAction; ?>" scrolling="auto" frameborder="0" onload="modx.stopWork();modx.scrollWork();"></iframe>
 </div>
+<div id="resizer"><a id="hideMenu"> <i class="fa fa-chevron-right"></i> </a></div>
 <?php
 $modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 ?>

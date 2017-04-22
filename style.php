@@ -21,7 +21,7 @@ if($_GET['a']==2) include_once('welcome.php');
 $_style['add_doc_tree']             = '<i class="fa fa-file fa-lg"></i>';
 $_style['add_weblink_tree']         = '<i class="fa fa-link fa-lg"></i>';
 $_style['collapse_tree']            = '<i class="fa fa-arrow-circle-up fa-lg"></i>';
-$_style['empty_recycle_bin']        = '<i class="fa fa-trash-o fa-lg"></i>';
+$_style['empty_recycle_bin']        = '<i class="fa fa-trash fa-lg"></i>';
 $_style['empty_recycle_bin_empty']  = '<i class="fa fa-trash-o fa-lg"></i>';
 $_style['expand_tree']              = '<i class="fa fa-arrow-circle-down fa-lg"></i>';
 $_style['hide_tree']                = '<i class="fa fa-caret-square-o-left fa-lg"></i>';
@@ -51,10 +51,10 @@ $_style['ctx_preview_resource']     = 'fa fa-eye fa-fw fa-lg';
 $_style['tree_deletedpage']         = $style_path.'tree/file-alt-deleted.png';
 $_style['tree_folder']              = $style_path.'tree/folder-close-alt.png'; /* folder.png */
 $_style['tree_folderopen']          = $style_path.'tree/folder-open-alt.png'; /* folder-open.png */
-$_style['tree_folder_new']              = "<i class='fa fa-folder-o'></i>"; /* folder.png */
-$_style['tree_folderopen_new']          = "<i class='fa fa-folder-open-o'></i>"; /* folder-open.png */
-$_style['tree_folder_secure']       = "<i class='fa fa-folder-o'><i class='fa fa-lock'></i></i>";
-$_style['tree_folderopen_secure']   = "<i class='fa fa-folder-open-o'><i class='fa fa-lock'></i></i>"; 
+$_style['tree_folder_new']          = "<i class='fa fa-folder'></i>"; /* folder.png */
+$_style['tree_folderopen_new']      = "<i class='fa fa-folder-open'></i>"; /* folder-open.png */
+$_style['tree_folder_secure']       = "<i class='fa fa-folder'><i class='fa fa-lock'></i></i>";
+$_style['tree_folderopen_secure']   = "<i class='fa fa-folder-open'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_globe']               = $style_path.'tree/globe.png';
 $_style['tree_linkgo']              = "<i class='fa fa-link'></i>";
 $_style['tree_page']                = "<i class='fa fa-file-o'></i>";
@@ -126,6 +126,20 @@ $_style['files_view']               = 'fa fa-eye fa-fw fa-lg';
 $_style['files_download']           = 'fa fa-download fa-fw fa-lg';
 $_style['files_unzip']              = 'fa fa-file-archive-o fa-fw fa-lg';
 $_style['files_edit']               = 'fa fa-pencil-square-o fa-fw fa-lg';
+
+//Action buttons 
+$_style['actions_save']             = 'fa fa-floppy-o fa-lg';
+$_style['actions_duplicate']        = 'fa fa-clone fa-fw fa-lg';
+$_style['actions_delete']           = 'fa fa-trash fa-fw fa-lg';
+$_style['actions_cancel']           = 'fa fa-times-circle fa-fw fa-lg';
+$_style['actions_preview']          = 'fa fa-eye fa-fw fa-lg';
+$_style['actions_run']              = 'fa fa-play fa-fw fa-lg';
+$_style['actions_new']              = 'fa fa-plus-circle fa-lg';
+$_style['actions_help']             = 'fa fa-question-circle fa-lg';
+$_style['actions_sort']             = 'fa fa-sort fa-fw fa-lg';
+$_style['actions_options']          = 'fa fa-check-square fa-fw fa-lg';
+$_style['actions_categories']       = 'fa fa-folder-open fa-fw fa-lg';
+$_style['actions_search']           = 'fa fa-search fa-fw fa-lg';
 
 //for back compatibility 
 
