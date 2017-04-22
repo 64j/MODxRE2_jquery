@@ -90,6 +90,9 @@ $_style['tree_page_pdf_secure']     = "<i class='fa fa-file-pdf-o'><i class='fa 
 $_style['tree_page_word_secure']    = "<i class='fa fa-file-word-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_excel_secure']   = "<i class='fa fa-file-excel-o'><i class='fa fa-lock'></i></i>";
 
+//search
+$_style['icons_external_link']      = '<i class="fa fa-external-link"></i>';
+
 //View Resource data 
 $_style['icons_new_document']       = 'fa fa-file-o fa-lg';
 $_style['icons_new_weblink']        = 'fa fa-link fa-lg';
