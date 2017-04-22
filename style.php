@@ -48,14 +48,14 @@ $_style['ctx_resource_overview']    = 'fa fa-info fa-fw fa-lg';
 $_style['ctx_preview_resource']     = 'fa fa-eye fa-fw fa-lg';
 
 // Tree Icons
-$_style['tree_deletedpage']         = $style_path.'tree/file-alt-deleted.png';
+$_style['tree_deletedpage']         = "<i class='fa fa-ban'></i>";
 $_style['tree_folder']              = $style_path.'tree/folder-close-alt.png'; /* folder.png */
 $_style['tree_folderopen']          = $style_path.'tree/folder-open-alt.png'; /* folder-open.png */
+$_style['tree_globe']               = $style_path.'tree/globe.png';
 $_style['tree_folder_new']          = "<i class='fa fa-folder'></i>"; /* folder.png */
 $_style['tree_folderopen_new']      = "<i class='fa fa-folder-open'></i>"; /* folder-open.png */
 $_style['tree_folder_secure']       = "<i class='fa fa-folder'><i class='fa fa-lock'></i></i>";
 $_style['tree_folderopen_secure']   = "<i class='fa fa-folder-open'><i class='fa fa-lock'></i></i>"; 
-$_style['tree_globe']               = $style_path.'tree/globe.png';
 $_style['tree_linkgo']              = "<i class='fa fa-link'></i>";
 $_style['tree_page']                = "<i class='fa fa-file-o'></i>";
 $_style['tree_page_home']           = "<i class='fa fa-home'></i>";
@@ -72,12 +72,11 @@ $_style['tree_page_pdf']            = "<i class='fa fa-file-fdf-o'></i>";
 $_style['tree_page_word']           = "<i class='fa fa-file-word-o'></i>"; 
 $_style['tree_page_excel']          = "<i class='fa fa-file-excel-o'></i>";
 
-$_style['tree_minusnode']           = $style_path.'tree/angle-down.png';
-$_style['tree_plusnode']            = $style_path.'tree/angle-right.png';
+$_style['tree_minusnode']           = "<i class='fa fa-angle-down'></i>";//$style_path.'tree/angle-down.png';
+$_style['tree_plusnode']            = "<i class='fa fa-angle-right'></i>";//$style_path.'tree/angle-right.png';
+$_style['tree_weblink']             = $style_path.'tree/link.png';
 
 $_style['tree_showtree']            = '<i class="fa fa-sitemap"></i>';
-
-$_style['tree_weblink']             = $style_path.'tree/link.png';
 
 $_style['tree_page_secure']         = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
 $_style['tree_page_blank_secure']   = "<i class='fa fa-file-o'><i class='fa fa-lock'></i></i>"; 
@@ -105,8 +104,8 @@ $_style['icons_resource_duplicate'] = $style_path.'icons/clone.png';
 $_style['icons_edit_document']      = $style_path.'icons/save.png';
 $_style['icons_delete_document']    = $style_path.'icons/trash.png';
 //locks
-$_style['icons_preview_resource']   = $style_path.'icons/eye.png';
-$_style['icons_secured']            = $style_path.'icons/lock.png';
+$_style['icons_preview_resource']   = "<i class='fa fa-eye'></i>";//$style_path.'icons/eye.png';
+$_style['icons_secured']            = "<i class='fa fa-lock'></i>";//$style_path.'icons/lock.png';
 
 //file manager icons
 $_style['files_save']               = 'fa fa-floppy-o fa-fw fa-lg';

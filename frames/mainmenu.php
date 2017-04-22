@@ -4,6 +4,9 @@ menu->Build('id','parent','name','link','alt','onclick','permission','target','d
 */
 
 //mainMenu
+
+//заготовка под кнопку в меню показать скрыть дерево
+//$sitemenu['tree'] = array('treenav', 'main', '<i class="fa fa-bars fa-lg" style="margin-right:0px"></i>', 'javascript:modx.removeLocks();', '', '', '', 'main', 0, 1, '');
 $sitemenu['site'] = array('site', 'main', '<i class="fa fa-modx fa-lg"></i>' . $_lang['home'], 'index.php?a=2', $_lang['home'], '', '', 'main', 0, 10, 'active');
 
 if ($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin') || $modx->hasPermission('file_manager')) {
