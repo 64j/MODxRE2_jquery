@@ -409,6 +409,7 @@ function getTplOpenFolderNode() {
     >[+spacer+]<span
         id="s[+id+]"
         align="absmiddle"
+        class="minus"
         style="margin-left:4px;"
         onclick="modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;"
         oncontextmenu="this.onclick(event); return false;"
@@ -439,6 +440,7 @@ function getTplClosedFolderNode() {
     >[+spacer+]<span
         id="s[+id+]"
         align="absmiddle"
+        class="plus"
         style="margin-left:4px;"
         onclick="modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;"
         oncontextmenu="this.onclick(event); return false;"
