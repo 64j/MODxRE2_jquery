@@ -164,7 +164,7 @@ if($user['which_browser'] == 'default') {
 			<ul class="nav">
 				<li>
 					<a href="../" target="_blank" title="<?php echo $_lang['preview'] ?>" onclick="setLastClickedElement(0,0);this.blur();">
-						<i class="fa fa-home fa-2x"></i>
+						<i class="fa fa-desktop"></i>
 					</a>
 				</li>
 				<li class="dropdown">
