@@ -22,7 +22,7 @@ $indent = intval($_GET['indent']);
 $parent = intval($_GET['parent']);
 $expandAll = intval($_GET['expandAll']);
 $output = '';
-$theme = "{$manager_theme}/";
+$theme = $manager_theme . "/";
 
 // setup sorting
 $sortParams = array(

@@ -47,7 +47,7 @@
   <div class="gridster">
     <ul>
       [[@OnManagerWelcomeHome]]
-      <!---Welcome Logo and buttons--->
+      <!---Welcome Logo and buttons---> 
       <!--- panel -->
       <li id="modxwelcome_widget" data-row="1" data-col="1" data-sizex="2" data-sizey="6">
         <div class="panel panel-default widget-wrapper">
@@ -56,7 +56,7 @@
             <div class="widget-controls pull-right">
               <div class="btn-group">
                 <a href="#" class="btn btn-default btn-xs panel-hide hide-full fa fa-minus" data-id="modxwelcome_widget"></a>
-              </div>
+              </div>    
             </div>
           </div>
           <div class="panel-body widget-stage sectionBody">
@@ -125,7 +125,7 @@
                 </table>
             </div>
           </div>
-        </div>
+        </div>      
       </li>
       <!--- /panel --->
 
@@ -138,7 +138,7 @@
             <div class="widget-controls pull-right">
               <div class="btn-group">
                 <a href="#" class="btn btn-default btn-xs panel-hide hide-full fa fa-minus" data-id="modxonline_widget"></a>
-              </div>
+              </div>    
             </div>
           </div>
           <div class="panel-body widget-stage sectionBody">
@@ -146,7 +146,7 @@
               [+OnlineInfo+]
             </div>
           </div>
-        </div>
+        </div>      
       </li>
       <!--- /panel --->
 
@@ -159,7 +159,7 @@
             <div class="widget-controls pull-right">
               <div class="btn-group">
                 <a href="#" class="btn btn-default btn-xs panel-hide hide-full fa fa-minus" data-id="modxrecent_widget"></a>
-              </div>
+              </div>    
             </div>
           </div>
           <div class="panel-body widget-stage sectionBody">
@@ -178,13 +178,13 @@
             <div class="widget-controls pull-right">
               <div class="btn-group">
                 <a href="#" class="btn btn-default btn-xs panel-hide hide-full fa fa-minus" data-id="modxnews_widget"></a>
-              </div>
+              </div>    
             </div>
           </div>
           <div class="panel-body widget-stage sectionBody">
             [+modx_news_content+]
           </div>
-        </div>
+        </div>      
       </li>
       <!--- /panel --->
 
@@ -197,20 +197,20 @@
             <div class="widget-controls pull-right">
               <div class="btn-group">
                 <a href="#" class="btn btn-default btn-xs panel-hide hide-full fa fa-minus" data-id="modxsecurity_widget"></a>
-              </div>
+              </div>    
             </div>
           </div>
           <div class="panel-body widget-stage sectionBody">
             [+modx_security_notices_content+]
           </div>
-        </div>
+        </div>      
       </li>
       <!--- /panel --->
-    </ul>
+    </ul>           
   </div>
   <!-- / GridStack widgets -->
 
-  [[@OnManagerWelcomeRender]]
+  [[@OnManagerWelcomeRender]] 
   <div class="container-fluid">
     <p class="text-muted pull-right">
       <a class="btn btn-sm btn-default" onclick="cleanLocalStorage('[(site_name:encode_js)]-evodashboard.grid,[(site_name:encode_js)]-evodashboard.states')"><i class="fa fa-refresh" aria-hidden="true"></i> [%reset%]</a>
@@ -232,7 +232,7 @@
   fnCreateGridster('[(site_name:encode_js)]-evodashboard.grid', '[(site_name:encode_js)]-evodashboard.states');
 </script>
 
-<script type="text/javascript">
+<script type="text/javascript">        
   function cleanLocalStorage(keys) {
     keys = keys.split(',');
     for (var i = 0; i < keys.length; i++) {
