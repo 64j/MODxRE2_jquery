@@ -745,7 +745,7 @@ var setLastClickedElement = function(type, id) {
 			if(data.title == undefined)
 				data.title = Math.floor((Math.random() * 999999) + 1);
 			if(data.url !== undefined) {
-				if(modx.plugins.EVOmodal) { // used EVO.modal
+				if(modx.plugins.EVOmodal == 1) { // used EVO.modal
 					top.EVO.modal.show(data)
 				} else {
 					w.open(data.url, data.title, 'width=' + data.width + ',height=' + data.height + ',top=' + data.top + ',left=' + data.left + ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no');
