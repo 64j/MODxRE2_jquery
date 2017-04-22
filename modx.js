@@ -11,7 +11,10 @@ var mainMenu = {
 		if(rFrame == 1) {
 			setTimeout('modx.tree.restoreTree()', 50)
 		}
-		if(rFrame == 2 || rFrame == 9 || rFrame == 10) {
+		if(rFrame == 2) {
+			setTimeout('modx.tree.restoreTree()', 50)
+		}
+		if(rFrame == 9 || rFrame == 10) {
 			top.location.href = "../" + modx.MGR_DIR;
 		}
 	}
@@ -69,6 +72,9 @@ var setLastClickedElement = function(type, id) {
 				$('#' + modx.mainMenu.id + ' .nav li li a').click(function() {
 					$('#' + modx.mainMenu.id + ' .nav>li').removeClass('active');
 					$(this).closest('.nav>li').addClass('active close')
+				});
+				$('#' + modx.mainMenu.id + ' .nav > li > ul').css({
+					'max-height': w.innerHeight - modx.config.menu_height + 'px'
 				});
 				modx.mainMenu.search.init();
 			},
@@ -728,13 +734,13 @@ var setLastClickedElement = function(type, id) {
 				}
 			}
 			if(data.width == undefined)
-				data.width = w.innerWidth * 0.9 + 'px';
+				data.width = parseInt(w.innerWidth * 0.9) + 'px';
 			if(data.height == undefined)
-				data.height = w.innerHeight * 0.8 + 'px';
+				data.height = parseInt(w.innerHeight * 0.8) + 'px';
 			if(data.left == undefined)
-				data.left = w.innerWidth * 0.05 + 'px';
+				data.left = parseInt(w.innerWidth * 0.05) + 'px';
 			if(data.top == undefined)
-				data.top = w.innerHeight * 0.1 + 'px';
+				data.top = parseInt(w.innerHeight * 0.1) + 'px';
 			if(data.title == undefined)
 				data.title = Math.floor((Math.random() * 999999) + 1);
 			if(data.url !== undefined) {

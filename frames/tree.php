@@ -19,48 +19,48 @@ if(is_array($evtOut)) {
 				<table cellpadding="0" cellspacing="0" border="0">
 					<tr>
 						<td>
-							<a class="treeButton" id="Button1" onclick="modx.tree.expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
+							<a class="treeButton" id="treeMenu_expandtree" onclick="modx.tree.expandTree();" title="<?php echo $_lang['expand_tree']; ?>"><?php echo $_style['expand_tree']; ?></a>
 						</td>
 						<td>
-							<a class="treeButton" id="Button2" onclick="modx.tree.collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
+							<a class="treeButton" id="treeMenu_collapsetree" onclick="modx.tree.collapseTree();" title="<?php echo $_lang['collapse_tree']; ?>"><?php echo $_style['collapse_tree']; ?></a>
 						</td>
 						<?php if($modx->hasPermission('new_document')) { ?>
 							<td>
-								<a class="treeButton" id="Button3a" onclick="top.main.document.location.href='index.php?a=4';" title="<?php echo $_lang['add_resource']; ?>"><?php echo $_style['add_doc_tree']; ?></a>
+								<a class="treeButton" id="treeMenu_addresource" onclick="top.main.document.location.href='index.php?a=4';" title="<?php echo $_lang['add_resource']; ?>"><?php echo $_style['add_doc_tree']; ?></a>
 							</td>
 							<td>
-								<a class="treeButton" id="Button3c" onclick="top.main.document.location.href='index.php?a=72';" title="<?php echo $_lang['add_weblink']; ?>"><?php echo $_style['add_weblink_tree']; ?></a>
+								<a class="treeButton" id="treeMenu_addweblink" onclick="top.main.document.location.href='index.php?a=72';" title="<?php echo $_lang['add_weblink']; ?>"><?php echo $_style['add_weblink_tree']; ?></a>
 							</td>
 						<?php } ?>
 						<td>
-							<a class="treeButton" id="Button4" onclick="modx.tree.restoreTree();" title="<?php echo $_lang['refresh_tree']; ?>"><?php echo $_style['refresh_tree']; ?></a>
+							<a class="treeButton" id="treeMenu_refreshtree" onclick="modx.tree.restoreTree();" title="<?php echo $_lang['refresh_tree']; ?>"><?php echo $_style['refresh_tree']; ?></a>
 						</td>
 						<td>
-							<a class="treeButton" id="Button5" onclick="modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_style['sort_tree']; ?></a>
+							<a class="treeButton" id="treeMenu_sortingtree" onclick="modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_style['sort_tree']; ?></a>
 						</td>
 						<?php if($modx->hasPermission('edit_document')) { ?>
 							<td>
-								<a id="Button11" class="treeButton" onclick="top.main.document.location.href='index.php?a=56&id=0';" title="<?php echo $_lang['sort_menuindex']; ?>"><?php echo $_style['sort_menuindex']; ?></a>
+								<a class="treeButton" id="treeMenu_sortingindex" onclick="top.main.document.location.href='index.php?a=56&id=0';" title="<?php echo $_lang['sort_menuindex']; ?>"><?php echo $_style['sort_menuindex']; ?></a>
 							</td>
 						<?php } ?>
 						<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
 							<td>
-								<a id="treeMenu_openimages" class="treeButton" title="<?php echo $_lang["images_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['images_management']; ?></a>
+								<a class="treeButton" id="treeMenu_openimages" title="<?php echo $_lang["images_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['images_management']; ?></a>
 							</td>
 						<?php } ?>
 						<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
 							<td>
-								<a id="treeMenu_openfiles" class="treeButton" title="<?php echo $_lang["files_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['files_management']; ?></a>
+								<a class="treeButton" id="treeMenu_openfiles" title="<?php echo $_lang["files_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['files_management']; ?></a>
 							</td>
 						<?php } ?>
 						<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
 							<td>
-								<a id="Button12" class="treeButton" title="<?php echo $_lang["element_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['element_management']; ?></a>
+								<a class="treeButton" id="treeMenu_openelements" title="<?php echo $_lang["element_management"] . "\n" . $_lang['em_button_shift'] ?>"><?php echo $_style['element_management']; ?></a>
 							</td>
 						<?php } ?>
 						<?php if($modx->hasPermission('empty_trash')) { ?>
 							<td>
-								<a id="Button10" class="treeButtonDisabled" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
+								<a class="treeButtonDisabled" id="treeMenu_emptytrash" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
 							</td>
 						<?php } ?>
 					</tr>
@@ -71,11 +71,11 @@ if(is_array($evtOut)) {
 
 	<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
 		<script>
-			$('#Button12').click(function(e) {
+			$('#treeMenu_openelements').click(function(e) {
 				e.preventDefault();
-				var randomNum = 'gener1';
+				var randomNum = '<?php echo $_lang["elements"] ?>';
 				if(e.shiftKey) {
-					randomNum = Math.floor((Math.random() * 999999) + 1);
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
 				modx.openWindow({
 					url: 'index.php?a=76',
@@ -89,9 +89,9 @@ if(is_array($evtOut)) {
 		<script>
 			$('#treeMenu_openimages').click(function(e) {
 				e.preventDefault();
-				var randomNum = 'gener2';
+				var randomNum = '<?php echo $_lang["files_files"] ?>';
 				if(e.shiftKey) {
-					randomNum = Math.floor((Math.random() * 999999) + 1);
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
 				modx.openWindow({
 					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
@@ -105,9 +105,9 @@ if(is_array($evtOut)) {
 		<script>
 			$('#treeMenu_openfiles').click(function(e) {
 				e.preventDefault();
-				var randomNum = 'gener3';
+				var randomNum = '<?php echo $_lang["files_files"] ?>';
 				if(e.shiftKey) {
-					randomNum = Math.floor((Math.random() * 999999) + 1);
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
 				modx.openWindow({
 					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
@@ -185,8 +185,10 @@ if(is_array($evtOut)) {
 			echo implode("\n", $evtOut);
 		}
 		?>
-		<div><?php echo $_style['tree_showtree']; ?>&nbsp;<span class="rootNode" onclick="modx.tree.treeAction(event, 0, '<?php $site_name = htmlspecialchars($site_name, ENT_QUOTES, $modx->config['modx_charset']);
-			echo $site_name; ?>');"><b><?php echo $site_name; ?></b></span>
+		<div>
+			<span class="rootNode" onclick="modx.tree.treeAction(event, 0, '<?php $site_name = htmlspecialchars($site_name, ENT_QUOTES, $modx->config['modx_charset']);
+			echo $site_name; ?>');"><?php echo $_style['tree_showtree']; ?>&nbsp;<b><?php echo $site_name; ?></b>
+			</span>
 			<div id="treeRoot"></div>
 		</div>
 		<?php
