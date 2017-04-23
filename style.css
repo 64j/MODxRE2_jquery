@@ -95,7 +95,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .account .icon { display: inline-block; border-radius: 50%; overflow: hidden; width: 30px; height: 30px; line-height: 30px; text-align: center; vertical-align: middle; background: no-repeat 50% 50%; background-size: cover; }
 #mainMenu .account .icon.photo { width: 36px; height: 36px }
 #mainMenu .account .icon .fa { width: 30px; height: 30px; }
-#mainMenu .account #msgCounter { display: none; position: absolute; z-index: 1; right: 14px; top: 3px; background-color: rgba(0, 0, 0, 0.5); line-height: 13px; font-size: 10px; padding: 2px 5px; border-radius: 7px; }
+#mainMenu .account #msgCounter { display: none; position: absolute; z-index: 1; right: 15px; top: 5px; background-color: rgba(0, 0, 0, 0.5); line-height: 13px; font-size: 10px; padding: 2px 5px; border-radius: 7px; }
 #mainMenu .account #msgCounter::before { position: absolute; z-index: -1; left: 2px; top: 2px; right: 2px; bottom: 2px; background-color: #e91e4f; border-radius: 6px; content: "" }
 #mainMenu .account #newMail { display: none }
 #mainMenu .nav > li > ul { display: block; position: absolute; left: auto; top: 100%; right: auto; min-width: 15rem; max-height: 400px; max-height: -webkit-calc(100vh - 48px); max-height: calc(100vh - 48px); margin: 0; padding: 0; opacity: 0; visibility: hidden; overflow: auto; background-color: #fff; border-radius: 0; box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2); -webkit-transition: 0.2s; transition: 0.2s; transform: translateZ(0) }

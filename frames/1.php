@@ -119,6 +119,7 @@ if($user['which_browser'] == 'default') {
 			},
 			style: {
 				collapse_tree: "<?php echo addslashes($_style['collapse_tree']) ?>",
+				email: "<?php echo addslashes($_style['email']) ?>",
 				empty_recycle_bin: "<?php echo addslashes($_style['empty_recycle_bin']) ?>",
 				empty_recycle_bin_empty: "<?php echo addslashes($_style['empty_recycle_bin_empty']) ?>",
 				expand_tree: "<?php echo addslashes($_style['expand_tree']) ?>",
@@ -172,7 +173,7 @@ if($user['which_browser'] == 'default') {
 		<div class="col float-right">
 			<ul class="nav">
 				<li>
-					<a href="../" target="_blank" title="<?php echo $_lang['preview'] ?>" onclick="setLastClickedElement(0,0);this.blur();">
+					<a href="../" target="_blank" title="<?php echo $_lang['preview'] ?>" onclick="setLastClickedElement(0,0);">
 						<i class="fa fa-desktop"></i>
 					</a>
 				</li>
@@ -182,40 +183,40 @@ if($user['which_browser'] == 'default') {
 						<ul class="dropdown-menu">
 							<?php if($modx->hasPermission('settings')) { ?>
 								<li>
-									<a href="index.php?a=17" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=17" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-cog fw"></i><?php echo $_lang['edit_settings'] ?>
 									</a>
 								</li>
 							<?php } ?>
 							<?php if($modx->hasPermission('view_eventlog')) { ?>
 								<li>
-									<a href="index.php?a=70" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=70" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-calendar"></i><?php echo $_lang['site_schedule'] ?>
 									</a>
 								</li>
 							<?php } ?>
 							<?php if($modx->hasPermission('view_eventlog')) { ?>
 								<li>
-									<a href="index.php?a=114" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=114" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-exclamation-triangle"></i><?php echo $_lang['eventlog_viewer'] ?>
 									</a>
 								</li>
 							<?php } ?>
 							<?php if($modx->hasPermission('logs')) { ?>
 								<li>
-									<a href="index.php?a=13" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=13" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-user-secret"></i><?php echo $_lang['view_logging'] ?>
 									</a>
 								</li>
 								<li>
-									<a href="index.php?a=53" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=53" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-info-circle"></i><?php echo $_lang['view_sysinfo'] ?>
 									</a>
 								</li>
 							<?php } ?>
 							<?php if($modx->hasPermission('help')) { ?>
 								<li>
-									<a href="index.php?a=9#version_notices" target="main" onclick="setLastClickedElement(0,0);this.blur();">
+									<a href="index.php?a=9#version_notices" target="main" onclick="setLastClickedElement(0,0);">
 										<i class="fa fa-question-circle"></i><?php echo $_lang['help'] ?>
 									</a>
 								</li>
@@ -237,7 +238,7 @@ if($user['which_browser'] == 'default') {
 						<li id="newMail"></li>
 						<?php if($modx->hasPermission('change_password')) { ?>
 							<li>
-								<a onclick="this.blur();" href="index.php?a=28" target="main">
+								<a onclick="" href="index.php?a=28" target="main">
 									<i class="fa fa-lock"></i><?php echo $_lang['change_password'] ?>
 								</a>
 							</li>

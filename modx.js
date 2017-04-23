@@ -841,21 +841,36 @@ function setLastClickedElement(type, id) {
 		updateMail: function(now) {
 			try {
 				if(now) {
-					$.post('index.php', {updateMsgCount: true}, function(data) {
-						let counts = data.split(',');
-						let elm = d.getElementById('msgCounter');
-						if(elm) {
-							elm.innerHTML = counts[1];
-							elm.style.display = counts[1] > 0 ? 'block' : 'none'
-						}
-						elm = d.getElementById('newMail');
-						if(elm) {
-							elm.innerHTML = '<a href="index.php?a=10" target="main">' + modx.lang.inbox + '(' + counts[0] + ' / ' + counts[1] + ')</a>';
-							elm.style.display = counts[0] > 0 ? 'block' : 'none'
+					$.ajax({
+						url: 'index.php?updateMsgCount=true',
+						data: {
+							updateMsgCount: true
+						},
+						method: 'post',
+						dataType: 'html',
+						success: function(data) {
+							let counts = data.split(',');
+							let elm = d.getElementById('msgCounter');
+							if(elm) {
+								elm.innerHTML = counts[0];
+								elm.style.display = counts[0] > 0 ? 'block' : 'none'
+							}
+							elm = d.getElementById('newMail');
+							if(elm) {
+								elm.innerHTML = '<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>';
+								if(counts[1] > 0) {
+									elm.style.display = 'block';
+									modx.mainMenu.init()
+								} else {
+									elm.style.display = 'none'
+								}
+							}
+						},
+						error: function(xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 						}
 					})
 				}
-				return false;
 			} catch(oException) {
 				setTimeout('modx.updateMail(true)', 1000 * 60); // 1000 * 60
 			}
