@@ -7,6 +7,7 @@ header("X-XSS-Protection: 0");
 
 $_SESSION['browser'] = (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 1') !== false) ? 'legacy_IE' : 'modern';
 
+// invoke OnManagerPreFrameLoader
 $modx->invokeEvent('OnManagerPreFrameLoader', array('action' => $action));
 
 $mxla = $modx_lang_attribute ? $modx_lang_attribute : 'en';
@@ -372,6 +373,7 @@ if($user['which_browser'] == 'default') {
 	<?php } ?>
 
 	<?php
+	// invoke OnManagerFrameLoader
 	$modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 	?>
 	<script>

@@ -3,7 +3,7 @@ if(IN_MANAGER_MODE != "true") {
 	die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please use the MODX Content Manager instead of accessing this file directly.");
 }
 
-// invoke OnTreePrerender event
+// invoke OnManagerTreeInit event
 $evtOut = $modx->invokeEvent('OnManagerTreeInit', $_REQUEST);
 if(is_array($evtOut)) {
 	echo implode("\n", $evtOut);
@@ -104,7 +104,7 @@ if(is_array($evtOut)) {
 
 	<div id="treeHolder">
 		<?php
-		// invoke OnTreeRender event
+		// invoke OnManagerTreePrerender event
 		$evtOut = $modx->invokeEvent('OnManagerTreePrerender', $modx->db->escape($_REQUEST));
 		if(is_array($evtOut)) {
 			echo implode("\n", $evtOut);
@@ -117,7 +117,7 @@ if(is_array($evtOut)) {
 			<div id="treeRoot"></div>
 		</div>
 		<?php
-		// invoke OnTreeRender event
+		// invoke OnManagerTreeRender event
 		$evtOut = $modx->invokeEvent('OnManagerTreeRender', $modx->db->escape($_REQUEST));
 		if(is_array($evtOut)) {
 			echo implode("\n", $evtOut);
