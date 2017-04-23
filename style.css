@@ -216,9 +216,8 @@ a img { border: 0; }
 .row3 { background-color: #f5f5f5; }
 div.treeframebody { -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
 .treeframebody { height: 100% }
-#treeMenu { width: 100%; margin-left: 2px; background-color: rgba(0, 0, 0, 0.05); border-bottom: 1px solid #dbdbdb; }
-#treeMenu table td { padding: 3px 0px; }
-#treeMenu * { vertical-align: middle; }
+#treeMenu { padding: 2px; background-color: rgba(0, 0, 0, 0.05); border-bottom: 1px solid #dbdbdb; }
+#treeMenu a { display: inline-block }
 #treeHolder { cursor: default; overflow: auto; height: 100%; height: calc(100% - 34px); padding: 5px 10px; line-height: 1.5em; white-space: nowrap }
 #treeRoot { cursor: default; }
 #treeRoot div { position: relative; margin-left: 20px; }
