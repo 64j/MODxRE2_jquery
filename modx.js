@@ -850,20 +850,11 @@ function setLastClickedElement(type, id) {
 						dataType: 'html',
 						success: function(data) {
 							let counts = data.split(',');
-							let elm = d.getElementById('msgCounter');
-							if(elm) {
-								elm.innerHTML = counts[0];
-								elm.style.display = counts[0] > 0 ? 'block' : 'none'
+							if(counts[0] > 0) {
+								$('#msgCounter').html(counts[0]).fadeIn()
 							}
-							elm = d.getElementById('newMail');
-							if(elm) {
-								elm.innerHTML = '<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>';
-								if(counts[1] > 0) {
-									elm.style.display = 'block';
-									modx.mainMenu.init()
-								} else {
-									elm.style.display = 'none'
-								}
+							if(counts[1] > 0) {
+								$('#newMail').html('<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>').show()
 							}
 						},
 						error: function(xhr, ajaxOptions, thrownError) {
