@@ -324,7 +324,8 @@ if($user['which_browser'] == 'default') {
 	?>
 	<script>
 		reloadElementsInTree = function() {
-
+			console.log('tree.reloadElementsInTree() off end');
+			modx.tree.reloadElementsInTree()
 		};
 	</script>
 </div>
