@@ -214,7 +214,7 @@ a img { border: 0; }
 .row1, .row2, .row3 { background-color: #fff; color: #333; }
 .row2 { background-color: #fff; }
 .row3 { background-color: #f5f5f5; }
-div.treeframebody { -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
+div.treeframebody { background-color: #ebebeb; -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1); }
 .treeframebody { height: 100% }
 #treeMenu { overflow: hidden; padding: 2px; height: 32px; border-bottom: 1px solid #dbdbdb; background-color: rgba(0, 0, 0, 0.05); }
 #treeMenu a { display: inline-block }
@@ -231,6 +231,7 @@ div.treeframebody { -webkit-box-shadow: inset -2px 2px 6px 0px rgba(0, 0, 0, 0.1
 #treeRoot .fa.fa-angle-down, #treeRoot .fa.fa-angle-right { position: absolute; left: -20px; top: 0; margin: 0; line-height: 1.2rem; font-size: 1rem; text-align: center; cursor: pointer }
 #treeRoot .fa-file, #treeRoot .fa-file-o, #treeRoot .fa-file-code, #treeRoot .fa-file-code-o { }
 #treeRoot .fa-folder, #treeRoot .fa-folder-open, #treeRoot .fa-folder-o, #treeRoot .fa-folder-open-o, #treeRoot .fa-exclamation-triangle { text-align: left }
+#treeRoot .fa-link { font-size: 12px }
 #treeRoot .lockedResource { cursor: pointer; }
 #floater { display: none; position: absolute; width: 100%; padding: 15px; padding-bottom: 10px; top: 31px; left: 0px; background: #fff; border: 1px solid #b0b0b0; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1); box-sizing: border-box; z-index: 500; }
 #floater td { padding: 0 !important; }
@@ -538,7 +539,6 @@ form input[type="text"], form input[type="password"], form input[type="number"],
  * css above is original MODxRE
  * css below is basicaly MODxRE overrides to get MODxRE2 look
  */
-div.treeframebody { background-color: #ebebeb !important; }
 /* nav */
 .alert-warning { color: #3697cd; }
 /* tab panes */
@@ -644,6 +644,7 @@ ul.elements_buttonbar .fa { font-size: 13px !important; padding: 1px 1px 0; }
 /* View-dependent styles */
 /* List-view */
 .resourceTable.list li { }
+.sortableList > li::before { display: none }
 /* Inline-view */
 .resourceTable.inline ul.elements { margin: 0 !important; }
 .resourceTable.inline ul.elements > li { float: left; margin: 10px 10px 0 0 !important; padding: 0 !important; border: 1px dotted #dedede; }
