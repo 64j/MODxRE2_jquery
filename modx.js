@@ -856,7 +856,8 @@ function setLastClickedElement(type, id) {
 								$('#msgCounter').fadeOut()
 							}
 							if(counts[1] > 0) {
-								$('#newMail').html('<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>').show()
+								$('#newMail').html('<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>').show();
+								modx.mainMenu.init()
 							}
 						},
 						error: function(xhr, ajaxOptions, thrownError) {
