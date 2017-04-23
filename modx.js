@@ -3,18 +3,20 @@ window.mainMenu.work = function() {
 	modx.main.work()
 };
 window.mainMenu.reloadtree = function() {
-	console.log('mainMenu.reloadtree()');
-	setTimeout('modx.tree.restoreTree()', 50)
+	console.log('mainMenu.reloadtree() off');
+	//setTimeout('modx.tree.restoreTree()', 50)
 };
 window.mainMenu.startrefresh = function(rFrame) {
-	console.log('mainMenu.startrefresh(' + rFrame + ')');
 	if(rFrame == 1) {
+		console.log('mainMenu.startrefresh(' + rFrame + ')');
 		setTimeout('modx.tree.restoreTree()', 50)
 	}
 	if(rFrame == 2) {
-		setTimeout('modx.tree.restoreTree()', 50)
+		console.log('mainMenu.startrefresh(' + rFrame + ') off');
+		//setTimeout('modx.tree.restoreTree()', 50)
 	}
 	if(rFrame == 9 || rFrame == 10) {
+		console.log('mainMenu.startrefresh(' + rFrame + ')');
 		top.location.href = "../" + modx.MGR_DIR;
 	}
 };
@@ -596,6 +598,7 @@ function setLastClickedElement(type, id) {
 				$('#node' + doc_id + '>.treeNode').addClass('treeNodeSelected')
 			},
 			restoreTree: function() {
+				console.log('modx.tree.restoreTree()');
 				$("#buildText").html(modx.style.tree_info + modx.lang.loading_doc_tree).show();
 				modx.tree.rpcNode = d.getElementById('treeRoot');
 				$.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=2', function(data) {
@@ -686,7 +689,7 @@ function setLastClickedElement(type, id) {
 					dataFilter: function(data) {
 						let d = [];
 						data = $(data);
-						d['tabDoc'] = data.find('#tabDoc > div').html();
+						//d['tabDoc'] = data.find('#tabDoc > div').html();
 						d['tabTemp'] = data.find('#tabTemp > .panel-group').html();
 						d['tabTV'] = data.find('#tabTV > .panel-group').html();
 						d['tabCH'] = data.find('#tabCH > .panel-group').html();
@@ -696,8 +699,8 @@ function setLastClickedElement(type, id) {
 						return d;
 					},
 					success: function(data) {
-						$('#tabDoc > div').html(data['tabDoc']);
-						modx.tree.init();
+						// $('#tabDoc > div').html(data['tabDoc']);
+						// modx.tree.init();
 
 						// init ElementsInTree
 						savePositions();
