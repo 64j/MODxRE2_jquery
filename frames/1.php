@@ -321,6 +321,57 @@ if($user['which_browser'] == 'default') {
 		}
 	}
 
+	?>
+
+	<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
+		<script>
+			$('#treeMenu_openelements').click(function(e) {
+				e.preventDefault();
+				var randomNum = '<?php echo $_lang["elements"] ?>';
+				if(e.shiftKey) {
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+				}
+				modx.openWindow({
+					url: 'index.php?a=76',
+					title: randomNum
+				})
+			});
+		</script>
+	<?php } ?>
+
+	<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
+		<script>
+			$('#treeMenu_openimages').click(function(e) {
+				e.preventDefault();
+				var randomNum = '<?php echo $_lang["files_files"] ?>';
+				if(e.shiftKey) {
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+				}
+				modx.openWindow({
+					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
+					title: randomNum
+				})
+			});
+		</script>
+	<?php } ?>
+
+	<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
+		<script>
+			$('#treeMenu_openfiles').click(function(e) {
+				e.preventDefault();
+				var randomNum = '<?php echo $_lang["files_files"] ?>';
+				if(e.shiftKey) {
+					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+				}
+				modx.openWindow({
+					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
+					title: randomNum
+				})
+			});
+		</script>
+	<?php } ?>
+
+	<?php
 	$modx->invokeEvent('OnManagerFrameLoader', array('action' => $action));
 	?>
 	<script>
