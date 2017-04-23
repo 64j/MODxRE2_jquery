@@ -852,6 +852,8 @@ function setLastClickedElement(type, id) {
 							let counts = data.split(',');
 							if(counts[0] > 0) {
 								$('#msgCounter').html(counts[0]).fadeIn()
+							} else {
+								$('#msgCounter').fadeOut()
 							}
 							if(counts[1] > 0) {
 								$('#newMail').html('<a href="index.php?a=10" target="main">' + modx.style.email + modx.lang.inbox + ' (' + counts[0] + ' / ' + counts[1] + ')</a>').show()
