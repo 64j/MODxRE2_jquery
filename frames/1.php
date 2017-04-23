@@ -81,7 +81,7 @@ if($user['which_browser'] == 'default') {
 	<script type="text/javascript">
 
 		// GLOBAL variable modx
-		var modx = {
+		const modx = {
 			MGR_DIR: "<?php echo MGR_DIR ?>",
 			config: {
 				mail_check_timeperiod: "<?php echo $modx->config['mail_check_timeperiod'] ?>",
