@@ -648,8 +648,8 @@ function setLastClickedElement(type, id) {
 				}
 			},
 			showBinFull: function() {
-				if($('#Button10').length) {
-					$('#Button10').attr('title', modx.lang.empty_recycle_bin)
+				if($('#treeMenu_emptytrash').length) {
+					$('#treeMenu_emptytrash').attr('title', modx.lang.empty_recycle_bin)
 						.addClass('treeButton')
 						.removeClass('treeButtonDisabled')
 						.html(modx.style.empty_recycle_bin)
@@ -659,8 +659,8 @@ function setLastClickedElement(type, id) {
 				}
 			},
 			showBinEmpty: function() {
-				if($('#Button10').length) {
-					$('#Button10').attr('title', modx.lang.empty_recycle_bin_empty)
+				if($('#treeMenu_emptytrash').length) {
+					$('#treeMenu_emptytrash').attr('title', modx.lang.empty_recycle_bin_empty)
 						.addClass('treeButton')
 						.html(modx.style.empty_recycle_bin_empty)
 						.off('click')
