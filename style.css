@@ -187,7 +187,7 @@ input.submit { display: block !important; float: none !important; margin: 20px 0
 .rtl .form fieldset.list label, .rtl .form fieldset.list input { float: right; }
 .form fieldset.list label { padding-left: 5px; text-align: left; width: auto; }
 /* -------------------------[ Misc stuff ]--- */
-.sectionBody li:before { font-family: FontAwesome; content: '\f105'; display: block; font-weight: bold; font-size: 15px; color: #bdbdbd; position: absolute; margin-left: -13px; }
+/*.sectionBody li:before { font-family: FontAwesome; content: '\f105'; display: block; font-weight: bold; font-size: 15px; color: #bdbdbd; position: absolute; margin-left: -13px; }*/
 .sectionBody fieldset { background: none repeat scroll 0 0 #FDFDFD; border: 1px solid #CCCCCC; padding: 15px !important; }
 .sectionBody legend { font-weight: 500; padding: 5px 15px; background: #fff; border: 1px solid #ccc; -moz-box-shadow: 1px 1px 3px #ccc; -webkit-box-shadow: 1px 1px 3px #ccc; box-shadow: 1px 1px 3px #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 .sectionBody fieldset h3 { font-size: 14px; color: #789; font-weight: 500; padding-bottom: 0; margin-bottom: 0; }
