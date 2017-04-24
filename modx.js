@@ -134,8 +134,7 @@ function setLastClickedElement(type, id) {
 											modx.mainMenu.search.open();
 											$('a', modx.mainMenu.search.result).click(function() {
 												$('.selected', modx.mainMenu.search.result).removeClass('selected');
-												$(this).addClass('selected');
-												modx.mainMenu.search.open()
+												$(this).addClass('selected')
 											});
 										} else {
 											modx.mainMenu.search.empty()
@@ -568,10 +567,7 @@ function setLastClickedElement(type, id) {
 						top.main.document.location.href = "index.php?a=56&id=" + modx.tree.itemToChange;
 						break;
 					case 12 : // preview
-						modx.openWindow({
-							url: selectedObjectUrl,
-							title: 'previeWin'
-						}) //re-use 'new' window
+						w.open(modx.tree.selectedObjectUrl, 'previeWin');
 						break;
 					default :
 						alert('Unknown operation command.');
