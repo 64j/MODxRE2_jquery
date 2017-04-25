@@ -78,44 +78,44 @@ if($user['which_browser'] == 'default') {
 		#tree { width: <?php echo $MODX_positionSideBar ?>px }
 		#main, #resizer { left: <?php echo $MODX_positionSideBar ?>px }
 	</style>
-	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>
+<!--	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>-->
 	<script type="text/javascript">
 
 		// GLOBAL variable modx
 		const modx = {
 			MGR_DIR: "<?php echo MGR_DIR ?>",
 			config: {
-				mail_check_timeperiod: "<?php echo $modx->config['mail_check_timeperiod'] ?>",
-				menu_height: "<?php echo $menu_height ?>",
-				tree_width: "<?php echo $tree_width ?>",
-				tree_min_width: "<?php echo $tree_min_width ?>",
-				site_start: "<?php echo $modx->config['site_start']?>",
-				tree_page_click: "<?php echo(!empty($modx->config['tree_page_click']) ? $modx->config['tree_page_click'] : '27'); ?>",
-				modal: 'notEVOModal',
+				mail_check_timeperiod: <?php echo $modx->config['mail_check_timeperiod'] ?>,
+				menu_height: <?php echo (int) $menu_height ?>,
+				tree_width: <?php echo (int) $tree_width ?>,
+				tree_min_width: <?php echo (int) $tree_min_width ?>,
+				session_timeout: <?php echo (int) $modx->config['session_timeout'] ?>,
+				site_start: <?php echo (int) $modx->config['site_start'] ?>,
+				tree_page_click: <?php echo(!empty($modx->config['tree_page_click']) ? (int) $modx->config['tree_page_click'] : 27); ?>,
 				theme: "<?php echo $modx->config['manager_theme'] ?>",
-				which_browser: "<?php echo $user['which_browser']; ?>",
+				which_browser: "<?php echo $user['which_browser'] ?>",
 				layout: "<?php echo $manager_layout ?>",
 				textdir: "<?php echo $modx_textdir ?>",
 			},
 			lang: {
-				already_deleted: "<?php echo $_lang['already_deleted']; ?>",
-				collapse_tree: "<?php echo $_lang['collapse_tree']; ?>",
-				confirm_delete_resource: "<?php echo $_lang['confirm_delete_resource']; ?>",
-				confirm_empty_trash: "<?php echo $_lang['confirm_empty_trash']; ?>",
-				confirm_publish: "<?php echo $_lang['confirm_publish']; ?>",
+				already_deleted: "<?php echo $_lang['already_deleted'] ?>",
+				collapse_tree: "<?php echo $_lang['collapse_tree'] ?>",
+				confirm_delete_resource: "<?php echo $_lang['confirm_delete_resource'] ?>",
+				confirm_empty_trash: "<?php echo $_lang['confirm_empty_trash'] ?>",
+				confirm_publish: "<?php echo $_lang['confirm_publish'] ?>",
 				confirm_remove_locks: "<?php echo $_lang['confirm_remove_locks'] ?>",
 				confirm_resource_duplicate: "<?php echo $_lang['confirm_resource_duplicate'] ?>",
-				confirm_undelete: "<?php echo $_lang['confirm_undelete']; ?>",
-				confirm_unpublish: "<?php echo $_lang['confirm_unpublish']; ?>",
-				empty_recycle_bin: "<?php echo $_lang['empty_recycle_bin']; ?>",
+				confirm_undelete: "<?php echo $_lang['confirm_undelete'] ?>",
+				confirm_unpublish: "<?php echo $_lang['confirm_unpublish'] ?>",
+				empty_recycle_bin: "<?php echo $_lang['empty_recycle_bin'] ?>",
 				empty_recycle_bin_empty: "<?php echo addslashes($_lang['empty_recycle_bin_empty']); ?>",
-				expand_tree: "<?php echo $_lang['expand_tree']; ?>",
-				inbox: "<?php echo $_lang['inbox']; ?>",
+				expand_tree: "<?php echo $_lang['expand_tree'] ?>",
+				inbox: "<?php echo $_lang['inbox'] ?>",
 				loading_doc_tree: "<?php echo $_lang['loading_doc_tree'] ?>",
 				loading_menu: "<?php echo $_lang['loading_menu'] ?>",
-				not_deleted: "<?php echo $_lang['not_deleted']; ?>",
-				unable_set_link: "<?php echo $_lang['unable_set_link']; ?>",
-				unable_set_parent: "<?php echo $_lang['unable_set_parent']; ?>",
+				not_deleted: "<?php echo $_lang['not_deleted'] ?>",
+				unable_set_link: "<?php echo $_lang['unable_set_link'] ?>",
+				unable_set_parent: "<?php echo $_lang['unable_set_parent'] ?>",
 				working: "<?php echo $_lang['working'] ?>"
 			},
 			style: {
@@ -135,18 +135,18 @@ if($user['which_browser'] == 'default') {
 				tree_plusnode: "<?php echo addslashes($_style['tree_plusnode']) ?>"
 			},
 			permission: {
-				assets_images: "<?php echo $modx->hasPermission('assets_images') ? 1 : 0; ?>",
-				delete_document: "<?php echo $modx->hasPermission('delete_document') ? 1 : 0; ?>",
-				edit_chunk: "<?php echo $modx->hasPermission('edit_chunk') ? 1 : 0; ?>",
-				edit_plugin: "<?php echo $modx->hasPermission('edit_plugin') ? 1 : 0; ?>",
-				edit_snippet: "<?php echo $modx->hasPermission('edit_snippet') ? 1 : 0; ?>",
-				edit_template: "<?php echo $modx->hasPermission('edit_template') ? 1 : 0; ?>",
-				new_document: "<?php echo $modx->hasPermission('new_document') ? 1 : 0; ?>",
-				publish_document: "<?php echo $modx->hasPermission('publish_document') ? 1 : 0; ?>"
+				assets_images: <?php echo $modx->hasPermission('assets_images') ? 1 : 0 ?>,
+				delete_document: <?php echo $modx->hasPermission('delete_document') ? 1 : 0 ?>,
+				edit_chunk: <?php echo $modx->hasPermission('edit_chunk') ? 1 : 0 ?>,
+				edit_plugin: <?php echo $modx->hasPermission('edit_plugin') ? 1 : 0 ?>,
+				edit_snippet: <?php echo $modx->hasPermission('edit_snippet') ? 1 : 0 ?>,
+				edit_template: <?php echo $modx->hasPermission('edit_template') ? 1 : 0 ?>,
+				new_document: <?php echo $modx->hasPermission('new_document') ? 1 : 0 ?>,
+				publish_document: <?php echo $modx->hasPermission('publish_document') ? 1 : 0 ?>
 			},
 			plugins: {
-				ElementsInTree: "<?php echo isset($modx->pluginCache['ElementsInTree']) ? 1 : 0 ?>",
-				EVOmodal: "<?php echo isset($modx->pluginCache['EVO.modal']) ? 1 : 0 ?>"
+				ElementsInTree: <?php echo isset($modx->pluginCache['ElementsInTree']) ? 1 : 0 ?>,
+				EVOmodal: <?php echo isset($modx->pluginCache['EVO.modal']) ? 1 : 0 ?>
 			},
 			openedArray: [],
 			lockedElementsTranslation: <?php echo json_encode($unlockTranslations) . "\n" ?>
@@ -156,10 +156,10 @@ if($user['which_browser'] == 'default') {
 		echo (empty($opened) ? '' : 'modx.openedArray[' . implode("] = 1;\n		modx.openedArray[", $opened) . '] = 1;') . "\n";
 		?>
 	</script>
-	<script src="media/style/<?php echo $modx->config['manager_theme']; ?>/modx.js"></script>
+	<script src="media/style/<?php echo $modx->config['manager_theme'] ?>/modx.js"></script>
 </head>
-<body>
-<div id="frameset" class="<?php echo $body_class ?>">
+<body class="<?php echo $body_class ?>">
+<div id="frameset">
 	<div id="mainMenu">
 		<div class="col float-left">
 			<input type="hidden" name="sessToken" id="sessTokenInput" value="<?php echo md5(session_id()); ?>" />
@@ -324,9 +324,9 @@ if($user['which_browser'] == 'default') {
 
 	<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
 		<script>
-			$('#treeMenu_openelements').click(function(e) {
+			document.getElementById('treeMenu_openelements').onclick = function(e) {
 				e.preventDefault();
-				var randomNum = '<?php echo $_lang["elements"] ?>';
+				let randomNum = '<?php echo $_lang["elements"] ?>';
 				if(e.shiftKey) {
 					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
@@ -334,15 +334,15 @@ if($user['which_browser'] == 'default') {
 					url: 'index.php?a=76',
 					title: randomNum
 				})
-			});
+			};
 		</script>
 	<?php } ?>
 
 	<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
 		<script>
-			$('#treeMenu_openimages').click(function(e) {
+			document.getElementById('treeMenu_openimages').onclick = function(e) {
 				e.preventDefault();
-				var randomNum = '<?php echo $_lang["files_files"] ?>';
+				let randomNum = '<?php echo $_lang["files_files"] ?>';
 				if(e.shiftKey) {
 					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
@@ -350,13 +350,13 @@ if($user['which_browser'] == 'default') {
 					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
 					title: randomNum
 				})
-			});
+			};
 		</script>
 	<?php } ?>
 
 	<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
 		<script>
-			$('#treeMenu_openfiles').click(function(e) {
+			document.getElementById('treeMenu_openfiles').onclick = function(e) {
 				e.preventDefault();
 				var randomNum = '<?php echo $_lang["files_files"] ?>';
 				if(e.shiftKey) {
@@ -366,7 +366,7 @@ if($user['which_browser'] == 'default') {
 					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
 					title: randomNum
 				})
-			});
+			};
 		</script>
 	<?php } ?>
 

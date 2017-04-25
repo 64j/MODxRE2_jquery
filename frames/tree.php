@@ -43,7 +43,7 @@ if(is_array($evtOut)) {
 		<?php } ?>
 
 		<?php if($modx->hasPermission('empty_trash')) { ?>
-			<a class="treeButtonDisabled" id="treeMenu_emptytrash" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
+			<a class="treeButton treeButtonDisabled" id="treeMenu_emptytrash" title="<?php echo $_lang['empty_recycle_bin_empty']; ?>"><?php echo $_style['empty_recycle_bin_empty']; ?></a>
 		<?php } ?>
 
 	</div>

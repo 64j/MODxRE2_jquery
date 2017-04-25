@@ -391,8 +391,6 @@ function getTplSingleNode() {
         p="[+parent+]"
         class="treeNode"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
-        onmouseover="modx.tree.setHoverClass(this,1);"
-        onmouseout="modx.tree.setHoverClass(this, 0);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'p[+id+]\').onclick(event);return false;"
         title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]</div>';
@@ -415,8 +413,6 @@ function getTplOpenFolderNode() {
         >[+src+]</span>[+lockedByUser+]<span
         class="treeNode"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
-        onmouseover="modx.tree.setHoverClass(this, 1);"
-        onmouseout="modx.tree.setHoverClass(this, 0);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
         title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]<div style="display:block">';
@@ -439,8 +435,6 @@ function getTplClosedFolderNode() {
         >[+src+]</span>[+lockedByUser+]<span
         class="treeNode"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
-        onmouseover="modx.tree.setHoverClass(this, 1);"
-        onmouseout="modx.tree.setHoverClass(this, 0);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
         title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]<div style="display:none"></div></div>';

@@ -1,5 +1,5 @@
 /* -------------------------[ Neutralize styles, fonts and viewport ]--- */
-
+#preLoader { display: none }
 * html { overflow-x: hidden; overflow-y: auto; }
 /* for IE7 */
 
@@ -61,6 +61,8 @@ p.caption, p.comment { font-size: 86%; color: #888; }
 button { color: #821517; font: inherit; font-weight: 500; width: 112px; margin: 0 5px 0 0; cursor: pointer; }
 .rtl button { margin: 0 0 0 5px; }
 a, a:active, a:visited, a:link { color: #3697CD; text-decoration: none; }
+a[href=""], a:not([href]) { cursor: default }
+a.disabled { cursor: not-allowed }
 a:hover { color: #26719B; text-decoration: underline; }
 hr { color: #777; background-color: #777; height: 1px; border: 0; }
 .split { background: #556476 url(images/misc/line.gif) repeat-x; height: 1px; font-size: 0; clear: both; padding: 0; }
@@ -86,7 +88,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .nav > li { position: relative; float: left; list-style: none }
 #mainMenu .nav > li > a .fa { margin-right: 0.85rem; vertical-align: top; line-height: inherit; font-size: 17px; width: 15px }
 #mainMenu .float-right .nav > li > a .fa { margin: 0; font-size: 28px; width: 28px; text-align: center }
-#mainMenu .nav > li > a, #searchform .fa-search { float: left; overflow: hidden; padding: 0 18px; height: 48px; line-height: 48px; text-decoration: none; font-weight: 700; white-space: nowrap; color: #e0e0e0; cursor: pointer; }
+#mainMenu .nav > li > a, #searchform .fa-search { float: left; overflow: hidden; padding: 0 18px; height: 48px; line-height: 48px; text-decoration: none; font-weight: 700; white-space: nowrap; color: #e0e0e0; }
 #mainMenu .nav > li:hover > a, #searchform .fa-search:hover { color: #fff; background-color: rgba(255, 255, 255, 0.05) }
 #mainMenu .nav > li.active > a, #mainMenu .nav > li.active > a:hover { background: rgba(0, 0, 0, 0.15) }
 #mainMenu .nav > li li a { white-space: nowrap; color: #39545e }
@@ -159,7 +161,7 @@ form select { background: #F9F9F9; border-color: #AAAAAA #DEDEDE #DEDEDE #AAAAAA
 form select.dropdown, form select[size="1"], form select:not([size]) { height: 28px; }
 form input[type="text"], form input[type="password"], form input[type="number"], form textarea { background: #f9f9f9; border-color: #999 #DDD #DDD #999; border-style: solid; border-width: 1px; padding: 4px 2px 4px 4px; margin: 0 5px 0 0; min-height: 17px; vertical-align: baseline; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0px 1px 3px #E8E8E8 inset; -webkit-box-shadow: 0px 1px 3px #E8E8E8 inset; box-shadow: 0px 1px 3px #E8E8E8 inset; }
 .rtl form input[type="text"], .rtl form textarea { padding: 2px 2px 2px 0; }
-input[type="email"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, textarea:focus, select:focus { outline: none; background: #fff; border-color: green; border-style: solid; border-width: 1px; }
+input[type="email"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, textarea:focus, select:focus { outline: none; background: #fff; border: 1px solid green; }
 input[type="button"], input[type="submit"] { background: #ededed; border: 1px solid green; cursor: pointer; line-height: normal; margin: 0 5px 3px 0; padding: 4px 10px; overflow: visible; min-height: 27px; -webkit-appearance: button; background: -moz-linear-gradient(#f5f5f5, #DDDDDD); background: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#DDDDDD)); background: -o-linear-gradient(#f5f5f5, #DDDDDD); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5f5f5, endColorstr=#DDDDDD);
 zoom: 1; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 input[type="button"]:hover, input[type="submit"] { border-color: green; background: -moz-linear-gradient(#FFFFFF, #EEEEEE); background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), to(#EEEEEE)); background: -o-linear-gradient(#FFFFFF, #EEEEEE); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#EEEEEE);
@@ -205,7 +207,7 @@ zoom: 1; -moz-box-shadow: 0px 1px 0px #fff inset; -webkit-box-shadow: 0px 1px 0p
 .comment { font-size: 11px; color: #999; padding: 4px 0; }
 thead, .fancyrow { color: #333; height: 18px !important; background-color: #E4E4E4; }
 thead td { color: #333; border-top: 1px solid #fff; }
-.fancyrow2 { height: 18px !important; background-color: #F0A62F; background-position: top; background-repeat: repeat-x; border-bottom: 1px solid #fff; color: #fff; }
+.fancyrow2 { height: 18px !important; background: #F0A62F repeat-x top; border-bottom: 1px solid #fff; color: #fff; }
 li { padding: 0; margin: 0; list-style: none; }
 ul { margin: 0 20px 0 10px; }
 .rtl ul { margin: 0 10px 0 20px; }
@@ -242,13 +244,13 @@ div.treeframebody { background-color: #ebebeb; -webkit-box-shadow: inset -2px 2p
 #treeRoot .fa-folder, #treeRoot .fa-folder-open, #treeRoot .fa-folder-o, #treeRoot .fa-folder-open-o, #treeRoot .fa-exclamation-triangle { text-align: left }
 #treeRoot .fa-link { font-size: 12px }
 #treeRoot .lockedResource { cursor: pointer; }
-#floater { display: none; position: absolute; width: 100%; padding: 15px; padding-bottom: 10px; top: 31px; left: 0px; background: #fff; border: 1px solid #b0b0b0; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1); box-sizing: border-box; z-index: 500; }
+#floater { display: none; position: absolute; width: 100%; padding: 15px 15px 10px; top: 31px; left: 0px; background: #fff; border: 1px solid #b0b0b0; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1); box-sizing: border-box; z-index: 500; }
 #floater td { padding: 0 !important; }
 #floater input, #floater select { box-sizing: border-box; width: 150px; margin-bottom: 5px; }
 .rtl #floater { right: 4px }
 .rootNode, .treeNode, .treeNodeHover, .treeNodeSelected, .emptyNode { border: 1px solid transparent; padding: 0 2px; margin-right: 2px; line-height: 16px; color: #000; cursor: pointer; }
-div.treeNode { white-space: nowrap; }
-.treeNodeSelected, .treeNodeHover { background-color: #FFFFFF; border: 1px solid #CCC; color: #000; }
+.treeNodeSelected, .treeNode:hover { background-color: #c6dae5; border: 1px solid #3697CD; color: #3697CD; }
+.treeNodeSelectedByContext { background-color: #c6dae5 }
 .treeNodeSelected { font-weight: 700; }
 .unpublished a, .unpublishedNode, .unpublish { color: #B68282; font-style: italic; }
 .deletedNode, .deleted { color: #A52A2A; text-decoration: line-through; }
@@ -290,7 +292,7 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .preLoaderText p:last-child { margin-bottom: 0 }
 #loadingmask { display: none !important; }
 /* -------------------------[ contextmenu in editing modules ]--- */
-.contextMenu { background: #fff; margin: 0; padding: 4px; border: 1px solid #c9c9c9; border-top-width: 3px; border-top-color: #3697CD; position: absolute; z-index: 10000; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
+.contextMenu { background: #fff; margin: 0; padding: 4px; border: 1px solid #c9c9c9; border-top: 3px solid #3697CD; position: absolute; z-index: 10000; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
 .cntxMnuItem { background-image: url(images/misc/_tx_.gif); cursor: pointer; color: #333; padding: 3px 5px; border: 1px solid transparent; }
 .rtl .cntxMnuItem, .rtl .cntxMnuItemDisabled { padding: 3px 5px; }
 .cntxMnuItemDisabled { cursor: default; padding: 3px 5px; color: #111; }
@@ -303,7 +305,7 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .rtl .cntxMnuSeparator { margin: 3px 28px 3px 1px; }
 #frameset { overflow: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
 /* -------------------------[ Contextual Menu used in the Tree Menu ]--- */
-#mx_contextmenu { position: fixed; top: 0; height: auto; visibility: hidden; z-index: 10000; width: 190px; background: #fff; margin: 0; padding: 4px; border: 1px solid #C9C9C9; overflow: hidden; line-height: 11px; font-size: 12px; /* font-size: 11px; */ -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
+#mx_contextmenu { position: absolute; top: 0; min-width: 200px; height: auto; visibility: hidden; z-index: 10000; background: #fff; margin: 0; padding: 4px; border: 1px solid #C9C9C9; line-height: 11px; font-size: 12px; white-space: nowrap; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
 #mx_contextmenu .menuLink { cursor: pointer; color: #222; padding: 4px 2px 4px 4px; line-height: 16px; border: 1px solid #fff; }
 #mx_contextmenu .menuLink:hover { background: #E5F0D6; border-color: #98BF6C; color: #333; }
 #mx_contextmenu .menuLink:hover, #mx_contextmenu .menuLinkDisabled { cursor: pointer; }
@@ -346,11 +348,11 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .dynamic-tab-pane-control ul { padding-left: 5px; padding-right: 10px; padding-bottom: 10px; }
 .dynamic-tab-pane-control li { padding-left: 2px; padding-right: 5px; }
 /* -------------------------[ Tree buttons ]--- */
-.treeButton, .treeButtonDisabled { display: block; cursor: pointer; cursor: hand; color: #333; border: 1px solid transparent; border-radius: 3px; padding: 3px 5px; white-space: nowrap; vertical-align: middle; }
-.treeButton:hover { border-color: #6e7a86; background-color: #fff; background-color: rgba(255, 255, 255, .5); }
-.treeButton:active { background-color: #fff; }
+.treeButton { display: block; cursor: pointer; cursor: hand; color: #333; border: 1px solid transparent; border-radius: 3px; padding: 3px 5px; white-space: nowrap; vertical-align: middle; }
+.treeButton:hover:not(.disabled) { border-color: #6e7a86; background-color: #fff; background-color: rgba(255, 255, 255, .5); cursor: pointer }
+.treeButton:not(.disabled):active { background-color: #d5d5d5 }
 .treeButton .fa, .treeButton .fa-lg { font-size: 14px; }
-.treeButtonDisabled { cursor: default; color: #777; opacity: .5; filter: alpha(opacity=50); }
+.treeButton.disabled { color: #777; opacity: 0.5 }
 /* -------------------------[ Welcome Page ]--- */
 a.hometblink, a.hometblink img { border: 0 !important; text-decoration: none !important; }
 .wm_header { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dotted #bbb; }
@@ -679,8 +681,7 @@ ul.elements_buttonbar .fa { font-size: 13px !important; padding: 1px 1px 0; }
 .sectionBody .actionButtons { padding-top: 0; min-height: 48px; }
 .sectionBody .actionButtons li { margin-right: 10px; }
 .sectionBody .actionButtons a { display: inline-block; padding: 9px 10px; line-height: 1; }
-.treeButton, .treeButtonDisabled { color: #3d5764 !important; border-radius: 2px !important; min-width: 15px; text-align: center; }
-.treeButton:active { background-color: #d5d5d5; }
+.treeButton { color: #3d5764 !important; border-radius: 2px !important; min-width: 15px; text-align: center; }
 input[type="button"], input[type="submit"] { background: #ededed; border: 1px solid #ededed; border-radius: 3px !important; }
 input[type="button"]:hover, input[type="submit"]:hover { background: #3697CD; border: 1px solid #3697CD; color: #fff; }
 input[type="button"]:active, input[type="submit"]:active { background: #3189ba; border: 1px solid #3189ba; }
@@ -689,16 +690,14 @@ form select, input[type="text"], input[type="email"], input[type="password"], in
 #tmplvars-pane select, #tmplvars-pane input[type="text"], #tmplvars-pane input[type="email"], #tmplvars-pane input[type="password"], #tmplvars-pane input[type="url"], #tmplvars-pane input[type="number"], #tmplvars-pane textarea { background-color: #FBFBFB; border-color: #dbdbdb; }
 input[type="email"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, textarea:focus, select:focus, form input[type="text"]:focus, form input[type="password"]:focus, form input[type="email"]:focus, form input[type="url"]:focus, form input[type="number"]:focus, form textarea:focus, #tv_body input[type="text"]:focus, #tv_body input[type="password"]:focus, #tv_body input[type="email"]:focus, #tv_body input[type="url"]:focus, #tv_body input[type="number"]:focus, #tv_body textarea:focus { border-color: #3697CD; }
 /* context menu */
-#mx_contextmenu { border-top-color: #3697CD; border-top-width: 3px; }
+#mx_contextmenu { border-top: 3px solid #3697CD; }
 #mx_contextmenu #nameHolder { color: #3697CD; font-size: 13px; padding: 9px 6px 7px 7px; line-height: 1.2; }
-#mx_contextmenu .menuLink { color: #333; padding: 4px 2px 4px 6px; line-height: 1.3; border: 1px solid #fff; }
+#mx_contextmenu .menuLink { color: #333; padding: 5px 10px 5px 5px; line-height: 1.3; border: 1px solid #fff; }
 #mx_contextmenu .menuLink:hover { background: #E6F2FF; border-color: #BACCDB; color: #333; }
 .treeButton .fa, .treeButton .fa-lg, #mx_contextmenu .menuLink .fa, #mx_contextmenu .menuLink .fa-lg { font-size: 14px; }
 #mx_contextmenu img { display: none; }
-/* tree */
-.treeNodeSelected, .treeNodeHover { background-color: rgba(54, 151, 205, 0.2); border: 1px solid #3697CD; color: #3697CD; }
 /* dashboard */
-.dashboard .wm_logo { margin-top: 15px; margin-bottom: 10px; margin-left: 10px; margin-right: 15px; }
+.dashboard .wm_logo { margin: 15px 15px 10px 10px; }
 .dashboard .wm_logo img { height: 56px; }
 .wm_buttons a { font-weight: normal !important; color: #3d5764 !important; }
 .wm_buttons .fa { margin-bottom: 5px; }
