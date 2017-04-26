@@ -343,7 +343,7 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .dynamic-tab-pane-control .tab-row .tab.selected .alert { color: #ccc; }
 .dynamic-tab-pane-control .tab-page { clear: both; background: #fff; position: relative; top: -2px; padding: 20px 15px 14px !important; }
 .rtl .dynamic-tab-pane-control .tab-page { position: inherit; /* critical adjustment for IE ul li Proper RTL demonstration */ }
-.dynamic-tab-pane-control .tab-row { z-index: 1; white-space: nowrap; }
+.dynamic-tab-pane-control .tab-row { z-index: 1; white-space: nowrap; min-height: 40px }
 .dynamic-tab-pane-control .tab-row .fa { margin-right: 3px; font-size: 14px; }
 .dynamic-tab-pane-control ul { padding-left: 5px; padding-right: 10px; padding-bottom: 10px; }
 .dynamic-tab-pane-control li { padding-left: 2px; padding-right: 5px; }

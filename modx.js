@@ -876,28 +876,28 @@ function setLastClickedElement(type, id) {
 			return {'width': width, 'height': height};
 		},
 		animation: {
-			fadeIn(el, display) {
-				if(el.classList.contains('is-hidden')) el.classList.remove('is-hidden');
-				el.style.opacity = 0;
-				el.style.display = display || "block";
+			fadeIn(a, b) {
+				if(a.classList.contains('is-hidden')) a.classList.remove('is-hidden');
+				a.style.opacity = 0;
+				a.style.display = b || "block";
 				(function fade() {
-					let val = parseFloat(el.style.opacity);
+					let val = parseFloat(a.style.opacity);
 					if(!((val += .1) > 1)) {
-						el.style.opacity = val;
+						a.style.opacity = val;
 						requestAnimationFrame(fade)
 					}
 				})()
 			},
-			fadeOut(el, remove) {
-				el.style.opacity = 1;
+			fadeOut(a, b) {
+				a.style.opacity = 1;
 				(function fade() {
-					if((el.style.opacity -= .1) < 0) {
-						el.style.display = 'none';
-						el.classList.add('is-hidden');
-						if(remove) {
-							el.remove();
-							el.style.display = 'block';
-							el.style.opacity = 1
+					if((a.style.opacity -= .1) < 0) {
+						a.style.display = 'none';
+						a.classList.add('is-hidden');
+						if(b) {
+							a.remove();
+							a.style.display = 'block';
+							a.style.opacity = 1
 						}
 					} else {
 						requestAnimationFrame(fade)
