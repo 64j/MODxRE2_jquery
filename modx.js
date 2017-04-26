@@ -682,8 +682,7 @@ function setLastClickedElement(type, id) {
 			},
 			showSorter: function() {
 				let el = d.getElementById('floater');
-				if(el.style.display === 'block') el.style.display = 'none';
-				else el.style.display = 'block'
+				el.classList.toggle('open')
 			},
 			emptyTrash: function() {
 				if(confirm(modx.lang.confirm_empty_trash) === true) {
@@ -747,7 +746,7 @@ function setLastClickedElement(type, id) {
 							el.style.display = 'block'
 						}
 					}
-					
+
 					loadPositions();
 
 					initQuicksearch('tree_site_templates_search', 'tree_site_templates');

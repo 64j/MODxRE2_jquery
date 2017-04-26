@@ -95,7 +95,7 @@ if(is_array($evtOut)) {
 			<div>
 				<ul class="actionButtons">
 					<li>
-						<a class="treeButton" id="button7" onclick="modx.tree.updateTree();modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_lang['sort_tree']; ?></a>
+						<a href="javascript://" onclick="modx.tree.updateTree();modx.tree.showSorter();" title="<?php echo $_lang['sort_tree']; ?>"><?php echo $_lang['sort_tree']; ?></a>
 					</li>
 				</ul>
 			</div>
