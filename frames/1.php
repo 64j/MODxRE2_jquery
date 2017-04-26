@@ -78,7 +78,7 @@ if($user['which_browser'] == 'default') {
 		#tree { width: <?php echo $MODX_positionSideBar ?>px }
 		#main, #resizer { left: <?php echo $MODX_positionSideBar ?>px }
 	</style>
-	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>
+<!--	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>-->
 	<script type="text/javascript">
 
 		// GLOBAL variable modx
@@ -94,7 +94,7 @@ if($user['which_browser'] == 'default') {
 				tree_page_click: <?php echo(!empty($modx->config['tree_page_click']) ? (int) $modx->config['tree_page_click'] : 27); ?>,
 				theme: "<?php echo $modx->config['manager_theme'] ?>",
 				which_browser: "<?php echo $user['which_browser'] ?>",
-				layout: "<?php echo $manager_layout ?>",
+				layout: <?php echo (int) $manager_layout ?>,
 				textdir: "<?php echo $modx_textdir ?>",
 			},
 			lang: {
@@ -132,7 +132,8 @@ if($user['which_browser'] == 'default') {
 				tree_folderopen: "<?php echo addslashes($_style['tree_folderopen_new']) ?>",
 				tree_folderopen_secure: "<?php echo addslashes($_style['tree_folderopen_secure']) ?>",
 				tree_minusnode: "<?php echo addslashes($_style["tree_minusnode"]) ?>",
-				tree_plusnode: "<?php echo addslashes($_style['tree_plusnode']) ?>"
+				tree_plusnode: "<?php echo addslashes($_style['tree_plusnode']) ?>",
+				tree_preview_resource: "<?php echo addslashes($_style['tree_preview_resource']) ?>"
 			},
 			permission: {
 				assets_images: <?php echo $modx->hasPermission('assets_images') ? 1 : 0 ?>,
