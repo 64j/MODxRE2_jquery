@@ -612,18 +612,20 @@
 			},
 			showBin: function(a) {
 				let t = this, el = d.getElementById('treeMenu_emptytrash');
-				if(a) {
-					el.title = modx.lang.empty_recycle_bin;
-					el.classList.remove('disabled');
-					el.innerHTML = modx.style.empty_recycle_bin;
-					el.onclick = function() {
-						t.emptyTrash()
+				if(el) {
+					if(a) {
+						el.title = modx.lang.empty_recycle_bin;
+						el.classList.remove('disabled');
+						el.innerHTML = modx.style.empty_recycle_bin;
+						el.onclick = function() {
+							t.emptyTrash()
+						}
+					} else {
+						el.title = modx.lang.empty_recycle_bin_empty;
+						el.classList.add('disabled');
+						el.innerHTML = modx.style.empty_recycle_bin_empty;
+						el.onclick = null
 					}
-				} else {
-					el.title = modx.lang.empty_recycle_bin_empty;
-					el.classList.add('disabled');
-					el.innerHTML = modx.style.empty_recycle_bin_empty;
-					el.onclick = null
 				}
 			},
 			unlockElement: function(a, b, c) {
@@ -711,7 +713,7 @@
 			setTimeout('modx.main.stopWork()', 2000)
 		},
 		keepMeAlive: function() {
-			this.get('includes/session_keepalive.php?tok=' + d.getElementById('sessTokenInput').value + '&o=' + Math.random(), function(r) {
+			modx.get('includes/session_keepalive.php?tok=' + d.getElementById('sessTokenInput').value + '&o=' + Math.random(), function(r) {
 				r = JSON.parse(r);
 				if(r.status !== 'ok') w.location.href = 'index.php?a=8'
 			})
@@ -721,16 +723,16 @@
 				if(a) {
 					this.post('index.php', {
 						updateMsgCount: true
-					}, function(r, t) {
+					}, function(r) {
 						let c = r.split(','),
 							el = d.getElementById('msgCounter');
 						if(c[0] > 0) {
 							if(el) {
 								el.innerHTML = c[0];
-								t.animation.fadeIn(el)
+								modx.animation.fadeIn(el)
 							}
 						} else {
-							if(el) t.animation.fadeOut(el)
+							if(el) modx.animation.fadeOut(el)
 						}
 						if(c[1] > 0) {
 							el = d.getElementById('newMail');
@@ -739,10 +741,11 @@
 								el.style.display = 'block'
 							}
 						}
+						if(modx.config.mail_check_timeperiod > 0) setTimeout('modx.updateMail(true)', 1000 * modx.config.mail_check_timeperiod)
 					})
 				}
 			} catch(oException) {
-				setTimeout('this.updateMail(true)', 1000 * 60)
+				setTimeout('modx.updateMail(true)', 1000 * modx.config.mail_check_timeperiod)
 			}
 		},
 		openWindow: function(a) {
@@ -873,6 +876,9 @@
 			console.log('mainMenu.startrefresh(' + a + ')');
 			w.location.href = "../" + modx.MGR_DIR
 		}
+	};
+	w.mainMenu.startmsgcount = function(a, b, c) {
+		modx.updateMail(c)
 	};
 	w.tree = {};
 	w.tree.ca = 'open';

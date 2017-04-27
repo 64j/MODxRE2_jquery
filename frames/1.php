@@ -237,7 +237,7 @@ if($user['which_browser'] == 'default') {
 					</li>
 				<?php } ?>
 				<li class="dropdown account">
-					<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;">
+					<a class="dropdown-toggle">
 						<div class="username"><?php echo $user['username'] ?></div>
 						<?php if($user['photo']) { ?>
 							<div class="icon photo" style="background-image: url(<?php echo MODX_SITE_URL . $user['photo'] ?>);"></div>
@@ -359,7 +359,7 @@ if($user['which_browser'] == 'default') {
 		<script>
 			document.getElementById('treeMenu_openfiles').onclick = function(e) {
 				e.preventDefault();
-				var randomNum = '<?php echo $_lang["files_files"] ?>';
+				let randomNum = '<?php echo $_lang["files_files"] ?>';
 				if(e.shiftKey) {
 					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
 				}
