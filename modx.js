@@ -152,12 +152,18 @@
 			},
 			work: function() {
 				let el = d.getElementById('workText');
-				if(el) el.innerHTML = modx.style.icons_working + modx.lang.working;
+				if(el) {
+					el.innerHTML = modx.style.icons_working + modx.lang.working;
+					el.style.display = 'block';
+				}
 				else setTimeout('modx.main.work()', 50)
 			},
 			stopWork: function() {
 				let el = d.getElementById('workText');
-				if(el) el.innerHTML = "";
+				if(el) {
+					modx.animation.fadeOut(el)
+					//el.style.display = 'none';
+				}
 				else setTimeout('modx.main.stopWork()', 50)
 			},
 			scrollWork: function() {
@@ -210,7 +216,7 @@
 			onMouseDown: function(e) {
 				if(e === null) e = w.event;
 				modx.resizer.dragElement = e.target !== null ? e.target : e.srcElement;
-				if((e.buttons === 1 && w.event != null || e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
+				if((e.buttons === 1 && w.event !== null || e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
 					modx.resizer.oldZIndex = modx.resizer.dragElement.style.zIndex;
 					modx.resizer.dragElement.style.zIndex = modx.resizer.newZIndex;
 					modx.resizer.dragElement.style.background = modx.resizer.background;
@@ -367,6 +373,15 @@
 					} else {
 						let href = '';
 						modx.setLastClickedElement(7, a);
+
+						let el = d.createElement('div');
+						el.style.zIndex = 999;
+						el.style.position = 'absolute';
+						el.style.left = 0;
+						el.style.top = 0;
+						el.style.right = 0;
+						el.style.bottom = 0;
+						d.getElementById('treeRoot').appendChild(el);
 						if(c === 0) {
 							href = "index.php?a=3&r=1&id=" + a + this.getFolderState()
 						} else {
@@ -375,7 +390,7 @@
 						if(e.shiftKey) {
 							w.getSelection().removeAllRanges();
 							modx.openWindow(href);
-							this.reloadtree()
+							this.restoreTree()
 						} else {
 							w.main.location.href = href
 						}
@@ -556,7 +571,7 @@
 				let el = d.getElementById('buildText');
 				if(el) {
 					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
-					modx.animation.fadeIn(el)
+					el.style.display = 'block'
 				}
 				this.rpcNode = d.getElementById('treeRoot');
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=2', function(r, t) {
@@ -568,7 +583,7 @@
 				let el = d.getElementById('buildText');
 				if(el) {
 					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
-					modx.animation.fadeIn(el)
+					el.style.display = 'block'
 				}
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=1', function(r, t) {
 					t.tree.rpcLoadData(r)
@@ -579,7 +594,7 @@
 				let el = d.getElementById('buildText');
 				if(el) {
 					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
-					modx.animation.fadeIn(el)
+					el.style.display = 'block'
 				}
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=0', function(r, t) {
 					t.openedArray = [];
@@ -804,12 +819,11 @@
 		},
 		animation: {
 			fadeIn: function(a, b) {
-				if(a.classList.contains('is-hidden')) a.classList.remove('is-hidden');
 				a.style.opacity = 0;
 				a.style.display = b || "block";
 				(function fade() {
 					let val = parseFloat(a.style.opacity);
-					if(!((val += .1) > 1)) {
+					if(!((val += .05) >= 1)) {
 						a.style.opacity = val;
 						requestAnimationFrame(fade)
 					}
@@ -818,12 +832,11 @@
 			fadeOut: function(a, b) {
 				a.style.opacity = 1;
 				(function fade() {
-					if((a.style.opacity -= .1) < 0) {
-						a.style.display = 'none';
-						a.classList.add('is-hidden');
+					if((a.style.opacity -= .05) <= 0) {
+						a.style.display = '';
 						if(b) {
 							a.parentElement.removeChild(a);
-							a.style.display = 'block';
+							a.style.display = '';
 							a.style.opacity = 1
 						}
 					} else {
@@ -881,7 +894,8 @@
 	};
 	w.mainMenu.startrefresh = function(a) {
 		if(a === 1) {
-			console.log('mainMenu.startrefresh(' + a + ') off');
+			console.log('mainMenu.startrefresh(' + a + ')');
+			modx.tree.restoreTree()
 			//setTimeout('modx.tree.restoreTree()', 50)
 		}
 		if(a === 2) {
@@ -914,6 +928,10 @@
 	};
 	w.tree.resizeTree = function() {
 		console.log('tree.resizeTree() off')
+	};
+	w.onbeforeunload = function() {
+		console.log('onbeforeunload')
+		//return 'is OK';
 	};
 	d.addEventListener('DOMContentLoaded', function() {
 		modx.init()
