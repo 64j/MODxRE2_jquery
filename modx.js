@@ -556,7 +556,7 @@
 				let el = d.getElementById('buildText');
 				if(el) {
 					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
-					el.style.display = 'block'
+					modx.animation.fadeIn(el)
 				}
 				this.rpcNode = d.getElementById('treeRoot');
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=2', function(r, t) {
@@ -565,12 +565,22 @@
 			},
 			expandTree: function() {
 				this.rpcNode = d.getElementById('treeRoot');
+				let el = d.getElementById('buildText');
+				if(el) {
+					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
+					modx.animation.fadeIn(el)
+				}
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=1', function(r, t) {
 					t.tree.rpcLoadData(r)
 				})
 			},
 			collapseTree: function() {
 				this.rpcNode = d.getElementById('treeRoot');
+				let el = d.getElementById('buildText');
+				if(el) {
+					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
+					modx.animation.fadeIn(el)
+				}
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=0', function(r, t) {
 					t.openedArray = [];
 					t.tree.saveFolderState();
@@ -579,6 +589,11 @@
 			},
 			updateTree: function() {
 				this.rpcNode = d.getElementById('treeRoot');
+				let el = d.getElementById('buildText');
+				if(el) {
+					el.innerHTML = modx.style.tree_info + modx.lang.loading_doc_tree;
+					el.style.display = 'block'
+				}
 				let a = d.sortFrm;
 				let b = 'a=1&f=nodes&indent=1&parent=0&expandAll=2&dt=' + a.dt.value + '&tree_sortby=' + a.sortby.value + '&tree_sortdir=' + a.sortdir.value + '&tree_nodename=' + a.nodename.value;
 				modx.get('index.php?' + b, function(r, t) {
@@ -866,8 +881,8 @@
 	};
 	w.mainMenu.startrefresh = function(a) {
 		if(a === 1) {
-			console.log('mainMenu.startrefresh(' + a + ')');
-			setTimeout('modx.tree.restoreTree()', 50)
+			console.log('mainMenu.startrefresh(' + a + ') off');
+			//setTimeout('modx.tree.restoreTree()', 50)
 		}
 		if(a === 2) {
 			console.log('mainMenu.startrefresh(' + a + ') off')
