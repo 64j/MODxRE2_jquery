@@ -846,8 +846,7 @@
 			}
 		},
 		XHR: function() {
-			let x = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-			return new x()
+			return ('XMLHttpRequest' in w) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 		},
 		get: function(a, b) {
 			let t = this,
