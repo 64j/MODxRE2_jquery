@@ -929,8 +929,10 @@
 		console.log('tree.resizeTree() off')
 	};
 	w.onbeforeunload = function() {
-		console.log('onbeforeunload')
-		//return 'is OK';
+		let a = d.getElementById(modx.main.idFrame).contentWindow;
+		if(parseInt(modx.main.getQueryVariable('a', a.location.search.substring(1))) === 27 ) {
+			modx.get('index.php?a=67&type=7&id=' + modx.main.getQueryVariable('id', a.location.search.substring(1)));
+		}
 	};
 	d.addEventListener('DOMContentLoaded', function() {
 		modx.init()
