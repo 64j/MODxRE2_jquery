@@ -191,7 +191,7 @@ if($user['which_browser'] == 'default') {
 				</li>
 				<?php if($modx->hasPermission('settings') || $modx->hasPermission('view_eventlog') || $modx->hasPermission('logs') || $modx->hasPermission('help')) { ?>
 					<li class="dropdown">
-						<a class="dropdown-toggle" onclick="modx.mainMenu.navToggle(this); return false;"><i class="fa fa-sliders fa-2x"></i></a>
+						<a class="dropdown-toggle"><i class="fa fa-sliders fa-2x"></i></a>
 						<ul class="dropdown-menu">
 							<?php if($modx->hasPermission('settings')) { ?>
 								<li>
