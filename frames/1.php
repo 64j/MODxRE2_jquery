@@ -84,6 +84,9 @@ if($user['which_browser'] == 'default') {
 		// GLOBAL variable modx
 		const modx = {
 			MGR_DIR: "<?php echo MGR_DIR ?>",
+			user: {
+				username: "<?php echo $user['username'] ?>"
+			},
 			config: {
 				mail_check_timeperiod: <?php echo $modx->config['mail_check_timeperiod'] ?>,
 				menu_height: <?php echo (int) $menu_height ?>,

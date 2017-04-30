@@ -800,4 +800,4 @@ a.btn.disabled, fieldset[disabled] a.btn { pointer-events: none; }
 .ElementsInTree #treeHolder #treePane .tab-page .panel-group .panel, .ElementsInTree #treeHolder #treePane #tabDoc.tab-page > div { max-height: calc(100vh - 180px); overflow: auto; }
 .ElementsInTree #treeHolder #treePane .tab-page .panel-group { overflow: visible !important; max-height: none !important; box-sizing: border-box !important }
 /* gridster */
-.gs-w:hover .gs-resize-handle, .resizing .gs-resize-handle { right: 0; bottom: 0 }
+.gs-w:hover .gs-resize-handle, .resizing .gs-resize-handle { right: 7px; bottom: 0 }

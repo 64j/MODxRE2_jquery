@@ -23,7 +23,7 @@
 					if(el) el.classList.remove('close')
 				};
 				d.getElementById(this.id).onclick = function(e) {
-					let t = closest(e.target, 'a');
+					let t = e.target.closest('a');
 					if(t !== null && t.href !== u && t.href !== this.baseURI) {
 						this.querySelector('.active').classList.remove('active');
 						if(t.offsetParent.className.indexOf('dropdown-menu') === 0) {
@@ -84,7 +84,7 @@
 												if(e.target.tagName === 'I') {
 													return false
 												}
-												let a = closest(e.target, 'a');
+												let a = e.target.closest('a');
 												if(a !== null) {
 													let el = t.result.querySelector('.selected');
 													if(el) el.className = '';
@@ -100,7 +100,7 @@
 								}
 							};
 							xhr.onloadstart = function() {
-								closest(el, 'form').appendChild(r)
+								el.closest('form').appendChild(r)
 							};
 							xhr.onerror = function() {
 								console.warn(this.status)
@@ -454,7 +454,7 @@
 				} else {
 					y = y - mnu.offsetHeight / 2
 				}
-				el = closest(e.target, '.treeNode');
+				el = e.target.closest('.treeNode');
 				if(el === null) x += 50;
 				this.itemToChange = a;
 				this.selectedObjectName = b;
@@ -834,7 +834,7 @@
 				(function fade() {
 					if((a.style.opacity -= .05) <= 0) {
 						a.style.display = '';
-						if(b) {
+						if(b && a.parentElement) {
 							a.parentElement.removeChild(a);
 							a.style.display = '';
 							a.style.opacity = 1
@@ -889,16 +889,17 @@
 		modx.main.work()
 	};
 	w.mainMenu.reloadtree = function() {
-		console.log('mainMenu.reloadtree() off');
+		console.log('mainMenu.reloadtree()');
+		modx.tree.restoreTree()
 	};
 	w.mainMenu.startrefresh = function(a) {
 		if(a === 1) {
 			console.log('mainMenu.startrefresh(' + a + ')');
 			modx.tree.restoreTree()
-			//setTimeout('modx.tree.restoreTree()', 50)
 		}
 		if(a === 2) {
-			console.log('mainMenu.startrefresh(' + a + ') off')
+			console.log('mainMenu.startrefresh(' + a + ')');
+			modx.tree.restoreTree()
 		}
 		if(a === 9 || a === 10) {
 			console.log('mainMenu.startrefresh(' + a + ')');
@@ -930,7 +931,7 @@
 	};
 	w.onbeforeunload = function() {
 		let a = d.getElementById(modx.main.idFrame).contentWindow;
-		if(parseInt(modx.main.getQueryVariable('a', a.location.search.substring(1))) === 27 ) {
+		if(parseInt(modx.main.getQueryVariable('a', a.location.search.substring(1))) === 27) {
 			modx.get('index.php?a=67&type=7&id=' + modx.main.getQueryVariable('id', a.location.search.substring(1)));
 		}
 	};
@@ -943,20 +944,24 @@ function setLastClickedElement(a, b) {
 	modx.setLastClickedElement(a, b)
 }
 
-function closest(a, b) {
-	let c, d;
-	['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector', 'oMatchesSelector'].some(function(fn) {
-		if(typeof document.body[fn] === 'function') {
-			c = fn;
-			return true;
+(function() {
+	if(!Element.prototype.closest) {
+		Element.prototype.closest = function(a) {
+			let b = this, c, d;
+			['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector', 'oMatchesSelector'].some(function(fn) {
+				if(typeof document.body[fn] === 'function') {
+					c = fn;
+					return true
+				}
+				return false
+			});
+			if(b && b[c](a)) return b;
+			while(b) {
+				d = b.parentElement;
+				if(d && d[c](a)) return d;
+				b = d
+			}
+			return null;
 		}
-		return false;
-	});
-	if(a && a[c](b)) return a;
-	while(a) {
-		d = a.parentElement;
-		if(d && d[c](b)) return d;
-		a = d;
 	}
-	return null;
-}
+})();
