@@ -228,8 +228,6 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 				$checkIsFolder = checkIsFolder($row['id'], 1); // folders
 				$checkNoFolder = checkIsFolder($row['id'], 0); // no folders
 
-				$ph['pageIdDisplay'] = str_replace(')</small>', ' - ' . ($checkIsFolder + $checkNoFolder) . ')</small>', $ph['pageIdDisplay']);
-
 				// expandAll: two type for partial expansion
 				if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
 					if($expandAll == 1) {
