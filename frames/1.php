@@ -78,7 +78,7 @@ if($user['which_browser'] == 'default') {
 		#tree { width: <?php echo $MODX_positionSideBar ?>px }
 		#main, #resizer { left: <?php echo $MODX_positionSideBar ?>px }
 	</style>
-<!--	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>-->
+	<script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 
 		// GLOBAL variable modx
