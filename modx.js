@@ -890,7 +890,7 @@
 	};
 	w.mainMenu.reloadtree = function() {
 		console.log('mainMenu.reloadtree()');
-		modx.tree.restoreTree()
+		setTimeout('modx.tree.restoreTree()', 50)
 	};
 	w.mainMenu.startrefresh = function(a) {
 		if(a === 1) {
