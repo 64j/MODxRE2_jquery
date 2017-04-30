@@ -24,7 +24,7 @@
 				};
 				d.getElementById(this.id).onclick = function(e) {
 					let t = e.target.closest('a');
-					if(t !== null && t.href !== u && t.href !== this.baseURI) {
+					if(t !== null && t.href !== '' && t.href !== this.baseURI) {
 						this.querySelector('.active').classList.remove('active');
 						if(t.offsetParent.className.indexOf('dropdown-menu') === 0) {
 							t.offsetParent.offsetParent.classList.add('active');
