@@ -20,18 +20,19 @@
 				//console.log('modx.mainMenu.init()');
 				d.getElementById(this.id).onmouseover = function() {
 					let el = this.querySelector('.close');
-					if(el) el.classList.remove('close')
+					if(el) el.classList.remove('close');
+					this.style.overflow = '';
 				};
 				d.getElementById(this.id).onclick = function(e) {
 					let t = e.target.closest('a');
 					if(t !== null && t.href !== '' && t.href !== this.baseURI) {
 						this.querySelector('.active').classList.remove('active');
 						if(t.offsetParent.className.indexOf('dropdown-menu') === 0) {
-							t.offsetParent.offsetParent.classList.add('active');
-							t.offsetParent.offsetParent.classList.add('close')
+							t.offsetParent.offsetParent.classList.add('active')
 						} else {
 							t.offsetParent.classList.add('active')
 						}
+						this.style.overflow = 'hidden'
 					}
 				};
 				modx.search.init();
@@ -197,8 +198,8 @@
 		},
 		resizer: {
 			dragElement: null,
-			oldZIndex: 9990,
-			newZIndex: 9991,
+			oldZIndex: 99,
+			newZIndex: 999,
 			left: modx.config.tree_width,
 			id: 'resizer',
 			switcher: 'hideMenu',
