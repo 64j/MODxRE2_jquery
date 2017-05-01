@@ -161,8 +161,6 @@
 			stopWork: function() {
 				let el = d.getElementById('workText');
 				if(el) {
-					modx.animation.fadeOut(el)
-					//el.style.display = 'none';
 					modx.animation.fadeOut(el);
 				}
 				else setTimeout('modx.main.stopWork()', 50)
@@ -492,9 +490,7 @@
 						w.main.location.href = "index.php?a=3&id=" + this.itemToChange;
 						break;
 					case 2:
-						modx.setLastClickedElement(7, this.itemToChange);
 						this.setActiveFromContextMenu(this.itemToChange);
-						w.main.location.href = "index.php?a=27&id=" + this.itemToChange;
 						w.main.location.href = "index.php?a=27&r=1&id=" + this.itemToChange;
 						break;
 					case 3:
@@ -560,7 +556,7 @@
 			setSelected: function(a) {
 				let el = d.querySelector('.treeNodeSelected');
 				if(el) el.classList.remove('treeNodeSelected');
-				a.classList.add('treeNodeSelected');
+				a.classList.add('treeNodeSelected')
 			},
 			setActiveFromContextMenu: function(a) {
 				let el = d.querySelector('.treeNodeSelected');
@@ -664,7 +660,6 @@
 				let m = modx.lockedElementsTranslation.msg.replace('[+id+]', b).replace('[+element_type+]', modx.lockedElementsTranslation['type' + a]);
 				if(confirm(m) === true) {
 					modx.get('index.php?a=67&type=' + a + '&id=' + b, function(r, t) {
-						if(parseInt(r) === 1) t.animation.fadeOut(c);
 						if(parseInt(r) === 1) t.animation.fadeOut(c, true);
 						else alert(r)
 					})
@@ -734,7 +729,6 @@
 			}
 		},
 		setLastClickedElement: function(a, b) {
-			localStorage.setItem('MODX_lastClickedElement', '[' + a + ',' + b + ']')
 			localStorage.setItem('MODX_lastClickedElement', '[' + parseInt(a) + ',' + parseInt(b) + ']')
 		},
 		removeLocks: function() {
