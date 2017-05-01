@@ -163,6 +163,7 @@
 				if(el) {
 					modx.animation.fadeOut(el)
 					//el.style.display = 'none';
+					modx.animation.fadeOut(el);
 				}
 				else setTimeout('modx.main.stopWork()', 50)
 			},
@@ -494,6 +495,7 @@
 						modx.setLastClickedElement(7, this.itemToChange);
 						this.setActiveFromContextMenu(this.itemToChange);
 						w.main.location.href = "index.php?a=27&id=" + this.itemToChange;
+						w.main.location.href = "index.php?a=27&r=1&id=" + this.itemToChange;
 						break;
 					case 3:
 						w.main.location.href = "index.php?a=4&pid=" + this.itemToChange;
@@ -663,6 +665,7 @@
 				if(confirm(m) === true) {
 					modx.get('index.php?a=67&type=' + a + '&id=' + b, function(r, t) {
 						if(parseInt(r) === 1) t.animation.fadeOut(c);
+						if(parseInt(r) === 1) t.animation.fadeOut(c, true);
 						else alert(r)
 					})
 				}
@@ -732,6 +735,7 @@
 		},
 		setLastClickedElement: function(a, b) {
 			localStorage.setItem('MODX_lastClickedElement', '[' + a + ',' + b + ']')
+			localStorage.setItem('MODX_lastClickedElement', '[' + parseInt(a) + ',' + parseInt(b) + ']')
 		},
 		removeLocks: function() {
 			if(confirm(modx.lang.confirm_remove_locks) === true) {
