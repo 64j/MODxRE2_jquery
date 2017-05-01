@@ -8,8 +8,9 @@ if(IN_MANAGER_MODE != 'true') {
  * @param $parent
  * @param $expandAll
  * @param $theme
+ * @param string $hereid
  */
-function makeHTML($indent, $parent, $expandAll, $theme) {
+function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 	global $modx;
 	global $icons, $iconsPrivate, $_style;
 	global $output, $_lang, $opened, $opened2, $closed2; //added global vars
@@ -167,7 +168,8 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 			'nodetitleDisplay' => $nodetitleDisplay,
 			'weblinkDisplay' => $weblinkDisplay,
 			'pageIdDisplay' => $pageIdDisplay,
-			'lockedByUser' => $lockedByUser
+			'lockedByUser' => $lockedByUser,
+			'treeNodeSelected' => $row['id'] == $hereid ? ' treeNodeSelected' : ''
 		);
 		// invoke OnManagerNodePrerender event
 
@@ -250,7 +252,7 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 					$node = $modx->parseText($node, $_style, '[&', '&]');
 					$output .= $node;
 					if($checkIsFolder) {
-						makeHTML($indent + 1, $row['id'], $expandAll, $theme);
+						makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
 					}
 					$node = '</div></div>';
 				} else {
@@ -283,7 +285,7 @@ function makeHTML($indent, $parent, $expandAll, $theme) {
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
 					$output .= $node;
-					makeHTML($indent + 1, $row['id'], $expandAll, $theme);
+					makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
 					$node = '</div></div>';
 				} else {
 					$tpl = getTplClosedFolderNode();
@@ -458,7 +460,7 @@ function getTplSingleNode() {
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\'"
         >[+icon+]</span>[+lockedByUser+]<span
         p="[+parent+]"
-        class="treeNode"
+        class="treeNode[+treeNodeSelected+]"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'p[+id+]\').onclick(event);return false;"
@@ -480,7 +482,7 @@ function getTplOpenFolderNode() {
         oncontextmenu="this.onclick(event);return false;"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         >[+src+]</span>[+lockedByUser+]<span
-        class="treeNode"
+        class="treeNode[+treeNodeSelected+]"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
@@ -502,7 +504,7 @@ function getTplClosedFolderNode() {
         oncontextmenu="this.onclick(event);return false;"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         >[+src+]</span>[+lockedByUser+]<span
-        class="treeNode"
+        class="treeNode[+treeNodeSelected+]"
         onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
