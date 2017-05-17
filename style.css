@@ -1,12 +1,11 @@
 /* -------------------------[ Neutralize styles, fonts and viewport ]--- */
-#preLoader { display: none }
 * html { overflow-x: hidden; overflow-y: auto; }
 /* for IE7 */
 
 html, body, form, fieldset, img { margin: 0; padding: 0; }
 img { border: none; }
 html { font-size: 100.01%; line-height: 1.5; color: #333; }
-body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; font-size: 13px; color: #333; background: #F2F2F2 !important; -webkit-font-smoothing: subpixel-antialiased !important; /*-webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden;*/ }
+body { font-family: Arial, sans-serif !important; font-size: 13px; color: #333; background: #F2F2F2 !important; -webkit-font-smoothing: subpixel-antialiased !important; /*-webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden;*/ }
 /* For Arabic Font */
 html[lang="ar"] body, html[lang="ary"] body, html[lang="azb"] body, html[lang="fa-IR"] body, html[lang="haz"] body, html[lang="ps"] body, html[lang="ur"] body { font-family: Tahoma, Arial, sans-serif; }
 /* For Chinese Font */
@@ -105,7 +104,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #mainMenu .nav > li.close > ul { opacity: 0 !important; visibility: hidden !important; -webkit-transition-delay: 0s !important; transition-delay: 0s !important }
 #mainMenu .nav > li > ul a, #mainMenu .nav > li > ul span { display: block; position: relative; padding: 10px; margin-top: -1px; text-decoration: none; border-top: 1px solid rgba(0, 0, 0, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0); color: #39545e }
 #mainMenu .nav > li > ul a:hover { color: #fff; background-color: #0b9991; border-bottom-color: rgba(0, 0, 0, 0.05); }
-#mainMenu .nav > li > ul a .fa { margin-right: 0.833rem; color: #39545e; width: 1.25rem; text-align: center; }
+#mainMenu .nav > li > ul a .fa { margin-right: 0.833rem; width: 1.25rem; text-align: center; }
 #mainMenu .nav > li > ul span { text-align: center; font-size: 11px; color: #999; border-bottom-color: rgba(0, 0, 0, 0); }
 #statusbar { position: absolute; overflow: hidden; padding: 0 10px; height: 48px; line-height: 48px; font-size: 11px; white-space: nowrap; color: #93a59e; }
 #statusbar #buildText, #statusbar #workText { display: none }
@@ -350,7 +349,7 @@ a.hometblink:hover { text-decoration: underline; color: Gray; }
 .treeButton { display: block; cursor: pointer; color: #3d5764 !important; border: 1px solid transparent; border-radius: 2px; padding: 0 0.35em; line-height: 2em; white-space: nowrap; text-align: center; vertical-align: middle; }
 .treeButton:hover:not(.disabled) { border-color: #6e7a86; background-color: #fff; background-color: rgba(255, 255, 255, .5); cursor: pointer }
 .treeButton:not(.disabled):active { background-color: #d5d5d5 }
-.treeButton .fa { min-width: 14px; font-size: 14px; vertical-align: 0 }
+.treeButton .fa { min-width: 14px; font-size: 14px; }
 .treeButton.disabled { color: #777; opacity: 0.5 }
 /* -------------------------[ Welcome Page ]--- */
 a.hometblink, a.hometblink img { border: 0 !important; text-decoration: none !important; }
@@ -397,7 +396,7 @@ select#stay { margin-top: -7px; padding: 6px 5px 6px 2px; width: auto !important
 .rtl #actions { left: 10px; text-align: left; }
 ul.actionButtons { margin: 0; padding: 0; /* accommodate border on buttons - */ background: none; min-height: 40px; width: auto; white-space: nowrap; padding-top: 5px; }
 .actionButtons li { list-style: none; margin-right: 3px; padding: 0; float: left; }
-.actionButtons li:before { display: none; content: ''; }
+.actionButtons li:before, .mmTagList li:before, .rTable li:before, .tab-pane ul li ul li:before, .dashboard li:before, div#idShowHideSocialBox.sectionBody > div.btn-group.ope > ul.dropdown-menu > li:before, .sectionBody .multitv .list li:before { display: none; content: ''; }
 .actionButtons img { vertical-align: top; margin-top: 1px; filter: alpha(opacity=30); -moz-opacity: 0.3; opacity: 0.3; }
 .actionButtons:hover img { filter: alpha(opacity=100); -moz-opacity: 1; opacity: 1; }
 .actionButtons a { border: 1px solid #BBB; border-radius: 3px 3px 3px 3px; color: #333; font-weight: 500; outline: medium none; padding: 7px 8px 7px 4px; text-decoration: none; vertical-align: top; white-space: nowrap; text-shadow: 0 1px 0 #FFF; -moz-box-shadow: 1px 1px 2px #ccc; -webkit-box-shadow: 1px 1px 2px #ccc; box-shadow: 1px 1px 2px #ccc; background: -moz-linear-gradient(#FFFFFF, #E0E0E0); background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), to(#E0E0E0)); background: -o-linear-gradient(#FFFFFF, #E0E0E0); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#E0E0E0);
