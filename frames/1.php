@@ -380,53 +380,41 @@ if($user['which_browser'] == 'default') {
 
 	?>
 
-	<?php if($modx->hasPermission('edit_template') || $modx->hasPermission('edit_snippet') || $modx->hasPermission('edit_chunk') || $modx->hasPermission('edit_plugin')) { ?>
-		<script>
-			document.getElementById('treeMenu_openelements').onclick = function(e) {
-				e.preventDefault();
-				let randomNum = '<?php echo $_lang["elements"] ?>';
-				if(e.shiftKey) {
-					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
-				}
-				modx.openWindow({
-					url: 'index.php?a=76',
-					title: randomNum
-				})
-			};
-		</script>
-	<?php } ?>
-
-	<?php if($use_browser && $modx->hasPermission('assets_images')) { ?>
-		<script>
-			document.getElementById('treeMenu_openimages').onclick = function(e) {
-				e.preventDefault();
-				let randomNum = '<?php echo $_lang["files_files"] ?>';
-				if(e.shiftKey) {
-					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
-				}
-				modx.openWindow({
-					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
-					title: randomNum
-				})
-			};
-		</script>
-	<?php } ?>
-
-	<?php if($use_browser && $modx->hasPermission('assets_files')) { ?>
-		<script>
-			document.getElementById('treeMenu_openfiles').onclick = function(e) {
-				e.preventDefault();
-				let randomNum = '<?php echo $_lang["files_files"] ?>';
-				if(e.shiftKey) {
-					randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
-				}
-				modx.openWindow({
-					url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
-					title: randomNum
-				})
-			};
-		</script>
-	<?php } ?>
+	<script defer>
+		document.getElementById('treeMenu_openelements').onclick = function(e) {
+			e.preventDefault();
+			let randomNum = '<?php echo $_lang["elements"] ?>';
+			if(e.shiftKey) {
+				randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+			}
+			modx.openWindow({
+				url: 'index.php?a=76',
+				title: randomNum
+			})
+		};
+		document.getElementById('treeMenu_openimages').onclick = function(e) {
+			e.preventDefault();
+			let randomNum = '<?php echo $_lang["files_files"] ?>';
+			if(e.shiftKey) {
+				randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+			}
+			modx.openWindow({
+				url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=images',
+				title: randomNum
+			})
+		};
+		document.getElementById('treeMenu_openfiles').onclick = function(e) {
+			e.preventDefault();
+			let randomNum = '<?php echo $_lang["files_files"] ?>';
+			if(e.shiftKey) {
+				randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
+			}
+			modx.openWindow({
+				url: 'media/browser/<?php echo $which_browser; ?>/browse.php?&type=files',
+				title: randomNum
+			})
+		};
+	</script>
 
 	<?php
 	// invoke OnManagerFrameLoader
