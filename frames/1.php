@@ -288,7 +288,7 @@ if($user['which_browser'] == 'default') {
 	</div>
 	<div id="searchresult"></div>
 
-	<div id="floater">
+	<div id="floater" class="dropdown-menu">
 		<?php
 		$sortParams = array(
 			'tree_sortby',
@@ -343,7 +343,7 @@ if($user['which_browser'] == 'default') {
 	</div>
 
 	<!-- Contextual Menu Popup Code -->
-	<div id="mx_contextmenu" onselectstart="return false;">
+	<div id="mx_contextmenu" class="dropdown-menu" onselectstart="return false;">
 		<div id="nameHolder">&nbsp;</div>
 		<?php
 		constructLink(3, $_style["ctx_new_document"], $_lang["create_resource_here"], $modx->hasPermission('new_document')); // new Resource
@@ -373,14 +373,14 @@ if($user['which_browser'] == 'default') {
 	<?php
 	function constructLink($action, $img, $text, $allowed) {
 		if($allowed == 1) {
-			echo sprintf('<div class="menuLink" id="item%s" onclick="modx.tree.menuHandler(%s); modx.tree.hideMenu();">', $action, $action);
+			echo sprintf('<div class="menuLink" id="item%s" onclick="modx.tree.menuHandler(%s);">', $action, $action);
 			echo sprintf('<i class="%s"></i> %s</div>', $img, $text);
 		}
 	}
 
 	?>
 
-	<script defer>
+	<script type="text/javascript">
 		document.getElementById('treeMenu_openelements').onclick = function(e) {
 			e.preventDefault();
 			let randomNum = '<?php echo $_lang["elements"] ?>';

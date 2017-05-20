@@ -12,7 +12,8 @@
 			this.resizer.init();
 			this.setLastClickedElement(0, 0);
 			w.setInterval(this.keepMeAlive, 1000 * 60 * this.config.session_timeout);
-			w.onload = this.updateMail(true)
+			w.onload = this.updateMail(true);
+			d.onclick = this.hideDropDown
 		},
 		mainMenu: {
 			id: 'mainMenu',
@@ -163,6 +164,7 @@
 				let el = d.getElementById('workText');
 				if(el) {
 					modx.animation.fadeOut(el);
+					w.main.onclick = modx.hideDropDown;
 				}
 				else setTimeout('modx.main.stopWork()', 50)
 			},
@@ -214,9 +216,9 @@
 				d.getElementById(modx.resizer.id).onmouseup = modx.resizer.onMouseUp
 			},
 			onMouseDown: function(e) {
-				if(e === null) e = w.event;
+				e = e || w.event;
 				modx.resizer.dragElement = e.target !== null ? e.target : e.srcElement;
-				if((e.buttons === 1 && w.event !== null || e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
+				if((e.buttons === 1 && e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
 					modx.resizer.oldZIndex = modx.resizer.dragElement.style.zIndex;
 					modx.resizer.dragElement.style.zIndex = modx.resizer.newZIndex;
 					modx.resizer.dragElement.style.background = modx.resizer.background;
@@ -234,7 +236,7 @@
 				}
 			},
 			onMouseMove: function(e) {
-				if(e === null) e = w.event;
+				e = e || w.event;
 				if(e.clientX > 0) {
 					modx.resizer.left = e.clientX
 				} else {
@@ -292,7 +294,6 @@
 			}
 		},
 		tree: {
-			_rc: 0,
 			rpcNode: null,
 			itemToChange: null,
 			selectedObjectName: null,
@@ -418,6 +419,7 @@
 					i11 = d.getElementById('item11'),
 					el = d.querySelector('#tree .treeNodeSelectedByContext');
 				if(el) el.classList.remove('treeNodeSelectedByContext');
+				modx.hideDropDown(mnu);
 				d.querySelector('#node' + a + '>.treeNode').classList.add('treeNodeSelectedByContext');
 				if(modx.permission.publish_document === 1) {
 					i9.style.display = 'block';
@@ -456,8 +458,7 @@
 				this.itemToChange = a;
 				this.selectedObjectName = b;
 				this.dopopup(x + 10, y);
-				e.cancelBubble = true;
-				return false
+				e.stopPropagation()
 			},
 			dopopup: function(a, b) {
 				if(this.selectedObjectName.length > 20) {
@@ -467,18 +468,8 @@
 					el = d.getElementById("nameHolder");
 				c.style.left = a + (modx.config.textdir ? '-190' : '') + "px";
 				c.style.top = b + "px";
-				c.style.visibility = 'visible';
-				el.innerHTML = this.selectedObjectName;
-				this._rc = 1;
-				setTimeout(function() {
-					modx.tree._rc = 0;
-					w.main.onclick = function() {
-						modx.tree.hideMenu()
-					};
-					d.onclick = function() {
-						modx.tree.hideMenu()
-					}
-				}, 200)
+				c.classList.add('show');
+				el.innerHTML = this.selectedObjectName
 			},
 			menuHandler: function(a) {
 				switch(a) {
@@ -543,12 +534,6 @@
 					default:
 						alert('Unknown operation command.')
 				}
-			},
-			hideMenu: function() {
-				if(this._rc) return false;
-				d.getElementById('mx_contextmenu').style.visibility = 'hidden';
-				let el = d.querySelector('#tree .treeNodeSelectedByContext');
-				if(el) el.classList.remove('treeNodeSelectedByContext')
 			},
 			setSelected: function(a) {
 				let el = d.querySelector('.treeNodeSelected');
@@ -634,8 +619,15 @@
 			saveFolderState: function() {
 				modx.get('index.php?a=1&f=nodes&savestateonly=1' + this.getFolderState())
 			},
-			showSorter: function() {
-				d.getElementById('floater').classList.toggle('open')
+			showSorter: function(e) {
+				e = e || w.event;
+				let el = d.getElementById('floater');
+				el.classList.toggle('show');
+				el.onclick = function(e) {
+					e.stopPropagation()
+				};
+				modx.hideDropDown(el);
+				e.stopPropagation()
 			},
 			emptyTrash: function() {
 				if(confirm(modx.lang.confirm_empty_trash) === true) {
@@ -818,6 +810,14 @@
 				'width': a,
 				'height': b
 			}
+		},
+		hideDropDown: function(a) {
+			let elms = d.getElementsByClassName('dropdown-menu');
+			for(let i = 0; i < elms.length; i++) {
+				if(a === null || (a !== null && a !== elms[i])) elms[i].classList.remove('show')
+			}
+			let el = d.querySelector('#tree .treeNodeSelectedByContext');
+			if(el) el.classList.remove('treeNodeSelectedByContext')
 		},
 		animation: {
 			fadeIn: function(a, b) {
