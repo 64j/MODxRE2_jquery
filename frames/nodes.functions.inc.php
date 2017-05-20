@@ -268,22 +268,6 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 		}
 
 		$output .= $node;
-		// store vars in Javascript
-		$scr = '';
-		if($expandAll == 1) {
-			$scr .= '<script type="text/javascript"> ';
-			foreach($opened2 as $item) {
-				$scr .= sprintf('parent.openedArray[%d] = 1; ', $item);
-			}
-			$scr .= '</script> ';
-		} elseif($expandAll == 0) {
-			$scr .= '<script type="text/javascript"> ';
-			foreach($closed2 as $item) {
-				$scr .= sprintf('parent.openedArray[%d] = 0; ', $item);
-			}
-			$scr .= '</script> ';
-		}
-		$output = $scr . $output;
 	}
 }
 
