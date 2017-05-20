@@ -306,12 +306,13 @@
 			toggleNode: function(a, b, c, e, f) {
 				f = (!f || f === '0') ? '0' : '1';
 				this.rpcNode = a.parentNode.lastChild;
-				let rpcNodeText, loadText = modx.lang.loading_doc_tree,
-					signImg = d.getElementById("s" + c),
-					folderImg = d.getElementById("f" + c);
-				if(this.rpcNode.style.display !== 'block') {
-					signImg.innerHTML = modx.style.tree_minusnode;
-					folderImg.innerHTML = (f === '0') ? modx.style.tree_folderopen : modx.style.tree_folderopen_secure;
+				let rpcNodeText,
+					loadText = modx.lang.loading_doc_tree,
+					iconNodeToggle = d.getElementById("s" + c),
+					iconNode = d.getElementById("f" + c);
+				if(this.rpcNode.innerHTML === '') {
+					iconNodeToggle.innerHTML = iconNodeToggle.dataset.iconCollapsed;
+					iconNode.innerHTML = iconNode.dataset.iconFolderOpen;
 					rpcNodeText = this.rpcNode.innerHTML;
 					modx.openedArray[c] = 1;
 					if(rpcNodeText === "" || rpcNodeText.indexOf(loadText) > 0) {
@@ -325,13 +326,11 @@
 							modx.tree.rpcLoadData(r)
 						})
 					}
-					this.rpcNode.style.display = 'block';
 					this.saveFolderState()
 				} else {
-					signImg.innerHTML = modx.style.tree_plusnode;
-					folderImg.innerHTML = (f === '0') ? modx.style.tree_folder : modx.style.tree_folder_secure;
+					iconNodeToggle.innerHTML = iconNodeToggle.dataset.iconExpanded;
+					iconNode.innerHTML = iconNode.dataset.iconFolderClose;
 					delete modx.openedArray[c];
-					this.rpcNode.style.display = 'none';
 					this.rpcNode.innerHTML = '';
 					this.saveFolderState()
 				}
@@ -339,7 +338,6 @@
 			rpcLoadData: function(a) {
 				if(this.rpcNode !== null) {
 					this.rpcNode.innerHTML = typeof a === 'object' ? a.responseText : a;
-					this.rpcNode.style.display = 'block';
 					this.rpcNode.loaded = true;
 					let el = d.getElementById('buildText');
 					if(el) {
@@ -393,6 +391,8 @@
 							w.main.location.href = href
 						}
 					}
+					let el = d.querySelector('#node' + a + '>.treeNode');
+					modx.tree.setSelected(el)
 				}
 				if(tree.ca === "parent") {
 					try {
