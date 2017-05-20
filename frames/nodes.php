@@ -48,9 +48,6 @@ if(isset($_SESSION['openedArray'])) {
 	$opened = array();
 }
 
-$opened2 = array();
-$closed2 = array();
-
 makeHTML($indent, $parent, $expandAll, $theme, $hereid);
 echo $output;
 

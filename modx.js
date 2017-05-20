@@ -355,7 +355,7 @@
 					}
 				}
 			},
-			treeAction: function(e, a, b, c) {
+			treeAction: function(e, a, b, c, f, g) {
 				if(tree.ca === "move") {
 					try {
 						w.main.setMoveValue(a, b)
@@ -378,10 +378,10 @@
 						el.style.right = 0;
 						el.style.bottom = 0;
 						d.getElementById('treeRoot').appendChild(el);
-						if(c === 0) {
+						if(g === 0) {
 							href = "index.php?a=3&r=1&id=" + a + this.getFolderState()
 						} else {
-							href = "index.php?a=" + modx.config.tree_page_click + "&r=1&id=" + a
+							href = "index.php?a=" + c + "&r=1&id=" + a
 						}
 						if(e.shiftKey) {
 							w.getSelection().removeAllRanges();
