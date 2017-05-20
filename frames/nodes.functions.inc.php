@@ -166,6 +166,7 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 		$ph['expandAll'] = $expandAll;
 
 		if(!$row['isfolder']) {
+			$tpl = getTplSingleNode();
 			switch($row['id']) {
 				case $modx->config['site_start']            :
 					$icon = $_style['tree_page_home'];
@@ -193,7 +194,6 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					}
 			}
 			$ph['icon'] = $icon;
-			$tpl = getTplSingleNode();
 
 			// invoke OnManagerNodePrerender event
 			$prenode = $modx->invokeEvent("OnManagerNodePrerender", array('ph' => $ph));
@@ -207,10 +207,9 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 
 		} else {
 			$tpl = getTplFolderNode();
-			$isPrivate = ($row['privateweb'] == 1 || $row['privatemgr'] == 1) ? '1' : '0';
-			$ph['isPrivate'] = $isPrivate;
-			$ph['icon_folder_open'] = $isPrivate ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
-			$ph['icon_folder_close'] = $isPrivate ? $_style['tree_folder_secure'] : $_style['tree_folder_new'];
+			$ph['isPrivate'] = ($row['privateweb'] == 1 || $row['privatemgr'] == 1) ? '1' : '0';
+			$ph['icon_folder_open'] = $ph['isPrivate'] ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
+			$ph['icon_folder_close'] = $ph['isPrivate'] ? $_style['tree_folder_secure'] : $_style['tree_folder_new'];
 
 			// expandAll: two type for partial expansion
 			if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
