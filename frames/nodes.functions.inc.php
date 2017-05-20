@@ -21,9 +21,9 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 
 	// setup spacer
 	$spacer = '';
-//	for($i = 1; $i <= $indent; $i++) {
-//		$spacer .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-//	}
+	//	for($i = 1; $i <= $indent; $i++) {
+	//		$spacer .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	//	}
 
 	// manage order-by
 	if(!isset($_SESSION['tree_sortby']) && !isset($_SESSION['tree_sortdir'])) {
@@ -73,7 +73,7 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 	$where = "(parent={$parent}) {$access} GROUP BY sc.id";
 	$result = $modx->db->select($field, $from, $where, $orderby);
 	if($modx->db->getRecordCount($result) == 0) {
-		$output .=  sprintf('<div>%s%s %s&nbsp;<span class="emptyNode">%s</span></div>', $spacer, $pad, $_style['tree_deletedpage'], $_lang['empty_folder']);
+		$output .= sprintf('<div>%s%s %s&nbsp;<span class="emptyNode">%s</span></div>', $spacer, $pad, $_style['tree_deletedpage'], $_lang['empty_folder']);
 	}
 
 	$nodeNameSource = $_SESSION['tree_nodename'] == 'default' ? $modx->config['resource_tree_node_name'] : $_SESSION['tree_nodename'];
@@ -171,12 +171,6 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 			'lockedByUser' => $lockedByUser,
 			'treeNodeSelected' => $row['id'] == $hereid ? ' treeNodeSelected' : ''
 		);
-		// invoke OnManagerNodePrerender event
-
-		$evtOut = $modx->invokeEvent('OnManagerNodePrerender', $data);
-		if(is_array($evtOut)) {
-			$evtOut = implode("\n", $evtOut);
-		}
 
 		$node = '';
 		$ph = $data;
@@ -213,6 +207,14 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 			}
 			$ph['icon'] = $icon;
 			$tpl = getTplSingleNode();
+
+			// invoke OnManagerNodePrerender event
+			$prenode = $modx->invokeEvent("OnManagerNodePrerender", array('ph' => $ph));
+			$prenode = unserialize($prenode[0]);
+			if(is_array($prenode)) {
+				$ph = $prenode;
+			}
+
 			if($modx->config['tree_page_click'] == 3) {
 				if($row['parent'] == 0) {
 					$node = $modx->parseText($tpl, $ph);
@@ -242,9 +244,17 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$tpl = str_replace('[&tree_minusnode&]', '', $tpl);
 					} else {
 						$ph['src'] = $isPrivate ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
-						$tpl = str_replace('modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);',
-							'if(tree.ca==\'parent\'||tree.ca==\'move\'||tree.ca==\'link\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}else{' . ($checkNoFolder ? 'if(this.parentNode.lastChild.style.display !== \'block\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}' : '' ) . 'modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;let tam = ' . $checkNoFolder . '}',
-							$tpl);
+						$tpl = str_replace('modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);', 'if(tree.ca==\'parent\'||tree.ca==\'move\'||tree.ca==\'link\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}else{' . ($checkNoFolder ? 'if(this.parentNode.lastChild.style.display !== \'block\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}' : '') . 'modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;let tam = ' . $checkNoFolder . '}', $tpl);
+					}
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '1'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
 					}
 
 					$node = $modx->parseText($tpl, $ph);
@@ -262,9 +272,17 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					if(!$checkIsFolder || (!$checkIsFolder && !$checkNoFolder)) {
 						$tpl = str_replace('[&tree_plusnode&]', '', $tpl);
 					} else {
-						$tpl = str_replace('modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);',
-							'if(tree.ca==\'parent\'||tree.ca==\'move\'||tree.ca==\'link\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}else{' . ($checkNoFolder ? 'if(this.parentNode.lastChild.style.display !== \'block\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}' : '' ) . 'modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;let tam = ' . $checkNoFolder . '}',
-							$tpl);
+						$tpl = str_replace('modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);', 'if(tree.ca==\'parent\'||tree.ca==\'move\'||tree.ca==\'link\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}else{' . ($checkNoFolder ? 'if(this.parentNode.lastChild.style.display !== \'block\'){modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\'); modx.tree.setSelected(this);}' : '') . 'modx.tree.toggleNode(this,[+indent+],[+id+],[+expandAll+],[+isPrivate+]); return false;let tam = ' . $checkNoFolder . '}', $tpl);
+					}
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '0'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
 					}
 
 					$node = $modx->parseText($tpl, $ph);
@@ -281,6 +299,17 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					}
 					$tpl = getTplOpenFolderNode();
 					$ph['src'] = $isPrivate ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '1'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
 					$node = $modx->parseText($tpl, $ph);
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
@@ -290,6 +319,17 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 				} else {
 					$tpl = getTplClosedFolderNode();
 					$ph['src'] = $isPrivate ? $_style['tree_folder_secure'] : $_style['tree_folder_new'];
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '0'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
 					$node = $modx->parseText($tpl, $ph);
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');

@@ -213,12 +213,12 @@
 				modx.resizer.mask.style.zIndex = modx.resizer.oldZIndex;
 				d.getElementById(modx.resizer.switcher).onclick = modx.resizer.toggle;
 				d.getElementById(modx.resizer.id).onmousedown = modx.resizer.onMouseDown;
-				d.getElementById(modx.resizer.id).onmouseup = modx.resizer.onMouseUp
+				d.getElementById(modx.resizer.id).onmouseup = modx.resizer.mask.onmouseup = modx.resizer.onMouseUp
 			},
 			onMouseDown: function(e) {
 				e = e || w.event;
 				modx.resizer.dragElement = e.target !== null ? e.target : e.srcElement;
-				if((e.buttons === 1 && e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
+				if((e.buttons === 1 || e.button === 0) && modx.resizer.dragElement.id === modx.resizer.id) {
 					modx.resizer.oldZIndex = modx.resizer.dragElement.style.zIndex;
 					modx.resizer.dragElement.style.zIndex = modx.resizer.newZIndex;
 					modx.resizer.dragElement.style.background = modx.resizer.background;
