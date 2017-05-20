@@ -214,7 +214,6 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 
 			// expandAll: two type for partial expansion
 			if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
-				$tpl = getTplFolderNode();
 				if($expandAll == 1) {
 					$opened2[] = $row['id'];
 				}
@@ -238,7 +237,6 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 				makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
 				$node = '</div></div>';
 			} else {
-				$tpl = getTplFolderNode();
 				$closed2[] = $row['id'];
 				$ph['icon'] = $ph['icon_folder_close'];
 				$_style['icon_node_toggle'] = $_style['tree_plusnode'];
