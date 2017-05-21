@@ -948,7 +948,7 @@
 		}
 	};
 	for(let o in _) modx[o] = _[o];
-	//_ = '';
+	_ = '';
 	w.mainMenu = {};
 	w.mainMenu.work = function() {
 		modx.main.work()
