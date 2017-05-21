@@ -161,7 +161,8 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 			'treeNodeSelected' => $row['id'] == $hereid ? ' treeNodeSelected' : '',
 			'tree_page_click' => $modx->config['tree_page_click'],
 			'showChildren' => 1,
-			'openFolder' => 1
+			'openFolder' => 1,
+			'contextmenu' => ''
 		);
 
 		$ph = $data;
@@ -204,6 +205,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 			$prenode = unserialize($prenode[0]);
 			if(is_array($prenode)) {
 				$ph = $prenode;
+			}
+
+			if($ph['contextmenu']) {
+				$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
 			}
 
 			if(!$_SESSION['tree_show_only_folders']) {
@@ -258,6 +263,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$ph = $prenode;
 					}
 
+					if($ph['contextmenu']) {
+						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
+					}
+
 					$node = $modx->parseText($tpl, $ph);
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
@@ -291,6 +300,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$ph = $prenode;
 					}
 
+					if($ph['contextmenu']) {
+						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
+					}
+
 					$node = $modx->parseText($tpl, $ph);
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
@@ -320,6 +333,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$ph = $prenode;
 					}
 
+					if($ph['contextmenu']) {
+						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
+					}
+
 					$node = $modx->parseText($tpl, $ph);
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
@@ -346,6 +363,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					$prenode = unserialize($prenode[0]);
 					if(is_array($prenode)) {
 						$ph = $prenode;
+					}
+
+					if($ph['contextmenu']) {
+						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
 					}
 
 					$node = $modx->parseText($tpl, $ph);
@@ -489,8 +510,17 @@ function checkIsFolder($parent = 0, $isfolder = 1) {
 	return (int) $modx->db->getValue($modx->db->query('SELECT count(*) FROM ' . $modx->getFullTableName('site_content') . ' WHERE parent=' . $parent . ' AND isfolder=' . $isfolder . ' '));
 }
 
+function _htmlentities($array) {
+	global $modx;
+
+	$array = json_encode($array, JSON_UNESCAPED_UNICODE);
+	$array = htmlentities($array, ENT_COMPAT, $modx->config['modx_charset']);
+
+	return $array;
+}
+
 function getTplSingleNode() {
-	return '<div id="node[+id+]"><span
+	return '<div id="node[+id+]"[+contextmenu+]><span
         id="p[+id+]"
         onclick="modx.tree.showPopup([+id+],\'[+nodetitle_esc+]\',[+published+],[+deleted+],[+isfolder+],event);return false;"
         oncontextmenu="this.onclick(event);return false;"
@@ -504,7 +534,7 @@ function getTplSingleNode() {
 }
 
 function getTplFolderNode() {
-	return '<div id="node[+id+]"><span
+	return '<div id="node[+id+]"[+contextmenu+]><span
         id="s[+id+]"
         data-icon-expanded="[&tree_plusnode&]"
         data-icon-collapsed="[&tree_minusnode&]"

@@ -27,8 +27,6 @@ $hereid = isset($_GET['id']) ? $_GET['id'] : '';
 
 if(isset($_GET['showonlyfolders'])) {
 	$_SESSION['tree_show_only_folders'] = $_GET['showonlyfolders'];
-} elseif(!isset($_SESSION['tree_show_only_folders'])) {
-	$_SESSION['tree_show_only_folders'] = 1;
 }
 
 // setup sorting
