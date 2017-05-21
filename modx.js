@@ -411,17 +411,6 @@
 					}
 				}
 			},
-			showContextMenu: function(a) {
-				a = JSON.parse(a);
-
-				for(let key in a) {
-					let item = d.createElement('div', a[key]);
-					//for(let k in a[key]) item[k] = a[key][k];
-					this.ctx.appendChild(item)
-				}
-
-				d.getElementById(modx.frameset).appendChild(this.ctx);
-			},
 			showPopup: function(a, b, c, f, g, e) {
 				let node = d.getElementById('node' + a),
 					el = d.querySelector('#tree .treeNodeSelectedByContext'),
