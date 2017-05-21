@@ -359,6 +359,7 @@
 			treeAction: function(e, a, b, c, f, g) {
 				if(tree.ca === "move") {
 					try {
+						this.setSelectedByContext(a);
 						w.main.setMoveValue(a, b)
 					} catch(oException) {
 						alert(modx.lang.unable_set_parent)
@@ -398,6 +399,7 @@
 				}
 				if(tree.ca === "parent") {
 					try {
+						this.setSelectedByContext(a);
 						w.main.setParent(a, b)
 					} catch(oException) {
 						alert(modx.lang.unable_set_parent)
@@ -405,6 +407,7 @@
 				}
 				if(tree.ca === "link") {
 					try {
+						this.setSelectedByContext(a);
 						w.main.setLink(a)
 					} catch(oException) {
 						alert(modx.lang.unable_set_link)
@@ -413,7 +416,6 @@
 			},
 			showPopup: function(a, b, c, f, g, e) {
 				let node = d.getElementById('node' + a),
-					el = d.querySelector('#tree .treeNodeSelectedByContext'),
 					tree = d.getElementById('tree');
 
 				if(node.dataset.contextmenu) {
@@ -422,8 +424,7 @@
 					this.ctx.id = 'contextmenu';
 					this.ctx.className = 'dropdown-menu';
 					d.getElementById(modx.frameset).appendChild(this.ctx);
-					if(el) el.classList.remove('treeNodeSelectedByContext');
-					d.querySelector('#node' + a + '>.treeNode').classList.add('treeNodeSelectedByContext');
+					this.setSelectedByContext(a);
 					let dataJson = JSON.parse(node.dataset.contextmenu);
 					for(let key in dataJson) {
 						if(dataJson.hasOwnProperty(key)) {
@@ -456,7 +457,7 @@
 					} else {
 						y = y - this.ctx.offsetHeight / 2
 					}
-					el = e.target.closest('.treeNode');
+					let el = e.target.closest('.treeNode');
 					if(el === null) x += 50;
 					this.itemToChange = a;
 					this.selectedObjectName = b;
@@ -466,8 +467,7 @@
 				} else {
 					let ctx = d.getElementById('mx_contextmenu');
 					modx.hideDropDown(ctx);
-					if(el) el.classList.remove('treeNodeSelectedByContext');
-					d.querySelector('#node' + a + '>.treeNode').classList.add('treeNodeSelectedByContext');
+					this.setSelectedByContext(a);
 					let i4 = d.getElementById('item4'),
 						i5 = d.getElementById('item5'),
 						i8 = d.getElementById('item8'),
@@ -505,7 +505,7 @@
 					} else {
 						y = y - ctx.offsetHeight / 2
 					}
-					el = e.target.closest('.treeNode');
+					let el = e.target.closest('.treeNode');
 					if(el === null) x += 50;
 					this.itemToChange = a;
 					this.selectedObjectName = b;
@@ -595,6 +595,11 @@
 			setActiveFromContextMenu: function(a) {
 				let el = d.querySelector('#node' + a + '>.treeNode');
 				if(el) this.setSelected(el)
+			},
+			setSelectedByContext: function(a) {
+				let el = d.querySelector('#tree .treeNodeSelectedByContext');
+				if(el) el.classList.remove('treeNodeSelectedByContext');
+				if(a) d.querySelector('#node' + a + '>.treeNode').classList.add('treeNodeSelectedByContext');
 			},
 			setItemToChange: function() {
 				let a = d.getElementById(modx.main.idFrame).contentWindow, b = a.location.search.substring(1);
@@ -869,8 +874,9 @@
 			for(let i = 0; i < elms.length; i++) {
 				if(a === null || (a !== null && a !== elms[i])) elms[i].classList.remove('show')
 			}
-			let el = d.querySelector('#tree .treeNodeSelectedByContext');
-			if(el) el.classList.remove('treeNodeSelectedByContext');
+			if(tree.ca === "open" || tree.ca === "") {
+				modx.tree.setSelectedByContext();
+			}
 			if(modx.tree.ctx !== null) {
 				d.getElementById(modx.frameset).removeChild(modx.tree.ctx);
 				modx.tree.ctx = null
@@ -926,7 +932,9 @@
 				let e = [],
 					i = 0,
 					k;
-				for(k in b) e[i++] = k + '=' + b[k];
+				for(k in b) {
+					if(b.hasOwnProperty(k)) e[i++] = k + '=' + b[k];
+				}
 				f = e.join('&')
 			}
 			x.open('POST', a, true);
@@ -940,7 +948,7 @@
 		}
 	};
 	for(let o in _) modx[o] = _[o];
-	_ = '';
+	//_ = '';
 	w.mainMenu = {};
 	w.mainMenu.work = function() {
 		modx.main.work()
