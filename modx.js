@@ -369,26 +369,27 @@
 					} else {
 						let href = '';
 						modx.setLastClickedElement(7, a);
-
-						let el = d.createElement('div');
-						el.style.zIndex = 999;
-						el.style.position = 'absolute';
-						el.style.left = 0;
-						el.style.top = 0;
-						el.style.right = 0;
-						el.style.bottom = 0;
-						d.getElementById('treeRoot').appendChild(el);
-						if(g === 0) {
-							href = "index.php?a=3&r=1&id=" + a + this.getFolderState()
+						if(!isNaN(parseFloat(c)) && isFinite(c)) {
+							href = "index.php?a=" + c + "&r=1&id=" + a + (g === 0 ? this.getFolderState() : '')
 						} else {
-							href = "index.php?a=" + c + "&r=1&id=" + a
+							href = c;
 						}
-						if(e.shiftKey) {
-							w.getSelection().removeAllRanges();
-							modx.openWindow(href);
-							this.restoreTree()
-						} else {
-							w.main.location.href = href
+
+						if(g === 2) {
+							if(f !== 1) {
+								href = '';
+							}
+							d.getElementById('s' + a).onclick()
+						}
+
+						if(href) {
+							if(e.shiftKey) {
+								w.getSelection().removeAllRanges();
+								modx.openWindow(href);
+								this.restoreTree()
+							} else {
+								w.main.location.href = href
+							}
 						}
 					}
 					let el = d.querySelector('#node' + a + '>.treeNode');
@@ -546,7 +547,7 @@
 			},
 			setItemToChange: function() {
 				let a = d.getElementById(modx.main.idFrame).contentWindow, b = a.location.search.substring(1);
-				if(parseInt(modx.main.getQueryVariable('a', b)) === 27 && modx.main.getQueryVariable('id', b)) {
+				if((parseInt(modx.main.getQueryVariable('a', b)) === 27 || parseInt(modx.main.getQueryVariable('a', b)) === 3) && modx.main.getQueryVariable('id', b)) {
 					this.itemToChange = parseInt(modx.main.getQueryVariable('id', b))
 				} else {
 					this.itemToChange = null
@@ -573,7 +574,8 @@
 					el.style.display = 'block'
 				}
 				modx.get('index.php?a=1&f=nodes&indent=1&parent=0&expandAll=1&id=' + this.itemToChange, function(r) {
-					modx.tree.rpcLoadData(r)
+					modx.tree.rpcLoadData(r);
+					modx.tree.saveFolderState();
 				})
 			},
 			collapseTree: function() {
@@ -597,7 +599,7 @@
 					el.style.display = 'block'
 				}
 				let a = d.sortFrm;
-				let b = 'a=1&f=nodes&indent=1&parent=0&expandAll=2&dt=' + a.dt.value + '&tree_sortby=' + a.sortby.value + '&tree_sortdir=' + a.sortdir.value + '&tree_nodename=' + a.nodename.value + '&id=' + this.itemToChange;
+				let b = 'a=1&f=nodes&indent=1&parent=0&expandAll=2&dt=' + a.dt.value + '&tree_sortby=' + a.sortby.value + '&tree_sortdir=' + a.sortdir.value + '&tree_nodename=' + a.nodename.value + '&id=' + this.itemToChange + '&showonlyfolders=' + a.showonlyfolders.value;
 				modx.get('index.php?' + b, function(r) {
 					modx.tree.rpcLoadData(r)
 				})

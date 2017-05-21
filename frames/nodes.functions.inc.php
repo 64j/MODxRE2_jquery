@@ -13,7 +13,7 @@ if(IN_MANAGER_MODE != 'true') {
 function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 	global $modx;
 	global $icons, $iconsPrivate, $_style;
-	global $output, $_lang, $opened; //added global vars
+	global $output, $_lang, $opened, $opened2, $closed2; //added global vars
 	global $modx_textdir;
 
 	// manage order-by
@@ -205,8 +205,17 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 				$ph = $prenode;
 			}
 
-			$node = $modx->parseText($tpl, $ph);
-			$node = $modx->parseText($node, $_lang, '[%', '%]');
+			if(!$_SESSION['tree_show_only_folders']) {
+				if($row['parent'] == 0) {
+					$node = $modx->parseText($tpl, $ph);
+					$node = $modx->parseText($node, $_lang, '[%', '%]');
+				} else {
+					$node = '';
+				}
+			} else {
+				$node = $modx->parseText($tpl, $ph);
+				$node = $modx->parseText($node, $_lang, '[%', '%]');
+			}
 
 		} else {
 			$tpl = getTplFolderNode();
@@ -214,57 +223,135 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 			$ph['icon_folder_open'] = $ph['isPrivate'] ? $_style['tree_folderopen_secure'] : $_style['tree_folderopen_new'];
 			$ph['icon_folder_close'] = $ph['isPrivate'] ? $_style['tree_folder_secure'] : $_style['tree_folder_new'];
 
-			// expandAll: two type for partial expansion
-			if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
-				$ph['icon'] = $ph['icon_folder_open'];
-				$_style['icon_node_toggle'] = $_style['tree_minusnode'];
+			if(!$_SESSION['tree_show_only_folders']) {
+				$checkFolders = checkIsFolder($row['id'], 1) ? 1 : 0; // folders
+				$checkDocs = checkIsFolder($row['id'], 0) ? 1 : 0; // no folders
+				$ph['tree_page_click'] = 3;
 
-				if($row['donthit']) {
-					$ph['tree_page_click'] = 3;
-					$_style['icon_node_toggle'] = '';
-				}
+				// expandAll: two type for partial expansion
+				if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
+					if($expandAll == 1) {
+						$opened2[] = $row['id'];
+					}
+					$ph['icon'] = $ph['icon_folder_open'];
+					$_style['icon_node_toggle'] = $_style['tree_minusnode'];
 
-				// invoke OnManagerNodePrerender event
-				$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
-					'ph' => $ph,
-					'opened' => '1'
-				));
-				$prenode = unserialize($prenode[0]);
-				if(is_array($prenode)) {
-					$ph = $prenode;
-				}
+					if(($checkDocs && !$checkFolders) || (!$checkDocs && !$checkFolders)) {
+						$ph['showChildren'] = 1;
+						$_style['icon_node_toggle'] = '';
+						$ph['icon'] = $ph['icon_folder_close'];
+					} elseif(!$checkDocs && $checkFolders) {
+						$ph['showChildren'] = 0;
+						$ph['openFolder'] = 2;
+					} else {
+						$ph['openFolder'] = 2;
+					}
 
-				$node = $modx->parseText($tpl, $ph);
-				$node = $modx->parseText($node, $_lang, '[%', '%]');
-				$node = $modx->parseText($node, $_style, '[&', '&]');
-				$output .= $node;
-				if(!$row['donthit']) {
-					makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '1'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
+					$node = $modx->parseText($tpl, $ph);
+					$node = $modx->parseText($node, $_lang, '[%', '%]');
+					$node = $modx->parseText($node, $_style, '[&', '&]');
+					$output .= $node;
+					if($checkFolders) {
+						makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
+					}
+					$node = '</div></div>';
+				} else {
+					$closed2[] = $row['id'];
+					$ph['icon'] = $ph['icon_folder_close'];
+					$_style['icon_node_toggle'] = $_style['tree_plusnode'];
+
+					if(($checkDocs && !$checkFolders) || (!$checkDocs && !$checkFolders)) {
+						$ph['showChildren'] = 1;
+						$_style['icon_node_toggle'] = '';
+					} elseif(!$checkDocs && $checkFolders) {
+						$ph['showChildren'] = 0;
+						$ph['openFolder'] = 2;
+					} else {
+						$ph['openFolder'] = 2;
+					}
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '0'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
+					$node = $modx->parseText($tpl, $ph);
+					$node = $modx->parseText($node, $_lang, '[%', '%]');
+					$node = $modx->parseText($node, $_style, '[&', '&]');
+					$node .= '</div></div>';
 				}
-				$node = '</div></div>';
 			} else {
-				$ph['icon'] = $ph['icon_folder_close'];
-				$_style['icon_node_toggle'] = $_style['tree_plusnode'];
+				// expandAll: two type for partial expansion
+				if($expandAll == 1 || ($expandAll == 2 && in_array($row['id'], $opened))) {
+					if($expandAll == 1) {
+						$opened2[] = $row['id'];
+					}
+					$ph['icon'] = $ph['icon_folder_open'];
+					$_style['icon_node_toggle'] = $_style['tree_minusnode'];
 
-				if($row['donthit']) {
-					$ph['tree_page_click'] = 3;
-					$_style['icon_node_toggle'] = '';
+					if($row['donthit']) {
+						$ph['tree_page_click'] = 3;
+						$_style['icon_node_toggle'] = '';
+					}
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '1'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
+					$node = $modx->parseText($tpl, $ph);
+					$node = $modx->parseText($node, $_lang, '[%', '%]');
+					$node = $modx->parseText($node, $_style, '[&', '&]');
+					$output .= $node;
+					if(!$row['donthit']) {
+						makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
+					}
+					$node = '</div></div>';
+				} else {
+					$closed2[] = $row['id'];
+					$ph['icon'] = $ph['icon_folder_close'];
+					$_style['icon_node_toggle'] = $_style['tree_plusnode'];
+
+					if($row['donthit']) {
+						$ph['tree_page_click'] = 3;
+						$_style['icon_node_toggle'] = '';
+					}
+
+					// invoke OnManagerNodePrerender event
+					$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
+						'ph' => $ph,
+						'opened' => '0'
+					));
+					$prenode = unserialize($prenode[0]);
+					if(is_array($prenode)) {
+						$ph = $prenode;
+					}
+
+					$node = $modx->parseText($tpl, $ph);
+					$node = $modx->parseText($node, $_lang, '[%', '%]');
+					$node = $modx->parseText($node, $_style, '[&', '&]');
+					$node .= '</div></div>';
 				}
-
-				// invoke OnManagerNodePrerender event
-				$prenode = $modx->invokeEvent("OnManagerNodePrerender", array(
-					'ph' => $ph,
-					'opened' => '0'
-				));
-				$prenode = unserialize($prenode[0]);
-				if(is_array($prenode)) {
-					$ph = $prenode;
-				}
-
-				$node = $modx->parseText($tpl, $ph);
-				$node = $modx->parseText($node, $_lang, '[%', '%]');
-				$node = $modx->parseText($node, $_style, '[&', '&]');
-				$node .= '</div></div>';
 			}
 		}
 
@@ -398,7 +485,7 @@ function isDateNode($nodeNameSource) {
 function checkIsFolder($parent = 0, $isfolder = 1) {
 	global $modx;
 
-	return (int) $modx->db->getValue($modx->db->query('SELECT count(id) FROM ' . $modx->getFullTableName('site_content') . ' WHERE parent=' . $parent . ' AND isfolder=' . $isfolder . ' '));
+	return (int) $modx->db->getValue($modx->db->query('SELECT count(*) FROM ' . $modx->getFullTableName('site_content') . ' WHERE parent=' . $parent . ' AND isfolder=' . $isfolder . ' '));
 }
 
 function getTplSingleNode() {
@@ -409,7 +496,7 @@ function getTplSingleNode() {
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\'"
         >[+icon+]</span>[+lockedByUser+]<span
         class="treeNode[+treeNodeSelected+]"
-        onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\',[+tree_page_click+]);"
+        onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\',\'[+tree_page_click+]\');"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'p[+id+]\').onclick(event);return false;"
         title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]</div>';
@@ -431,7 +518,7 @@ function getTplFolderNode() {
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         >[+icon+]</span>[+lockedByUser+]<span
         class="treeNode[+treeNodeSelected+]"
-        onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\',[+tree_page_click+],[+showChildren+],[+openFolder+]);"
+        onclick="modx.tree.treeAction(event,[+id+],\'[+nodetitle_esc+]\',\'[+tree_page_click+]\',[+showChildren+],[+openFolder+]);"
         onmousedown="modx.tree.itemToChange=[+id+]; modx.tree.selectedObjectName=\'[+nodetitle_esc+]\'; modx.tree.selectedObjectDeleted=[+deleted+]; modx.tree.selectedObjectUrl=\'[+url+]\';"
         oncontextmenu="document.getElementById(\'f[+id+]\').onclick(event);return false;"
         title="[+alt+]">[+nodetitleDisplay+][+weblinkDisplay+]</span>[+pageIdDisplay+]<div>';
