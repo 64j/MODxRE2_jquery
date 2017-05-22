@@ -333,6 +333,11 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$ph = $prenode;
 					}
 
+					if ($ph['showChildren'] == 0) {
+						$_style['icon_node_toggle'] = '';
+						$ph['donthit'] = 0;
+					}
+					
 					if($ph['contextmenu']) {
 						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
 					}
@@ -341,7 +346,7 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
 					$output .= $node;
-					if(!$ph['donthit']) {
+					if($ph['donthit'] == 1) {
 						makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
 					}
 					$node = '</div></div>';
@@ -365,6 +370,10 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 						$ph = $prenode;
 					}
 
+					if ($ph['showChildren'] == 0) {
+						$_style['icon_node_toggle'] = '';
+					}
+					
 					if($ph['contextmenu']) {
 						$ph['contextmenu'] = ' data-contextmenu="' . _htmlentities($ph['contextmenu']) . '"';
 					}
