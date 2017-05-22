@@ -129,7 +129,7 @@ hr { color: #777; background-color: #777; height: 1px; border: 0; }
 #frameset #searchresult .ajaxSearchResults b, #frameset #searchresult .ajaxSearchResults strong, #frameset #searchresult .ajaxSearchResults a { display: block; background-color: #ddd; color: #333; padding: 5px 10px; margin-top: -1px; border-top: 1px solid rgba(0, 0, 0, 0.03); border-bottom: 1px solid rgba(0, 0, 0, 0.03); box-sizing: border-box }
 #frameset #searchresult .ajaxSearchResults a { position: relative; color: #3697CD; padding: 4px 25px 4px 10px; background-color: #fcfcfc; text-decoration: none; }
 #frameset #searchresult .ajaxSearchResults a:hover { color: #333; background-color: #fff; }
-#frameset #searchresult .ajaxSearchResults a > i { position: absolute; right: 0; top: 50%; width: 27px; height: 27px; margin-top: -14px; line-height: 27px; text-align: center; color: #3d5764; }
+#frameset #searchresult .ajaxSearchResults a > i { position: absolute; right: 0; top: 50%; width: 27px; height: 27px; margin-top: -14px; line-height: 27px; text-align: center; }
 #frameset #searchresult .ajaxSearchResults a.selected { background-color: #0b9991; color: #fff; font-weight: 700; }
 #frameset #searchresult .ajaxSearchResults a .text-danger { color: #333; font-weight: 700 }
 @media (max-width: 640px) {
