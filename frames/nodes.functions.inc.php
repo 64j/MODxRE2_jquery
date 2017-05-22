@@ -341,7 +341,7 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					$node = $modx->parseText($node, $_lang, '[%', '%]');
 					$node = $modx->parseText($node, $_style, '[&', '&]');
 					$output .= $node;
-					if(!$row['donthit']) {
+					if(!$ph['donthit']) {
 						makeHTML($indent + 1, $row['id'], $expandAll, $theme, $hereid);
 					}
 					$node = '</div></div>';
