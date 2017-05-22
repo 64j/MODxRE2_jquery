@@ -37,7 +37,7 @@ div.wm_logo { float: left; }
 .panel-heading { background-color: transparent; }
 .sectionHeader { cursor: move; margin: 0; min-height: 34px; }
 .widget-wrapper { background: #fff; border: 1px solid #e2e2e2; border-radius: 4px; box-shadow: 1px 1px 2px #ddd; moz-box-shadow: 1px 1px 2px #ddd; webkit-box-shadow: 1px 1px 2px #ddd; }
-.widget-wrapper .widget-title { border-bottom: 1px solid #d7d7d7; font-size: 14px; font-weight: 300; padding: 7px 5px 4px 10px; }
+.widget-wrapper .widget-title { border-bottom: 1px solid #d7d7d7; padding: 7px 5px 4px 10px; }
 .widget-wrapper .widget-stage { overflow: hidden; padding: 15px; position: relative; }
 .widget-wrapper .widget-notes { background: #fbfbfb; border-top: 1px solid #e2e2e2; color: #808080; font-size: 12px; padding: 8px 10px 5px; }
 i.icon-color-verylight { color: #dedede; float: left; margin-right: 5px; }
