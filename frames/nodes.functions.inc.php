@@ -336,6 +336,7 @@ function makeHTML($indent, $parent, $expandAll, $theme, $hereid = '') {
 					if ($ph['showChildren'] == 0) {
 						$_style['icon_node_toggle'] = '';
 						$ph['donthit'] = 0;
+						$ph['icon'] = $ph['icon_folder_close'];
 					}
 					
 					if($ph['contextmenu']) {
