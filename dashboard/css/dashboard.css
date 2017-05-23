@@ -42,7 +42,7 @@ div.wm_logo { float: left; }
 .widget-wrapper .widget-notes { background: #fbfbfb; border-top: 1px solid #e2e2e2; color: #808080; font-size: 12px; padding: 8px 10px 5px; }
 i.icon-color-verylight { color: #dedede; float: left; margin-right: 5px; }
 .btn-group a:link { text-decoration: none; text-weight: normal; }
-.btn-group .panel-hide { margin-top: -7px; padding-top: 3px; }
+.btn-group .panel-hide { margin-top: -3px; padding-top: 3px; }
 .btn-action { padding: 1px 1px !important; width: 28px; }
 .btn-expand i { color: #afafaf; }
 .btn-expand:hover { color: #4d4d4d; background: #fbfbfb; }
